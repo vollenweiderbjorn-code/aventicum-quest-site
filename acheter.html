@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acheter — Aventicum Quest | Operatio Aquila · 29 CHF</title>
+  <meta name="description" content="Réservez votre Aventicum Quest dès 29 CHF. Paiement sécurisé par Stripe — Twint, Apple Pay, carte bancaire. Code reçu immédiatement par e-mail.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ══════════════════════════════════
+       PAGE HERO
+    ══════════════════════════════════ */
+    .page-hero {
+      background: var(--dark);
+      padding: 140px 2rem 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center top, rgba(201,168,76,0.1) 0%, transparent 55%);
+    }
+    .page-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .page-hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+    }
+    .page-hero p {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: rgba(250,247,240,0.6);
+    }
+    .breadcrumb {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.55);
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a { color: inherit; }
+    .breadcrumb a:hover { color: var(--gold); }
+
+    /* ══════════════════════════════════
+       PURCHASE SECTION
+    ══════════════════════════════════ */
+    .section-purchase {
+      padding: 5rem 2rem 6rem;
+      background: var(--cream);
+    }
+    .purchase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+
+    /* ── LEFT: Offer summary ── */
+    .offer-card {
+      background: var(--dark);
+      padding: 3rem;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .offer-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+    }
+    .offer-card::after {
+      content: '';
+      position: absolute;
+      top: 50%; right: -60px;
+      transform: translateY(-50%);
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.06), transparent);
+      pointer-events: none;
+    }
+
+    .offer-badge {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold);
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .offer-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.06em;
+    }
+    .offer-subtitle {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: rgba(250,247,240,0.45);
+      margin-bottom: 2rem;
+      letter-spacing: 0.08em;
+    }
+
+    .offer-price-block {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .offer-price {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(3rem, 7vw, 4.5rem);
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .offer-price-currency {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+    .offer-price-note {
+      font-size: 0.82rem;
+      color: rgba(250,247,240,0.4);
+      font-style: italic;
+      margin-bottom: 2.5rem;
+    }
+
+    .offer-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 2rem 0;
+    }
+
+    .offer-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .offer-includes li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      font-size: 0.95rem;
+      color: rgba(250,247,240,0.7);
+      line-height: 1.45;
+    }
+    .offer-check {
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.4);
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
+    }
+    .offer-check::after {
+      content: '✓';
+      font-size: 0.65rem;
+      color: var(--gold);
+    }
+    .offer-validity {
+      margin-top: 2rem;
+      padding: 1rem 1.25rem;
+      background: rgba(201,168,76,0.07);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 2px;
+      font-size: 0.85rem;
+      color: rgba(250,247,240,0.55);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .offer-validity strong { color: var(--gold); }
+
+    /* ── RIGHT: Form ── */
+    .form-card {
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-header {
+      margin-bottom: 2.5rem;
+    }
+    .form-header h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    .form-header p {
+      color: var(--text-light);
+      font-style: italic;
+      font-size: 0.98rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-label {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+    }
+    .form-label span {
+      color: var(--gold);
+    }
+    .form-input {
+      width: 100%;
+      padding: 0.9rem 1.1rem;
+      background: var(--cream-dark);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 2px;
+      font-family: 'Crimson Text', serif;
+      font-size: 1rem;
+      color: var(--text);
+      transition: border-color 0.25s, box-shadow 0.25s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .form-input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+    }
+    .form-input::placeholder {
+      color: rgba(42,31,14,0.35);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-select-wrapper {
+      position: relative;
+    }
+    .form-select {
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+    .form-select-wrapper::after {
+      content: '▾';
+      position: absolute;
+      right: 1rem; top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+      font-size: 0.8rem;
+      pointer-events: none;
+    }
+
+    .form-checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+    .form-checkbox {
+      width: 18px; height: 18px;
+      margin-top: 3px;
+      accent-color: var(--gold);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .form-checkbox-label {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      cursor: pointer;
+      line-height: 1.5;
+    }
+    .form-checkbox-label a {
+      color: var(--gold-dark);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .form-divider {
+      height: 1px;
+      background: rgba(201,168,76,0.2);
+      margin: 1.5rem 0;
+    }
+
+    /* Order summary in form */
+    .form-summary {
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 2px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .form-summary-left {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: var(--text);
+    }
+    .form-summary-left span {
+      display: block;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+    .form-summary-price {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+    }
+
+    /* Pay button */
+    .btn-pay {
+      width: 100%;
+      padding: 1.1rem 2rem;
+      background: var(--gold);
+      color: var(--dark);
+      font-family: 'Cinzel', serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-pay::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    .btn-pay:hover {
+      background: var(--gold-light);
+      box-shadow: 0 8px 30px rgba(201,168,76,0.35);
+      transform: translateY(-2px);
+    }
+    .btn-pay:hover::before {
+      left: 100%;
+    }
+
+    /* Payment methods */
+    .payment-methods {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .payment-methods-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(42,31,14,0.35);
+    }
+    .payment-logos {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .payment-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.4rem 0.85rem;
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 4px;
+      background: var(--cream-dark);
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+    .payment-logo.twint {
+      color: #1a73e8;
+      border-color: rgba(26,115,232,0.3);
+    }
+    .payment-logo.apple {
+      color: #1d1d1f;
+    }
+    .payment-logo.stripe-badge {
+      font-size: 0.58rem;
+      color: rgba(42,31,14,0.35);
+      border: none;
+      background: none;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .security-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: rgba(42,31,14,0.4);
+      font-style: italic;
+    }
+
+    /* ══════════════════════════════════
+       REASSURANCE SECTION
+    ══════════════════════════════════ */
+    .section-reassurance {
+      padding: 4rem 2rem;
+      background: var(--cream-dark);
+    }
+    .reassurance-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .reassurance-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+    .reassurance-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .reassurance-icon {
+      font-size: 2rem;
+    }
+    .reassurance-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--dark);
+    }
+    .reassurance-text {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    /* ══════════════════════════════════
+       SUCCESS / ERROR STATES
+    ══════════════════════════════════ */
+    .form-alert {
+      padding: 1rem 1.25rem;
+      border-radius: 2px;
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+      display: none;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .form-alert.show { display: flex; }
+    .form-alert.error {
+      background: rgba(200,50,50,0.08);
+      border: 1px solid rgba(200,50,50,0.3);
+      color: #8b2020;
+    }
+
+    /* ══════════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ══════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════ */
+    @media (max-width: 850px) {
+      .purchase-grid {
+        grid-template-columns: 1fr;
+      }
+      .offer-card { order: 2; }
+      .form-card { order: 1; }
+    }
+    @media (max-width: 480px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav class="nav" id="mainNav">
+    <a href="index.html" class="nav-logo">
+      Aventicum Quest
+      <span>Operatio Aquila</span>
+    </a>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="comment.html">Comment ça marche</a></li>
+      <li><a href="acheter.html" class="nav-cta active">Réserver · 29 CHF</a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══════════════ PAGE HERO ═══════════════ -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <p class="breadcrumb"><a href="index.html">Accueil</a> &nbsp;/&nbsp; Acheter</p>
+      <h1>Rejoindre la mission</h1>
+      <div class="ornament"><span class="ornament-symbol" style="color:var(--gold)">🦅</span></div>
+      <p>Un paiement. Un code. L'aventure commence quand vous le décidez.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PURCHASE ═══════════════ -->
+  <section class="section-purchase">
+    <div class="purchase-grid">
+
+      <!-- ── Offer Summary ── -->
+      <div class="offer-card reveal">
+        <span class="offer-badge">Offre unique</span>
+        <h2 class="offer-title">Aventicum Quest</h2>
+        <p class="offer-subtitle">Operatio Aquila · Édition 2026</p>
+
+        <div class="offer-price-block">
+          <span class="offer-price-currency">CHF</span>
+          <span class="offer-price">29</span>
+        </div>
+        <p class="offer-price-note">Par groupe · Toutes tailles · Valable 12 mois</p>
+
+        <div class="offer-divider"></div>
+
+        <ul class="offer-includes">
+          <li>
+            <span class="offer-check"></span>
+            <span><strong style="color:var(--cream)">12 énigmes originales</strong> scénarisées sur l'histoire d'Aventicum</span>
+          </li>
+          <li>
+            <span class="offer-check"></span>
+            <span><strong style="color:var(--cream)">7 monuments romains</strong> à explorer dans la vieille ville</span>
+          </li>
+          <li>
+            <span class="offer-check"></span>
+            <span><strong style="color:var(--cream)">Application web guidée</strong>, aucune installation requise</span>
+          </li>
+          <li>
+            <span class="offer-check"></span>
+            <span><strong style="color:var(--cream)">Narration immersive</strong> en français, anglais ou allemand</span>
+          </li>
+          <li>
+            <span class="offer-check"></span>
+            <span><strong style="color:var(--cream)">Indices secrets</strong> révélés à chaque bonne réponse</span>
+          </li>
+          <li>
+            <span class="offer-check"></span>
+            <span><strong style="color:var(--cream)">Méta-énigme finale</strong>, assemblez vos indices pour identifier le voleur</span>
+          </li>
+          <li>
+            <span class="offer-check"></span>
+            <span><strong style="color:var(--cream)">GPS intégré</strong> pour vous guider entre chaque monument</span>
+          </li>
+          <li>
+            <span class="offer-check"></span>
+            <span><strong style="color:var(--cream)">Support téléphonique</strong> disponible pendant votre mission</span>
+          </li>
+        </ul>
+
+        <div class="offer-validity">
+          <span style="font-size:1.2rem">📅</span>
+          <p>Code <strong>valable 12 mois</strong> dès l'achat. Activez-le quand vous le souhaitez : week-end, jours fériés, météo au choix.</p>
+        </div>
+      </div>
+
+      <!-- ── Purchase Form ── -->
+      <div class="form-card reveal">
+        <div class="form-header">
+          <span class="section-label">Finaliser la commande</span>
+          <h2>Votre accès à la mission</h2>
+          <p>Recevez votre code par e-mail en moins d'une minute.</p>
+        </div>
+
+        <div class="form-alert error" id="formAlert">
+          <span>⚠</span>
+          <span id="formAlertMsg">Veuillez remplir tous les champs obligatoires.</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Adresse e-mail <span>*</span></label>
+          <input
+            type="email"
+            id="email"
+            class="form-input"
+            placeholder="votre@email.ch"
+            required
+            autocomplete="email"
+          >
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="prenom">Prénom <span>*</span></label>
+            <input
+              type="text"
+              id="prenom"
+              class="form-input"
+              placeholder="Claude"
+              required
+              autocomplete="given-name"
+            >
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="nom">Nom</label>
+            <input
+              type="text"
+              id="nom"
+              class="form-input"
+              placeholder="Légionnaire"
+              autocomplete="family-name"
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="langue">Langue de jeu souhaitée <span>*</span></label>
+          <div class="form-select-wrapper">
+            <select id="langue" class="form-input form-select" required>
+              <option value="" disabled selected>Choisir une langue…</option>
+              <option value="fr">🇨🇭 Français</option>
+              <option value="en">🇬🇧 English</option>
+              <option value="de">🇩🇪 Deutsch</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="groupe">Taille du groupe (optionnel)</label>
+          <div class="form-select-wrapper">
+            <select id="groupe" class="form-input form-select">
+              <option value="">Préférez ne pas dire</option>
+              <option value="1">Seul(e)</option>
+              <option value="2">2 personnes</option>
+              <option value="3">3 personnes</option>
+              <option value="4">4 personnes</option>
+              <option value="5">5 personnes</option>
+              <option value="6+">6 personnes ou plus</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-checkbox-group">
+            <input type="checkbox" id="cgv" class="form-checkbox" required>
+            <label for="cgv" class="form-checkbox-label">
+              J'accepte les <a href="#">conditions générales de vente</a> et la
+              <a href="#">politique de confidentialité</a>. Je comprends que le code reçu
+              est valable 12 mois et non remboursable une fois activé.
+            </label>
+          </div>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-summary">
+          <div class="form-summary-left">
+            Aventicum Quest · Operatio Aquila
+            <span>1 accès groupe · Valable 12 mois</span>
+          </div>
+          <span class="form-summary-price">29 CHF</span>
+        </div>
+
+        <button class="btn-pay" id="payBtn" type="button">
+          <span>🔒</span>
+          Payer avec Stripe · 29 CHF
+        </button>
+
+        <div class="payment-methods">
+          <span class="payment-methods-label">Méthodes de paiement acceptées</span>
+          <div class="payment-logos">
+            <span class="payment-logo">💳 Carte bancaire</span>
+            <span class="payment-logo twint">TWINT</span>
+            <span class="payment-logo apple"> Apple Pay</span>
+          </div>
+          <span class="payment-logo stripe-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Paiement sécurisé par Stripe
+          </span>
+        </div>
+
+        <div class="security-note">
+          🔐 Connexion SSL · Données chiffrées · Jamais stockées
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ REASSURANCE ═══════════════ -->
+  <section class="section-reassurance">
+    <div class="reassurance-inner">
+      <div class="reassurance-grid reveal">
+        <div class="reassurance-item">
+          <span class="reassurance-icon">⚡</span>
+          <p class="reassurance-title">Réception instantanée</p>
+          <p class="reassurance-text">Votre code arrive par e-mail dans les 60 secondes suivant le paiement.</p>
+        </div>
+        <div class="reassurance-item">
+          <span class="reassurance-icon">📅</span>
+          <p class="reassurance-title">Valable 12 mois</p>
+          <p class="reassurance-text">Activez votre code quand vous êtes prêt, aucune date imposée.</p>
+        </div>
+        <div class="reassurance-item">
+          <span class="reassurance-icon">👥</span>
+          <p class="reassurance-title">Prix par groupe</p>
+          <p class="reassurance-text">Un seul achat pour toute votre équipe, famille ou groupe d'amis.</p>
+        </div>
+        <div class="reassurance-item">
+          <span class="reassurance-icon">🛡</span>
+          <p class="reassurance-title">Paiement 100% sécurisé</p>
+          <p class="reassurance-text">Stripe gère la transaction. Aucune donnée bancaire stockée sur nos serveurs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ GIFT IDEA ═══════════════ -->
+  <section style="padding: 4rem 2rem; background: var(--dark-mid); text-align:center; position:relative; overflow:hidden;">
+    <div style="position:absolute; inset:0; background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(201,168,76,0.015) 40px, rgba(201,168,76,0.015) 41px);"></div>
+    <div style="position:relative; max-width:600px; margin:0 auto;">
+      <span style="font-size: 2rem; display:block; margin-bottom:1rem;">🎁</span>
+      <span class="section-label">Idée cadeau</span>
+      <h2 style="color:var(--cream); font-size:clamp(1.5rem,4vw,2.2rem); margin-bottom:0.75rem;" class="reveal">Offrir l'aventure</h2>
+      <p style="color:rgba(250,247,240,0.55); font-size:1.05rem; font-style:italic; margin-bottom:2rem; line-height:1.65;" class="reveal">
+        Le code reçu par e-mail peut être transmis à n'importe qui.
+        Un cadeau original pour un anniversaire, une Saint-Valentin ou une fête de famille.
+      </p>
+      <div style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center;" class="reveal">
+        <span style="font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.15em; padding:0.4rem 0.9rem; border:1px solid rgba(201,168,76,0.3); color:rgba(201,168,76,0.7); border-radius:2px; text-transform:uppercase;">Anniversaire</span>
+        <span style="font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.15em; padding:0.4rem 0.9rem; border:1px solid rgba(201,168,76,0.3); color:rgba(201,168,76,0.7); border-radius:2px; text-transform:uppercase;">Saint-Valentin</span>
+        <span style="font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.15em; padding:0.4rem 0.9rem; border:1px solid rgba(201,168,76,0.3); color:rgba(201,168,76,0.7); border-radius:2px; text-transform:uppercase;">Team Building</span>
+        <span style="font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.15em; padding:0.4rem 0.9rem; border:1px solid rgba(201,168,76,0.3); color:rgba(201,168,76,0.7); border-radius:2px; text-transform:uppercase;">Famille</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FAQ RAPIDE ═══════════════ -->
+  <section style="padding: 5rem 2rem; background: var(--cream);">
+    <div style="max-width:700px; margin:0 auto; text-align:center;">
+      <span class="section-label">Avant d'acheter</span>
+      <h2 style="font-size:clamp(1.4rem,3.5vw,2rem); margin-bottom:0.5rem;" class="reveal">Vos dernières questions</h2>
+      <div class="ornament"><span class="ornament-symbol">✦</span></div>
+
+      <div style="display:grid; gap:1.5rem; text-align:left; margin-top:1rem;" class="reveal">
+        <div style="padding:1.5rem; background:var(--cream-dark); border-left:3px solid var(--gold);">
+          <p style="font-family:'Cinzel',serif; font-size:0.82rem; letter-spacing:0.05em; color:var(--dark); margin-bottom:0.5rem;">Le paiement est-il sécurisé ?</p>
+          <p style="font-size:0.95rem; color:var(--text-light);">Oui. Stripe est l'un des leaders mondiaux du paiement en ligne. Aucune donnée bancaire ne transite par nos serveurs.</p>
+        </div>
+        <div style="padding:1.5rem; background:var(--cream-dark); border-left:3px solid var(--gold);">
+          <p style="font-family:'Cinzel',serif; font-size:0.82rem; letter-spacing:0.05em; color:var(--dark); margin-bottom:0.5rem;">Que faire si je ne reçois pas mon code ?</p>
+          <p style="font-size:0.95rem; color:var(--text-light);">Vérifiez vos spams. Si le code n'arrive pas sous 5 minutes, écrivez à contact@aventicum-quest.ch avec votre confirmation de paiement.</p>
+        </div>
+        <div style="padding:1.5rem; background:var(--cream-dark); border-left:3px solid var(--gold);">
+          <p style="font-family:'Cinzel',serif; font-size:0.82rem; letter-spacing:0.05em; color:var(--dark); margin-bottom:0.5rem;">Un seul achat suffit pour tout mon groupe ?</p>
+          <p style="font-size:0.95rem; color:var(--text-light);">Absolument. Un seul code par groupe, pas besoin que chaque participant achète séparément. Le code se joue sur un téléphone partagé ou plusieurs appareils.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:2.5rem;" class="reveal">
+        <a href="comment.html" style="color:var(--gold-dark); font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; text-decoration:underline; text-underline-offset:3px;">
+          Lire la page complète « Comment ça marche » →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <p class="footer-logo">AVENTICUM QUEST</p>
+    <p class="footer-sub">OPERATIO AQUILA</p>
+    <nav class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="comment.html">Comment ça marche</a>
+      <a href="acheter.html">Acheter</a>
+      <a href="mailto:contact@aventicum-quest.ch">Contact</a>
+    </nav>
+    <div class="footer-divider"></div>
+    <p class="copyright">© 2026 Aventicum Quest — Tous droits réservés · Avenches, Suisse</p>
+  </footer>
+
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    // Nav
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Form validation + Stripe Checkout
+    const payBtn = document.getElementById('payBtn');
+    const formAlert = document.getElementById('formAlert');
+    const formAlertMsg = document.getElementById('formAlertMsg');
+
+    payBtn.addEventListener('click', async () => {
+      const email = document.getElementById('email').value.trim();
+      const prenom = document.getElementById('prenom').value.trim();
+      const langue = document.getElementById('langue').value;
+      const cgv = document.getElementById('cgv').checked;
+
+      if (!email || !prenom || !langue || !cgv) {
+        formAlert.classList.add('show');
+        if (!cgv) {
+          formAlertMsg.textContent = 'Veuillez accepter les conditions générales de vente pour continuer.';
+        } else {
+          formAlertMsg.textContent = 'Veuillez remplir tous les champs obligatoires (marqués d\'un *).';
+        }
+        formAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        formAlert.classList.add('show');
+        formAlertMsg.textContent = 'Veuillez entrer une adresse e-mail valide.';
+        return;
+      }
+
+      formAlert.classList.remove('show');
+      payBtn.innerHTML = '<span>⏳</span> Redirection vers Stripe…';
+      payBtn.disabled = true;
+      payBtn.style.opacity = '0.7';
+
+      try {
+        const stripe = Stripe('pk_test_51TdWB54hlo32q09r8yxQ44ZEmLvNaPWz8BR21MiBzeQWj1zT4fvej0KXiqJwI2NnndyMpWuPd5YtwCErT3lRVOMl00DdjxGi5Z');
+
+        const response = await fetch('https://api.stripe.com/v1/checkout/sessions', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer pk_test_51TdWB54hlo32q09r8yxQ44ZEmLvNaPWz8BR21MiBzeQWj1zT4fvej0KXiqJwI2NnndyMpWuPd5YtwCErT3lRVOMl00DdjxGi5Z',
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams({
+            'payment_method_types[]': 'card',
+            'line_items[0][price]': 'price_1TdWEa4hlo32q09rnUm3B026',
+            'line_items[0][quantity]': '1',
+            'mode': 'payment',
+            'customer_email': email,
+            'metadata[prenom]': prenom,
+            'metadata[langue]': langue,
+            'success_url': window.location.origin + '/aventicum-quest_2/merci.html?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url': window.location.href,
+          })
+        });
+
+        const session = await response.json();
+        if (session.error) throw new Error(session.error.message);
+        await stripe.redirectToCheckout({ sessionId: session.id });
+
+      } catch (err) {
+        console.error(err);
+        formAlert.classList.add('show');
+        formAlertMsg.textContent = 'Erreur lors de la connexion à Stripe. Veuillez réessayer.';
+        payBtn.innerHTML = '<span>🔒</span> Payer avec Stripe · 29 CHF';
+        payBtn.disabled = false;
+        payBtn.style.opacity = '1';
+      }
+    });
+  </script>
+</body>
+</html>

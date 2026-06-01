@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aventicum Quest — Operatio Aquila | Escape Game Urbain Avenches</title>
+  <meta name="description" content="Aventicum Quest : un escape game urbain unique à Avenches. 12 énigmes, 7 monuments romains, 90 minutes pour retrouver l'aigle légionnaire. Dès 29 CHF.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ══════════════════════════════════
+       HERO
+    ══════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      background: var(--dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 2rem 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Radial glow */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Mosaic grid background */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 200px;
+      background: linear-gradient(transparent, var(--dark));
+    }
+
+    /* Corner ornaments */
+    .hero-corner {
+      position: absolute;
+      width: 80px; height: 80px;
+      opacity: 0.35;
+    }
+    .hero-corner--tl { top: 90px; left: 30px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+    .hero-corner--tr { top: 90px; right: 30px; border-top: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+    .hero-corner--bl { bottom: 60px; left: 30px; border-bottom: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+    .hero-corner--br { bottom: 60px; right: 30px; border-bottom: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 0.8s ease both;
+    }
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.2rem, 7vw, 5rem);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+      text-transform: uppercase;
+      line-height: 0.9;
+      margin-bottom: 0.3rem;
+      animation: fadeInDown 0.8s 0.1s ease both;
+    }
+    .hero-subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.9rem, 3vw, 1.4rem);
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      animation: fadeInDown 0.8s 0.2s ease both;
+    }
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+      animation: fadeIn 1s 0.3s ease both;
+    }
+    .hero-divider::before, .hero-divider::after {
+      content: '';
+      width: 60px; height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+    .hero-divider-icon { color: var(--gold); font-size: 1.2rem; }
+
+    .hero-tagline {
+      font-family: 'Crimson Text', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      font-style: italic;
+      color: rgba(250,247,240,0.7);
+      max-width: 560px;
+      margin: 0 auto 3rem;
+      line-height: 1.6;
+      animation: fadeIn 1s 0.35s ease both;
+    }
+    .hero-tagline strong {
+      color: var(--cream);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .hero-cta {
+      animation: fadeInUp 0.8s 0.45s ease both;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .hero-price-note {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: rgba(201,168,76,0.5);
+      text-transform: uppercase;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.45;
+      animation: fadeIn 1s 1s ease both;
+    }
+    .scroll-indicator span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .scroll-arrow {
+      width: 1px; height: 40px;
+      background: linear-gradient(var(--gold), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+
+    /* ══════════════════════════════════
+       SECTION: LE DÉFI
+    ══════════════════════════════════ */
+    .section-defi {
+      padding: 6rem 2rem;
+      background: var(--dark-mid);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-defi::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(201,168,76,0.015) 40px,
+        rgba(201,168,76,0.015) 41px
+      );
+    }
+    .defi-title {
+      position: relative;
+      color: var(--cream);
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      margin-bottom: 0.5rem;
+    }
+    .defi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      max-width: 800px;
+      margin: 3rem auto 0;
+      background: var(--border);
+    }
+    .defi-card {
+      background: var(--dark);
+      padding: 3rem 2rem;
+      position: relative;
+    }
+    .defi-number {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .defi-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,247,240,0.55);
+    }
+    .defi-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    /* ══════════════════════════════════
+       SECTION: PARCOURS
+    ══════════════════════════════════ */
+    .section-parcours {
+      padding: 6rem 2rem;
+      background: var(--cream);
+    }
+    .section-parcours .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .parcours-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .parcours-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--dark);
+    }
+
+    .monuments-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.5rem;
+    }
+    .monument-card {
+      background: var(--cream-dark);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-left: 3px solid var(--gold);
+      padding: 1.5rem 1.75rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      position: relative;
+    }
+    .monument-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(201,168,76,0.12);
+      border-left-color: var(--gold-light);
+    }
+    .monument-num {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      opacity: 0.7;
+      position: absolute;
+      top: 1rem; right: 1rem;
+    }
+    .monument-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .monument-card h3 {
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      color: var(--dark);
+      margin-bottom: 0.35rem;
+    }
+    .monument-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    /* ══════════════════════════════════
+       SECTION: COMMENT ÇA MARCHE (teaser)
+    ══════════════════════════════════ */
+    .section-teaser {
+      padding: 5rem 2rem;
+      background: var(--dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-teaser::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.06) 0%, transparent 65%);
+    }
+    .teaser-inner {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .teaser-steps {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin: 3rem 0;
+      flex-wrap: wrap;
+    }
+    .teaser-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0 1.5rem;
+      position: relative;
+    }
+    .teaser-step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -8px;
+      top: 12px;
+      color: rgba(201,168,76,0.35);
+      font-size: 0.9rem;
+    }
+    .teaser-step-num {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+    .teaser-step-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      color: rgba(250,247,240,0.5);
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    /* ══════════════════════════════════
+       SECTION: TÉMOIGNAGES
+    ══════════════════════════════════ */
+    .section-temoignages {
+      padding: 6rem 2rem;
+      background: var(--cream-dark);
+    }
+    .temoignages-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .temoignages-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .temoignages-header h2 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+    }
+    .temoignages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .temoignage {
+      background: var(--cream);
+      padding: 2.5rem;
+      border-bottom: 3px solid var(--gold);
+      position: relative;
+    }
+    .temoignage-quote {
+      font-size: 3rem;
+      color: var(--gold);
+      opacity: 0.35;
+      font-family: Georgia, serif;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .temoignage p {
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+    .temoignage-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .temoignage-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--dark);
+      flex-shrink: 0;
+    }
+    .temoignage-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      color: var(--dark);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .temoignage-meta {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+    .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 0.75rem; }
+
+    /* ══════════════════════════════════
+       CTA SECTION
+    ══════════════════════════════════ */
+    .section-final-cta {
+      padding: 6rem 2rem;
+      background: var(--dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.07) 0%, transparent 50%);
+    }
+    .cta-inner {
+      position: relative;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+    .cta-inner h2 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    .cta-inner p {
+      color: rgba(250,247,240,0.6);
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+      font-style: italic;
+    }
+    .cta-price {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: rgba(201,168,76,0.6);
+      text-transform: uppercase;
+      margin-top: 1.2rem;
+    }
+
+    /* ══════════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════════ */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.45; transform: scaleY(1); }
+      50% { opacity: 0.8; transform: scaleY(1.2); }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 640px) {
+      .defi-grid { grid-template-columns: 1fr; gap: 1px; }
+      .teaser-step:not(:last-child)::after { display: none; }
+      .teaser-steps { gap: 1rem; flex-direction: column; align-items: center; }
+      .hero-corner { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav class="nav" id="mainNav">
+    <a href="index.html" class="nav-logo">
+      Aventicum Quest
+      <span>Operatio Aquila</span>
+    </a>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Accueil</a></li>
+      <li><a href="comment.html">Comment ça marche</a></li>
+      <li><a href="acheter.html" class="nav-cta">Réserver · 29 CHF</a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-corner hero-corner--tl"></div>
+    <div class="hero-corner hero-corner--tr"></div>
+    <div class="hero-corner hero-corner--bl"></div>
+    <div class="hero-corner hero-corner--br"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Escape Game Urbain · Avenches, Suisse</p>
+      <h1 class="hero-title">Aventicum<br>Quest</h1>
+      <p class="hero-subtitle">Operatio Aquila</p>
+
+      <div class="hero-divider">
+        <span class="hero-divider-icon">⚔</span>
+      </div>
+
+      <p class="hero-tagline">
+        <strong>Aventicum, 117 apr. J.-C.</strong> L'aigle légionnaire a disparu.
+        L'Empereur arrive dans <strong>90 minutes</strong>.
+        La légion vous confie sa survie.
+      </p>
+
+      <div class="hero-cta">
+        <a href="acheter.html" class="btn btn-gold">Rejoindre la mission · 29 CHF</a>
+        <p class="hero-price-note">Par groupe · Sans réservation horaire · Valable 1 an</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ LE DÉFI ═══════════════ -->
+  <section class="section-defi">
+    <div style="position:relative; z-index:1">
+      <span class="section-label">Le défi vous attend</span>
+      <h2 class="defi-title reveal">Une mission. Trois contraintes absolues.</h2>
+      <div class="ornament" style="margin-top:1rem">
+        <span class="ornament-symbol">✦</span>
+      </div>
+
+      <div class="defi-grid reveal">
+        <div class="defi-card">
+          <span class="defi-icon">🧩</span>
+          <span class="defi-number">12</span>
+          <span class="defi-label">Énigmes romaines</span>
+        </div>
+        <div class="defi-card">
+          <span class="defi-icon">🏛</span>
+          <span class="defi-number">7</span>
+          <span class="defi-label">Monuments historiques</span>
+        </div>
+        <div class="defi-card">
+          <span class="defi-icon">⏳</span>
+          <span class="defi-number">90</span>
+          <span class="defi-label">Minutes pour réussir</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PARCOURS ═══════════════ -->
+  <section class="section-parcours">
+    <div class="inner">
+      <div class="parcours-header reveal">
+        <span class="section-label">Le parcours</span>
+        <h2>7 monuments. 7 secrets enfouis.</h2>
+        <div class="ornament"><span class="ornament-symbol">⚔</span></div>
+        <p style="max-width:560px; margin:0 auto; color:var(--text-light); font-style:italic;">
+          Chaque lieu dissimule un fragment du mystère. Suivez la piste de l'aigle à travers la cité romaine la mieux préservée de Suisse.
+        </p>
+      </div>
+
+      <div class="monuments-list">
+        <div class="monument-card reveal">
+          <span class="monument-num">I · II</span>
+          <span class="monument-icon">🏟</span>
+          <div>
+            <h3>Amphithéâtre Romain</h3>
+            <p>Le plus grand de Suisse. Deux énigmes cachées dans ses gradins et ses murs, le voleur y a laissé ses premières traces.</p>
+          </div>
+        </div>
+        <div class="monument-card reveal">
+          <span class="monument-num">III · IV</span>
+          <span class="monument-icon">🏛</span>
+          <div>
+            <h3>Sanctuaire du Cigognier</h3>
+            <p>Une colonne de 12 mètres dédiée à Jupiter, seule rescapée d'un temple monumental. Ses sculptures renferment deux secrets.</p>
+          </div>
+        </div>
+        <div class="monument-card reveal">
+          <span class="monument-num">V · VI</span>
+          <span class="monument-icon">🎭</span>
+          <div>
+            <h3>Théâtre Romain</h3>
+            <p>Le plus grand théâtre romain de Suisse, taillé dans la colline. Ses vomitoires et sa scène gardent des mesures oubliées.</p>
+          </div>
+        </div>
+        <div class="monument-card reveal">
+          <span class="monument-num">VII · VIII</span>
+          <span class="monument-icon">🛁</span>
+          <div>
+            <h3>Thermes du Forum</h3>
+            <p>Les bains publics romains, visibles jusqu'au sous-sol. L'hypocauste, système de chauffage par le sol, y est encore exposé.</p>
+          </div>
+        </div>
+        <div class="monument-card reveal">
+          <span class="monument-num">IX · X</span>
+          <span class="monument-icon">🗼</span>
+          <div>
+            <h3>Tour Tornallaz</h3>
+            <p>Seule tour encore debout des 73 qui défendaient la ville. La frontière entre Rome et le Moyen Âge y est visible pierre par pierre.</p>
+          </div>
+        </div>
+        <div class="monument-card reveal">
+          <span class="monument-num">XI · XII</span>
+          <span class="monument-icon">🚪</span>
+          <div>
+            <h3>Porte de l'Est</h3>
+            <p>Dernière étape. La porte monumentale où convergent tous les indices, et où l'identité du voleur sera enfin révélée.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ TEASER HOW IT WORKS ═══════════════ -->
+  <section class="section-teaser">
+    <div class="teaser-inner">
+      <span class="section-label">Simple. Immersif. Inoubliable.</span>
+      <h2 style="color:var(--cream); font-size: clamp(1.5rem,4vw,2.2rem); margin-bottom:0.5rem; reveal">Comment ça marche ?</h2>
+      <div class="ornament"><span class="ornament-symbol" style="color:var(--gold)">✦</span></div>
+
+      <div class="teaser-steps reveal">
+        <div class="teaser-step">
+          <div class="teaser-step-num">1</div>
+          <span class="teaser-step-label">Achat<br>en ligne</span>
+        </div>
+        <div class="teaser-step">
+          <div class="teaser-step-num">2</div>
+          <span class="teaser-step-label">Code<br>reçu</span>
+        </div>
+        <div class="teaser-step">
+          <div class="teaser-step-num">3</div>
+          <span class="teaser-step-label">Arriver<br>Avenches</span>
+        </div>
+        <div class="teaser-step">
+          <div class="teaser-step-num">4</div>
+          <span class="teaser-step-label">Résoudre<br>les énigmes</span>
+        </div>
+        <div class="teaser-step">
+          <div class="teaser-step-num">5</div>
+          <span class="teaser-step-label">Révélation<br>finale</span>
+        </div>
+      </div>
+
+      <a href="comment.html" class="btn btn-outline" style="font-size:0.75rem">Voir le guide complet →</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════ TÉMOIGNAGES ═══════════════ -->
+  <section class="section-temoignages">
+    <div class="temoignages-inner">
+      <div class="temoignages-header reveal">
+        <span class="section-label">Lancement été 2026</span>
+        <h2>Soyez parmi les premiers</h2>
+        <div class="ornament"><span class="ornament-symbol">⚔</span></div>
+        <p style="max-width:520px; margin:0 auto; color:var(--text-light); font-style:italic; font-size:1.05rem; line-height:1.7;">
+          Aventicum Quest ouvre ses portes cet été. Les premières équipes bénéficient du tarif de lancement à 29 CHF, un prix qui ne sera pas maintenu indéfiniment.
+        </p>
+      </div>
+
+      <div class="temoignages-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); margin-top:3rem;">
+        <div class="temoignage reveal" style="text-align:center;">
+          <span style="font-size:2.5rem; display:block; margin-bottom:1rem;">🏛</span>
+          <p class="temoignage-name" style="font-family:'Cinzel',serif; font-size:0.82rem; letter-spacing:0.1em; color:var(--dark); margin-bottom:0.5rem;">HISTOIRE VRAIE</p>
+          <p style="font-size:0.95rem; color:var(--text-light); line-height:1.6;">12 énigmes construites sur des faits archéologiques réels, chaque réponse est vérifiable sur place.</p>
+        </div>
+        <div class="temoignage reveal" style="text-align:center;">
+          <span style="font-size:2.5rem; display:block; margin-bottom:1rem;">📱</span>
+          <p class="temoignage-name" style="font-family:'Cinzel',serif; font-size:0.82rem; letter-spacing:0.1em; color:var(--dark); margin-bottom:0.5rem;">ZÉRO INSTALLATION</p>
+          <p style="font-size:0.95rem; color:var(--text-light); line-height:1.6;">Ouvrez le lien reçu par email, entrez votre code, et la mission commence. Aucune app à télécharger.</p>
+        </div>
+        <div class="temoignage reveal" style="text-align:center;">
+          <span style="font-size:2.5rem; display:block; margin-bottom:1rem;">🦅</span>
+          <p class="temoignage-name" style="font-family:'Cinzel',serif; font-size:0.82rem; letter-spacing:0.1em; color:var(--dark); margin-bottom:0.5rem;">CONÇU À AVENCHES</p>
+          <p style="font-size:0.95rem; color:var(--text-light); line-height:1.6;">Créé par un passionné local. Chaque monument, chaque énigme a été testé sur le terrain avant le lancement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FINAL CTA ═══════════════ -->
+  <section class="section-final-cta">
+    <div class="cta-inner">
+      <span class="section-label">L'Empereur attend</span>
+      <h2 class="reveal">Êtes-vous prêt à sauver la légion ?</h2>
+      <p class="reveal">Votre mission commence dès l'achat. Aucune réservation horaire requise.</p>
+      <a href="acheter.html" class="btn btn-gold reveal">Rejoindre la mission · 29 CHF</a>
+      <p class="cta-price reveal">Par groupe · Disponible toute l'année · Valable 12 mois</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <p class="footer-logo">AVENTICUM QUEST</p>
+    <p class="footer-sub">OPERATIO AQUILA</p>
+    <nav class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="comment.html">Comment ça marche</a>
+      <a href="acheter.html">Acheter</a>
+      <a href="mailto:contact@aventicum-quest.ch">Contact</a>
+    </nav>
+    <div class="footer-divider"></div>
+    <p class="copyright">© 2026 Aventicum Quest — Tous droits réservés · Avenches, Suisse</p>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Burger menu
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.transitionDelay = (i * 0.08) + 's';
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
