@@ -3,785 +3,714 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aventicum Quest — Operatio Aquila | Escape Game Urbain Avenches</title>
-  <meta name="description" content="Aventicum Quest : un escape game urbain unique à Avenches. 12 énigmes, 7 monuments romains, 90 minutes pour retrouver l'aigle légionnaire. Dès 29 CHF.">
+  <title>Aventicum Quest — Jeu d'évasion outdoor à Avenches</title>
+  <meta name="description" content="Aventicum Quest : un jeu d'enquête outdoor unique à Avenches. 8 énigmes, 8 monuments romains, 90 minutes pour retrouver l'aigle légionnaire. Dès 12 CHF par adulte.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Aventicum Quest — Operatio Aquila">
+  <meta property="og:description" content="L'aigle de la Legio XXI a été volée. Résolvez 8 énigmes sur les monuments romains d'Avenches en 90 minutes.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://aventicumquest.ch/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦅</text></svg>">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* ══════════════════════════════════
-       HERO
-    ══════════════════════════════════ */
-    .hero {
-      min-height: 100vh;
-      background: var(--dark);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 120px 2rem 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Radial glow */
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 700px; height: 700px;
-      background: radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    /* Mosaic grid background */
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .hero-bg::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 200px;
-      background: linear-gradient(transparent, var(--dark));
-    }
-
-    /* Corner ornaments */
-    .hero-corner {
-      position: absolute;
-      width: 80px; height: 80px;
-      opacity: 0.35;
-    }
-    .hero-corner--tl { top: 90px; left: 30px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); }
-    .hero-corner--tr { top: 90px; right: 30px; border-top: 1px solid var(--gold); border-right: 1px solid var(--gold); }
-    .hero-corner--bl { bottom: 60px; left: 30px; border-bottom: 1px solid var(--gold); border-left: 1px solid var(--gold); }
-    .hero-corner--br { bottom: 60px; right: 30px; border-bottom: 1px solid var(--gold); border-right: 1px solid var(--gold); }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 820px;
-    }
-    .hero-eyebrow {
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.8;
-      margin-bottom: 1.5rem;
-      animation: fadeInDown 0.8s ease both;
-    }
-    .hero-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2.2rem, 7vw, 5rem);
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      color: var(--cream);
-      text-transform: uppercase;
-      line-height: 0.9;
-      margin-bottom: 0.3rem;
-      animation: fadeInDown 0.8s 0.1s ease both;
-    }
-    .hero-subtitle {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(0.9rem, 3vw, 1.4rem);
-      letter-spacing: 0.3em;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 2.5rem;
-      animation: fadeInDown 0.8s 0.2s ease both;
-    }
-    .hero-divider {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      justify-content: center;
-      margin-bottom: 2.5rem;
-      animation: fadeIn 1s 0.3s ease both;
-    }
-    .hero-divider::before, .hero-divider::after {
-      content: '';
-      width: 60px; height: 1px;
-      background: var(--gold);
-      opacity: 0.5;
-    }
-    .hero-divider-icon { color: var(--gold); font-size: 1.2rem; }
-
-    .hero-tagline {
-      font-family: 'Crimson Text', serif;
-      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
-      font-style: italic;
-      color: rgba(250,247,240,0.7);
-      max-width: 560px;
-      margin: 0 auto 3rem;
-      line-height: 1.6;
-      animation: fadeIn 1s 0.35s ease both;
-    }
-    .hero-tagline strong {
-      color: var(--cream);
-      font-style: normal;
-      font-weight: 600;
-    }
-
-    .hero-cta {
-      animation: fadeInUp 0.8s 0.45s ease both;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-    .hero-price-note {
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: rgba(201,168,76,0.5);
-      text-transform: uppercase;
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2rem; left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      opacity: 0.45;
-      animation: fadeIn 1s 1s ease both;
-    }
-    .scroll-indicator span {
-      font-family: 'Cinzel', serif;
-      font-size: 0.55rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .scroll-arrow {
-      width: 1px; height: 40px;
-      background: linear-gradient(var(--gold), transparent);
-      animation: scrollPulse 2s infinite;
-    }
-
-    /* ══════════════════════════════════
-       SECTION: LE DÉFI
-    ══════════════════════════════════ */
-    .section-defi {
-      padding: 6rem 2rem;
-      background: var(--dark-mid);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .section-defi::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 40px,
-        rgba(201,168,76,0.015) 40px,
-        rgba(201,168,76,0.015) 41px
-      );
-    }
-    .defi-title {
-      position: relative;
-      color: var(--cream);
-      font-size: clamp(1.6rem, 4vw, 2.5rem);
-      margin-bottom: 0.5rem;
-    }
-    .defi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      max-width: 800px;
-      margin: 3rem auto 0;
-      background: var(--border);
-    }
-    .defi-card {
-      background: var(--dark);
-      padding: 3rem 2rem;
-      position: relative;
-    }
-    .defi-number {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(3rem, 7vw, 5rem);
-      font-weight: 900;
-      color: var(--gold);
-      line-height: 1;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-    .defi-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(250,247,240,0.55);
-    }
-    .defi-icon {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    /* ══════════════════════════════════
-       SECTION: PARCOURS
-    ══════════════════════════════════ */
-    .section-parcours {
-      padding: 6rem 2rem;
-      background: var(--cream);
-    }
-    .section-parcours .inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .parcours-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-    .parcours-header h2 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      color: var(--dark);
-    }
-
-    .monuments-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 1.5rem;
-    }
-    .monument-card {
-      background: var(--cream-dark);
-      border: 1px solid rgba(201,168,76,0.2);
-      border-left: 3px solid var(--gold);
-      padding: 1.5rem 1.75rem;
-      display: flex;
-      gap: 1.25rem;
-      align-items: flex-start;
-      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-      position: relative;
-    }
-    .monument-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(201,168,76,0.12);
-      border-left-color: var(--gold-light);
-    }
-    .monument-num {
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      opacity: 0.7;
-      position: absolute;
-      top: 1rem; right: 1rem;
-    }
-    .monument-icon {
-      font-size: 1.8rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .monument-card h3 {
-      font-size: 0.95rem;
-      letter-spacing: 0.06em;
-      color: var(--dark);
-      margin-bottom: 0.35rem;
-    }
-    .monument-card p {
-      font-size: 0.9rem;
-      color: var(--text-light);
-      line-height: 1.5;
-    }
-
-    /* ══════════════════════════════════
-       SECTION: COMMENT ÇA MARCHE (teaser)
-    ══════════════════════════════════ */
-    .section-teaser {
-      padding: 5rem 2rem;
-      background: var(--dark);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .section-teaser::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at center, rgba(201,168,76,0.06) 0%, transparent 65%);
-    }
-    .teaser-inner {
-      position: relative;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .teaser-steps {
-      display: flex;
-      justify-content: center;
-      gap: 0;
-      margin: 3rem 0;
-      flex-wrap: wrap;
-    }
-    .teaser-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0 1.5rem;
-      position: relative;
-    }
-    .teaser-step:not(:last-child)::after {
-      content: '→';
-      position: absolute;
-      right: -8px;
-      top: 12px;
-      color: rgba(201,168,76,0.35);
-      font-size: 0.9rem;
-    }
-    .teaser-step-num {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      border: 1px solid var(--gold);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      color: var(--gold);
-    }
-    .teaser-step-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      color: rgba(250,247,240,0.5);
-      text-transform: uppercase;
-      text-align: center;
-    }
-
-    /* ══════════════════════════════════
-       SECTION: TÉMOIGNAGES
-    ══════════════════════════════════ */
-    .section-temoignages {
-      padding: 6rem 2rem;
-      background: var(--cream-dark);
-    }
-    .temoignages-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .temoignages-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-    .temoignages-header h2 {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-    }
-    .temoignages-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    .temoignage {
-      background: var(--cream);
-      padding: 2.5rem;
-      border-bottom: 3px solid var(--gold);
-      position: relative;
-    }
-    .temoignage-quote {
-      font-size: 3rem;
-      color: var(--gold);
-      opacity: 0.35;
-      font-family: Georgia, serif;
-      line-height: 1;
-      margin-bottom: 1rem;
-    }
-    .temoignage p {
-      font-size: 1rem;
-      font-style: italic;
-      color: var(--text);
-      line-height: 1.65;
-      margin-bottom: 1.5rem;
-    }
-    .temoignage-author {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .temoignage-avatar {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: var(--gold);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--dark);
-      flex-shrink: 0;
-    }
-    .temoignage-name {
-      font-family: 'Cinzel', serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      color: var(--dark);
-      display: block;
-      margin-bottom: 2px;
-    }
-    .temoignage-meta {
-      font-size: 0.8rem;
-      color: var(--text-light);
-    }
-    .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 0.75rem; }
-
-    /* ══════════════════════════════════
-       CTA SECTION
-    ══════════════════════════════════ */
-    .section-final-cta {
-      padding: 6rem 2rem;
-      background: var(--dark);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .section-final-cta::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.07) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.07) 0%, transparent 50%);
-    }
-    .cta-inner {
-      position: relative;
-      max-width: 650px;
-      margin: 0 auto;
-    }
-    .cta-inner h2 {
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      color: var(--cream);
-      margin-bottom: 1rem;
-    }
-    .cta-inner p {
-      color: rgba(250,247,240,0.6);
-      font-size: 1.1rem;
-      margin-bottom: 2.5rem;
-      font-style: italic;
-    }
-    .cta-price {
-      font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      color: rgba(201,168,76,0.6);
-      text-transform: uppercase;
-      margin-top: 1.2rem;
-    }
-
-    /* ══════════════════════════════════
-       ANIMATIONS
-    ══════════════════════════════════ */
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.45; transform: scaleY(1); }
-      50% { opacity: 0.8; transform: scaleY(1.2); }
-    }
-
-    /* Scroll reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 640px) {
-      .defi-grid { grid-template-columns: 1fr; gap: 1px; }
-      .teaser-step:not(:last-child)::after { display: none; }
-      .teaser-steps { gap: 1rem; flex-direction: column; align-items: center; }
-      .hero-corner { display: none; }
-    }
-  </style>
+  <link rel="preload" as="image" href="images/hero.jpg">
 </head>
 <body>
 
-  <!-- ═══════════════ NAV ═══════════════ -->
-  <nav class="nav" id="mainNav">
-    <a href="index.html" class="nav-logo">
-      Aventicum Quest
-      <span>Operatio Aquila</span>
+  <!-- ── Cookie banner ──────────────────────────────────────── -->
+  <div id="cookie-banner" role="dialog" aria-label="Consentement cookies" aria-live="polite">
+    <p class="cookie-text" data-i18n-html="cookie-text">
+      Ce site utilise des cookies essentiels au fonctionnement.
+      <a href="confidentialite.html">En savoir plus</a>.
+    </p>
+    <div class="cookie-btns">
+      <button class="btn-cookie btn-cookie-accept" onclick="acceptCookies()" data-i18n="cookie-accept">Accepter</button>
+      <button class="btn-cookie" onclick="refuseCookies()" data-i18n="cookie-refuse">Refuser</button>
+    </div>
+  </div>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <nav id="nav" role="navigation" aria-label="Navigation principale">
+    <a href="/" class="nav-logo" aria-label="Aventicum Quest — Accueil">
+      <img src="images/logo.svg" alt="" class="nav-logo-img" width="36" height="36" aria-hidden="true">
+      <span class="nav-logo-text">
+        Aventicum Quest
+        <span class="nav-logo-sub">Operatio Aquila</span>
+      </span>
     </a>
-    <button class="nav-burger" id="burger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html" class="active">Accueil</a></li>
-      <li><a href="comment.html">Comment ça marche</a></li>
-      <li><a href="acheter.html" class="nav-cta">Réserver · 29 CHF</a></li>
-    </ul>
+    <div class="nav-right">
+      <div class="nav-langs" role="group" aria-label="Langue">
+        <button class="nav-lang active" aria-pressed="true" onclick="setLang('fr')">FR</button>
+        <button class="nav-lang" aria-pressed="false" onclick="setLang('en')">EN</button>
+        <button class="nav-lang" aria-pressed="false" onclick="setLang('de')">DE</button>
+      </div>
+      <a href="#tarifs" class="nav-cta" data-i18n="nav-cta">Acheter</a>
+    </div>
   </nav>
 
-  <!-- ═══════════════ HERO ═══════════════ -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-corner hero-corner--tl"></div>
-    <div class="hero-corner hero-corner--tr"></div>
-    <div class="hero-corner hero-corner--bl"></div>
-    <div class="hero-corner hero-corner--br"></div>
+  <main>
 
-    <div class="hero-content">
-      <p class="hero-eyebrow">Escape Game Urbain · Avenches, Suisse</p>
-      <h1 class="hero-title">Aventicum<br>Quest</h1>
-      <p class="hero-subtitle">Operatio Aquila</p>
-
-      <div class="hero-divider">
-        <span class="hero-divider-icon">⚔</span>
-      </div>
-
-      <p class="hero-tagline">
-        <strong>Aventicum, 117 apr. J.-C.</strong> L'aigle légionnaire a disparu.
-        L'Empereur arrive dans <strong>90 minutes</strong>.
-        La légion vous confie sa survie.
-      </p>
-
-      <div class="hero-cta">
-        <a href="acheter.html" class="btn btn-gold">Rejoindre la mission · 29 CHF</a>
-        <p class="hero-price-note">Par groupe · Sans réservation horaire · Valable 1 an</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ LE DÉFI ═══════════════ -->
-  <section class="section-defi">
-    <div style="position:relative; z-index:1">
-      <span class="section-label">Le défi vous attend</span>
-      <h2 class="defi-title reveal">Une mission. Trois contraintes absolues.</h2>
-      <div class="ornament" style="margin-top:1rem">
-        <span class="ornament-symbol">✦</span>
-      </div>
-
-      <div class="defi-grid reveal">
-        <div class="defi-card">
-          <span class="defi-icon">🧩</span>
-          <span class="defi-number">12</span>
-          <span class="defi-label">Énigmes romaines</span>
+    <!-- ── Hero ──────────────────────────────────────────────── -->
+    <section id="hero" aria-label="Présentation du jeu">
+      <div class="hero-bg" role="img" aria-label="Porte de l'Est d'Aventicum — chemin entre les arches romaines"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="hero-overline" data-i18n="hero-overline">Anno Domini CXVII · Aventicum, Helvétie</p>
+        <h1 class="hero-title">Aventicum<br>Quest</h1>
+        <p class="hero-subtitle">Operatio Aquila</p>
+        <div class="hero-rule" aria-hidden="true">
+          <span class="hero-rule-icon">🦅</span>
         </div>
-        <div class="defi-card">
-          <span class="defi-icon">🏛</span>
-          <span class="defi-number">7</span>
-          <span class="defi-label">Monuments historiques</span>
-        </div>
-        <div class="defi-card">
-          <span class="defi-icon">⏳</span>
-          <span class="defi-number">90</span>
-          <span class="defi-label">Minutes pour réussir</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ PARCOURS ═══════════════ -->
-  <section class="section-parcours">
-    <div class="inner">
-      <div class="parcours-header reveal">
-        <span class="section-label">Le parcours</span>
-        <h2>7 monuments. 7 secrets enfouis.</h2>
-        <div class="ornament"><span class="ornament-symbol">⚔</span></div>
-        <p style="max-width:560px; margin:0 auto; color:var(--text-light); font-style:italic;">
-          Chaque lieu dissimule un fragment du mystère. Suivez la piste de l'aigle à travers la cité romaine la mieux préservée de Suisse.
+        <p class="hero-tagline" data-i18n-html="hero-tagline">
+          <strong>L'aigle de la Legio XXI Rapax a été volée.</strong><br>
+          L'Empereur Hadrien arrive dans 90 minutes.<br>
+          Retrouvez-la avant qu'il ne soit trop tard.
         </p>
+        <div class="hero-cta-group">
+          <a href="#tarifs" class="btn-primary" data-i18n="hero-cta">Acheter la partie — dès 12 CHF</a>
+          <span class="hero-price-note" data-i18n="hero-price-note">1 code · équipe illimitée · valable 6 mois</span>
+        </div>
       </div>
+      <div class="hero-scroll" aria-hidden="true">
+        <span data-i18n="hero-scroll">Découvrir</span>
+        <div class="hero-scroll-bar"></div>
+      </div>
+    </section>
 
-      <div class="monuments-list">
-        <div class="monument-card reveal">
-          <span class="monument-num">I · II</span>
-          <span class="monument-icon">🏟</span>
-          <div>
-            <h3>Amphithéâtre Romain</h3>
-            <p>Le plus grand de Suisse. Deux énigmes cachées dans ses gradins et ses murs, le voleur y a laissé ses premières traces.</p>
-          </div>
-        </div>
-        <div class="monument-card reveal">
-          <span class="monument-num">III · IV</span>
-          <span class="monument-icon">🏛</span>
-          <div>
-            <h3>Sanctuaire du Cigognier</h3>
-            <p>Une colonne de 12 mètres dédiée à Jupiter, seule rescapée d'un temple monumental. Ses sculptures renferment deux secrets.</p>
-          </div>
-        </div>
-        <div class="monument-card reveal">
-          <span class="monument-num">V · VI</span>
-          <span class="monument-icon">🎭</span>
-          <div>
-            <h3>Théâtre Romain</h3>
-            <p>Le plus grand théâtre romain de Suisse, taillé dans la colline. Ses vomitoires et sa scène gardent des mesures oubliées.</p>
-          </div>
-        </div>
-        <div class="monument-card reveal">
-          <span class="monument-num">VII · VIII</span>
-          <span class="monument-icon">🛁</span>
-          <div>
-            <h3>Thermes du Forum</h3>
-            <p>Les bains publics romains, visibles jusqu'au sous-sol. L'hypocauste, système de chauffage par le sol, y est encore exposé.</p>
-          </div>
-        </div>
-        <div class="monument-card reveal">
-          <span class="monument-num">IX · X</span>
-          <span class="monument-icon">🗼</span>
-          <div>
-            <h3>Tour Tornallaz</h3>
-            <p>Seule tour encore debout des 73 qui défendaient la ville. La frontière entre Rome et le Moyen Âge y est visible pierre par pierre.</p>
-          </div>
-        </div>
-        <div class="monument-card reveal">
-          <span class="monument-num">XI · XII</span>
-          <span class="monument-icon">🚪</span>
-          <div>
-            <h3>Porte de l'Est</h3>
-            <p>Dernière étape. La porte monumentale où convergent tous les indices, et où l'identité du voleur sera enfin révélée.</p>
-          </div>
-        </div>
+    <!-- ── Band ───────────────────────────────────────────────── -->
+    <div class="band" aria-label="Résumé du jeu">
+      <div class="band-inner">
+        <span class="band-item" data-i18n-html="band-enigmes"><strong>8</strong> énigmes</span>
+        <span class="band-sep" aria-hidden="true">·</span>
+        <span class="band-item" data-i18n-html="band-monuments"><strong>8</strong> monuments romains</span>
+        <span class="band-sep" aria-hidden="true">·</span>
+        <span class="band-item"><strong>90</strong> min</span>
+        <span class="band-sep" aria-hidden="true">·</span>
+        <span class="band-item"><strong>FR / EN / DE</strong></span>
+        <span class="band-sep" aria-hidden="true">·</span>
+        <span class="band-item" data-i18n="band-lieu">Avenches, Suisse</span>
       </div>
     </div>
-  </section>
 
-  <!-- ═══════════════ TEASER HOW IT WORKS ═══════════════ -->
-  <section class="section-teaser">
-    <div class="teaser-inner">
-      <span class="section-label">Simple. Immersif. Inoubliable.</span>
-      <h2 style="color:var(--cream); font-size: clamp(1.5rem,4vw,2.2rem); margin-bottom:0.5rem; reveal">Comment ça marche ?</h2>
-      <div class="ornament"><span class="ornament-symbol" style="color:var(--gold)">✦</span></div>
+    <!-- ── La Mission ─────────────────────────────────────────── -->
+    <section id="mission">
+      <div class="section-inner">
+        <div class="mission-grid">
 
-      <div class="teaser-steps reveal">
-        <div class="teaser-step">
-          <div class="teaser-step-num">1</div>
-          <span class="teaser-step-label">Achat<br>en ligne</span>
+          <div class="mission-photo reveal">
+            <img src="images/s05.jpg"
+                 alt="La colonne du Sanctuaire du Cigognier s'élevant vers le ciel, seul vestige du grand temple romain dédié à Jupiter"
+                 loading="lazy">
+            <div class="mission-photo-frame" aria-hidden="true"></div>
+          </div>
+
+          <div class="mission-text">
+            <div class="mission-stele reveal">
+              <div class="stele">
+                <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+                <h2 data-i18n="mission-h2">La Mission</h2>
+                <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+                <p class="stele-sub" data-i18n="mission-sub">Une enquête dans l'Helvétie romaine</p>
+              </div>
+            </div>
+
+            <p class="reveal reveal-delay-1" data-i18n-html="mission-p1">
+              <em>117 après J.-C. Aventicum est au sommet de sa gloire — 20 000 habitants, un amphithéâtre de 14 000 places, un sanctuaire dédié à Jupiter, des thermes dignes de Rome.</em>
+              Mais cette nuit, l'aquila sacrée de la Legio XXI Rapax a disparu. L'Empereur Hadrien fait route vers la ville.
+            </p>
+
+            <p class="reveal reveal-delay-2" data-i18n="mission-p2">
+              Le Sénat vous mandate pour mener l'enquête. À pied, armés de votre smartphone, vous parcourez les 8 monuments romains encore debout aujourd'hui — et répondez aux énigmes qu'ils recèlent.
+            </p>
+
+            <p class="reveal reveal-delay-2" data-i18n="mission-p3">
+              Retrouvez l'aigle avant l'arrivée de l'Empereur, et Aventicum vous devra la paix.
+            </p>
+
+            <div class="mission-badges reveal reveal-delay-3">
+              <span class="badge" data-i18n="badge-lieu">📍 Avenches · Suisse</span>
+              <span class="badge" data-i18n="badge-phone">📱 Sur smartphone</span>
+              <span class="badge" data-i18n="badge-time">⏱ 90 min environ</span>
+              <span class="badge">🌐 FR · EN · DE</span>
+              <span class="badge" data-i18n="badge-team">👥 En équipe</span>
+              <span class="badge" data-i18n="badge-age">🧒 Dès 8 ans</span>
+            </div>
+          </div>
+
         </div>
-        <div class="teaser-step">
-          <div class="teaser-step-num">2</div>
-          <span class="teaser-step-label">Code<br>reçu</span>
+      </div>
+    </section>
+
+    <!-- ── Comment ça marche ──────────────────────────────────── -->
+    <section id="comment">
+      <div class="section-inner">
+        <div class="stele reveal">
+          <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+          <h2 data-i18n="how-h2">Comment ça marche</h2>
+          <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+          <p class="stele-sub" data-i18n="how-sub">Trois étapes pour partir à l'aventure</p>
         </div>
-        <div class="teaser-step">
-          <div class="teaser-step-num">3</div>
-          <span class="teaser-step-label">Arriver<br>Avenches</span>
+
+        <div class="how-grid" role="list">
+
+          <div class="how-step reveal" role="listitem">
+            <span class="how-num" aria-hidden="true">I</span>
+            <span class="how-icon" aria-hidden="true">🛒</span>
+            <h3 class="how-title" data-i18n="how-1-title">Achetez en ligne</h3>
+            <p class="how-desc" data-i18n="how-1-desc">
+              Commandez directement sur ce site. Un seul code débloque la partie pour toute votre équipe — quelle que soit sa taille.
+            </p>
+          </div>
+
+          <div class="how-step reveal reveal-delay-1" role="listitem">
+            <span class="how-num" aria-hidden="true">II</span>
+            <span class="how-icon" aria-hidden="true">✉️</span>
+            <h3 class="how-title" data-i18n="how-2-title">Recevez votre code</h3>
+            <p class="how-desc" data-i18n="how-2-desc">
+              Votre code d'accès arrive par e-mail dans les minutes qui suivent. Il est valable 6 mois — partez quand vous voulez.
+            </p>
+          </div>
+
+          <div class="how-step reveal reveal-delay-2" role="listitem">
+            <span class="how-num" aria-hidden="true">III</span>
+            <span class="how-icon" aria-hidden="true">🏛️</span>
+            <h3 class="how-title" data-i18n="how-3-title">Explorez Avenches</h3>
+            <p class="how-desc" data-i18n="how-3-desc">
+              Sur place, ouvrez aventicumquest.ch sur votre smartphone. Entrez le code, baptisez votre équipe, et partez résoudre les 8 énigmes.
+            </p>
+          </div>
+
         </div>
-        <div class="teaser-step">
-          <div class="teaser-step-num">4</div>
-          <span class="teaser-step-label">Résoudre<br>les énigmes</span>
-        </div>
-        <div class="teaser-step">
-          <div class="teaser-step-num">5</div>
-          <span class="teaser-step-label">Révélation<br>finale</span>
+      </div>
+    </section>
+
+    <!-- ── 8 Stations ─────────────────────────────────────────── -->
+    <section id="stations">
+      <div class="section-inner">
+        <div class="stele reveal">
+          <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+          <h2 data-i18n="stations-h2">Les 8 Stations</h2>
+          <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+          <p class="stele-sub" data-i18n="stations-sub">Huit monuments. Huit siècles d'histoire.</p>
         </div>
       </div>
 
-      <a href="comment.html" class="btn btn-outline" style="font-size:0.75rem">Voir le guide complet →</a>
-    </div>
-  </section>
+      <div class="stations-grid" role="list" aria-label="Les 8 stations du parcours">
 
-  <!-- ═══════════════ TÉMOIGNAGES ═══════════════ -->
-  <section class="section-temoignages">
-    <div class="temoignages-inner">
-      <div class="temoignages-header reveal">
-        <span class="section-label">Lancement été 2026</span>
-        <h2>Soyez parmi les premiers</h2>
-        <div class="ornament"><span class="ornament-symbol">⚔</span></div>
-        <p style="max-width:520px; margin:0 auto; color:var(--text-light); font-style:italic; font-size:1.05rem; line-height:1.7;">
-          Aventicum Quest ouvre ses portes cet été. Les premières équipes bénéficient du tarif de lancement à 29 CHF, un prix qui ne sera pas maintenu indéfiniment.
-        </p>
+        <article class="station-card reveal" role="listitem">
+          <img src="images/s01.jpg" alt="Hôtel de Ville d'Avenches" loading="lazy">
+          <div class="station-overlay" aria-hidden="true"></div>
+          <div class="station-info">
+            <span class="station-num" data-i18n="s1-num">Énigme I</span>
+            <h3 class="station-name" data-i18n="s1-name">Hôtel de Ville</h3>
+            <div class="station-teaser-wrap"><p class="station-teaser" data-i18n="s1-teaser">La pierre garde les secrets de ceux qui ont gouverné.</p></div>
+          </div>
+        </article>
+
+        <article class="station-card reveal reveal-delay-4" role="listitem">
+          <img src="images/s02.jpg" alt="Tour de Benneville" loading="lazy">
+          <div class="station-overlay" aria-hidden="true"></div>
+          <div class="station-info">
+            <span class="station-num" data-i18n="s2-num">Énigme II</span>
+            <h3 class="station-name" data-i18n="s2-name">Tour de Benneville</h3>
+            <div class="station-teaser-wrap"><p class="station-teaser" data-i18n="s2-teaser">Du sommet, un monument romain se distingue dans le lointain.</p></div>
+          </div>
+        </article>
+
+        <article class="station-card reveal reveal-delay-5" role="listitem">
+          <img src="images/s03.jpg" alt="Rue des Alpes" loading="lazy">
+          <div class="station-overlay" aria-hidden="true"></div>
+          <div class="station-info">
+            <span class="station-num" data-i18n="s3-num">Énigme III</span>
+            <h3 class="station-name" data-i18n="s3-name">Rue des Alpes</h3>
+            <div class="station-teaser-wrap"><p class="station-teaser" data-i18n="s3-teaser">Regardez les façades — elles racontent plus qu'il n'y paraît.</p></div>
+          </div>
+        </article>
+
+        <article class="station-card reveal reveal-delay-6" role="listitem">
+          <img src="images/s04.jpg" alt="Les Arènes d'Avenches" loading="lazy">
+          <div class="station-overlay" aria-hidden="true"></div>
+          <div class="station-info">
+            <span class="station-num" data-i18n="s4-num">Énigme IV</span>
+            <h3 class="station-name" data-i18n="s4-name">Les Arènes</h3>
+            <div class="station-teaser-wrap"><p class="station-teaser" data-i18n="s4-teaser">14 000 spectateurs. Un seul a vu ce que vous cherchez.</p></div>
+          </div>
+        </article>
+
+        <article class="station-card reveal reveal-delay-7" role="listitem">
+          <img src="images/s05.jpg" alt="Sanctuaire du Cigognier" loading="lazy">
+          <div class="station-overlay" aria-hidden="true"></div>
+          <div class="station-info">
+            <span class="station-num" data-i18n="s5-num">Énigme V</span>
+            <h3 class="station-name" data-i18n="s5-name">Sanctuaire du Cigognier</h3>
+            <div class="station-teaser-wrap"><p class="station-teaser" data-i18n="s5-teaser">Une colonne unique pour le temple le plus grand d'Helvétie.</p></div>
+          </div>
+        </article>
+
+        <article class="station-card reveal reveal-delay-8" role="listitem">
+          <img src="images/s06b.png" alt="Théâtre du Selley" loading="lazy">
+          <div class="station-overlay" aria-hidden="true"></div>
+          <div class="station-info">
+            <span class="station-num" data-i18n="s6-num">Énigme VI</span>
+            <h3 class="station-name" data-i18n="s6-name">Théâtre du Selley</h3>
+            <div class="station-teaser-wrap"><p class="station-teaser" data-i18n="s6-teaser">Les muses ont entendu ce que les acteurs chuchotaient.</p></div>
+          </div>
+        </article>
+
+        <article class="station-card reveal reveal-delay-7" role="listitem">
+          <img src="images/s07.jpg" alt="Thermes du Forum" loading="lazy">
+          <div class="station-overlay" aria-hidden="true"></div>
+          <div class="station-info">
+            <span class="station-num" data-i18n="s7-num">Énigme VII</span>
+            <h3 class="station-name" data-i18n="s7-name">Thermes du Forum</h3>
+            <div class="station-teaser-wrap"><p class="station-teaser" data-i18n="s7-teaser">L'eau qui coulait ici venait d'ailleurs — cherchez sa source.</p></div>
+          </div>
+        </article>
+
+        <article class="station-card reveal reveal-delay-8" role="listitem">
+          <img src="images/s08.jpg" alt="Porte de l'Est" loading="lazy">
+          <div class="station-overlay" aria-hidden="true"></div>
+          <div class="station-info">
+            <span class="station-num" data-i18n="s8-num">Énigme VIII</span>
+            <h3 class="station-name" data-i18n="s8-name">Porte de l'Est</h3>
+            <div class="station-teaser-wrap"><p class="station-teaser" data-i18n="s8-teaser">La dernière clé est gravée dans la pierre depuis 19 siècles.</p></div>
+          </div>
+        </article>
+
       </div>
+    </section>
 
-      <div class="temoignages-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); margin-top:3rem;">
-        <div class="temoignage reveal" style="text-align:center;">
-          <span style="font-size:2.5rem; display:block; margin-bottom:1rem;">🏛</span>
-          <p class="temoignage-name" style="font-family:'Cinzel',serif; font-size:0.82rem; letter-spacing:0.1em; color:var(--dark); margin-bottom:0.5rem;">HISTOIRE VRAIE</p>
-          <p style="font-size:0.95rem; color:var(--text-light); line-height:1.6;">12 énigmes construites sur des faits archéologiques réels, chaque réponse est vérifiable sur place.</p>
+    <!-- ── L'Expérience ────────────────────────────────────────── -->
+    <section id="experience">
+      <div class="section-inner">
+        <div class="experience-intro reveal">
+          <div class="stele">
+            <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+            <h2 data-i18n="exp-h2">L'Expérience</h2>
+            <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+            <p class="stele-sub" data-i18n="exp-sub">Sur votre smartphone · Sans application à télécharger</p>
+          </div>
+          <p data-i18n="exp-p">Tout se joue depuis votre navigateur. Ouvrez le site, entrez votre code, et l'enquête commence — score en temps réel, énigmes photo, indices progressifs.</p>
         </div>
-        <div class="temoignage reveal" style="text-align:center;">
-          <span style="font-size:2.5rem; display:block; margin-bottom:1rem;">📱</span>
-          <p class="temoignage-name" style="font-family:'Cinzel',serif; font-size:0.82rem; letter-spacing:0.1em; color:var(--dark); margin-bottom:0.5rem;">ZÉRO INSTALLATION</p>
-          <p style="font-size:0.95rem; color:var(--text-light); line-height:1.6;">Ouvrez le lien reçu par email, entrez votre code, et la mission commence. Aucune app à télécharger.</p>
+
+        <div class="phones-row reveal" aria-label="Aperçu de l'interface de jeu">
+
+          <div class="phone" aria-label="Écran d'accueil du jeu">
+            <div class="phone-screen ps-splash">
+              <div class="ps-eagle">🦅</div>
+              <div class="ps-title">AVENTICUM<br>QUEST</div>
+              <div class="ps-sub">OPERATIO AQUILA</div>
+              <div class="ps-rule"></div>
+              <div class="ps-tagline" data-i18n-html="ps-tagline">L'aigle est volée.<br>Rome attend.</div>
+              <div class="ps-btn" data-i18n="ps-btn">🔱 LANCER LA MISSION</div>
+            </div>
+          </div>
+
+          <div class="phone" aria-label="Écran d'une énigme en cours">
+            <div class="phone-screen ps-enigma">
+              <div class="ps-hud">
+                <span class="ps-hud-logo">AQ · AQUILA</span>
+                <span class="ps-hud-score">875 pts</span>
+              </div>
+              <div class="ps-progress">
+                <div class="ps-progress-fill"></div>
+              </div>
+              <div class="ps-monument" data-i18n="ps-monument">Sanctuaire du Cigognier</div>
+              <div class="ps-q-label" data-i18n="ps-q-label">ÉNIGME V / VIII</div>
+              <div class="ps-q-text" data-i18n="ps-q-text">
+                Une colonne solitaire s'élève vers Jupiter. Elle appartient à quel type de bâtiment romain ?
+              </div>
+              <div class="ps-input-mock" data-i18n="ps-input-mock">Votre réponse...</div>
+            </div>
+          </div>
+
+          <div class="phone" aria-label="Certificat de victoire">
+            <div class="phone-screen ps-cert">
+              <div class="ps-cert-eagle">🏆</div>
+              <div class="ps-cert-title" data-i18n="ps-cert-title">MISSION ACCOMPLIE</div>
+              <div class="ps-cert-sub">OPERATIO AQUILA</div>
+              <div class="ps-cert-line"></div>
+              <div class="ps-cert-team">Equipe des Legionnaires</div>
+              <div class="ps-cert-score">1 240 pts</div>
+              <div class="ps-cert-badge" data-i18n="ps-cert-badge">🦅 L'AIGLE EST RETROUVÉE</div>
+            </div>
+          </div>
+
         </div>
-        <div class="temoignage reveal" style="text-align:center;">
-          <span style="font-size:2.5rem; display:block; margin-bottom:1rem;">🦅</span>
-          <p class="temoignage-name" style="font-family:'Cinzel',serif; font-size:0.82rem; letter-spacing:0.1em; color:var(--dark); margin-bottom:0.5rem;">CONÇU À AVENCHES</p>
-          <p style="font-size:0.95rem; color:var(--text-light); line-height:1.6;">Créé par un passionné local. Chaque monument, chaque énigme a été testé sur le terrain avant le lancement.</p>
+
+        <p class="experience-caption reveal" data-i18n="exp-caption">Interface web · Fonctionne sur iOS &amp; Android · Aucun téléchargement</p>
+      </div>
+    </section>
+
+    <!-- ── Tarifs ──────────────────────────────────────────────── -->
+    <section id="tarifs">
+      <div class="section-inner">
+        <div class="tarifs-inner">
+          <div class="stele reveal">
+            <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+            <h2 data-i18n="tarifs-h2">Tarifs</h2>
+            <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+            <p class="stele-sub" data-i18n="tarifs-sub">Prix par code · Équipe illimitée</p>
+          </div>
+
+          <table class="tarif-table reveal" aria-label="Tarifs Aventicum Quest">
+            <tbody>
+              <tr>
+                <td class="tarif-cat">
+                  <span data-i18n="tarif-adult">Adulte</span>
+                  <span style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--terre)" data-i18n="tarif-adult-age">(16 ans et +)</span>
+                </td>
+                <td class="tarif-price">12 CHF</td>
+              </tr>
+              <tr>
+                <td class="tarif-cat">
+                  <span data-i18n="tarif-child">Enfant</span>
+                  <span style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--terre)" data-i18n="tarif-child-age">(6–15 ans)</span>
+                </td>
+                <td class="tarif-price">8 CHF</td>
+              </tr>
+              <tr>
+                <td class="tarif-cat" data-i18n="tarif-u6">Moins de 6 ans</td>
+                <td class="tarif-price tarif-free" data-i18n="tarif-free">Gratuit</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="tarif-note reveal" data-i18n-html="tarif-note">
+            Un seul code par équipe — taille illimitée.<br>
+            Valable 6 mois à partir de l'achat.
+          </p>
+
+          <div class="tarifs-cta-group reveal">
+            <a href="acheter.html" class="btn-primary" data-i18n="tarifs-cta">
+              Acheter maintenant →
+            </a>
+            <p class="tarifs-secure" data-i18n="tarifs-secure">🔒 Paiement sécurisé · Reçu par e-mail</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══════════════ FINAL CTA ═══════════════ -->
-  <section class="section-final-cta">
-    <div class="cta-inner">
-      <span class="section-label">L'Empereur attend</span>
-      <h2 class="reveal">Êtes-vous prêt à sauver la légion ?</h2>
-      <p class="reveal">Votre mission commence dès l'achat. Aucune réservation horaire requise.</p>
-      <a href="acheter.html" class="btn btn-gold reveal">Rejoindre la mission · 29 CHF</a>
-      <p class="cta-price reveal">Par groupe · Disponible toute l'année · Valable 12 mois</p>
-    </div>
-  </section>
+  </main>
 
-  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <!-- ── Footer ─────────────────────────────────────────────────── -->
   <footer>
-    <p class="footer-logo">AVENTICUM QUEST</p>
-    <p class="footer-sub">OPERATIO AQUILA</p>
-    <nav class="footer-links">
-      <a href="index.html">Accueil</a>
-      <a href="comment.html">Comment ça marche</a>
-      <a href="acheter.html">Acheter</a>
-      <a href="mailto:contact@aventicum-quest.ch">Contact</a>
-    </nav>
-    <div class="footer-divider"></div>
-    <p class="copyright">© 2026 Aventicum Quest — Tous droits réservés · Avenches, Suisse</p>
+    <div class="footer-inner">
+      <p class="footer-logo">Aventicum Quest</p>
+      <nav class="footer-links" aria-label="Liens légaux">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <span class="footer-sep" aria-hidden="true">·</span>
+        <a href="cgv.html">Conditions générales</a>
+        <span class="footer-sep" aria-hidden="true">·</span>
+        <a href="confidentialite.html">Confidentialité</a>
+      </nav>
+      <p class="footer-copy">© 2026 Aventicum Quest · Avenches, Suisse · aventicumquest.ch</p>
+    </div>
   </footer>
 
+  <!-- ── Back to top ───────────────────────────────────────────────── -->
+  <button class="back-top" id="back-top" aria-label="Retour en haut">↑</button>
+
+  <!-- ── JavaScript ─────────────────────────────────────────────── -->
   <script>
-    // Nav scroll effect
-    const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-    });
 
-    // Burger menu
-    const burger = document.getElementById('burger');
-    const navLinks = document.getElementById('navLinks');
-    burger.addEventListener('click', () => {
-      burger.classList.toggle('open');
-      navLinks.classList.toggle('open');
-    });
+    /* ══════════════════════════════════════════════════════════════
+       TRANSLATIONS
+    ══════════════════════════════════════════════════════════════ */
+    const T = {
+      fr: {
+        'cookie-text':      'Ce site utilise des cookies essentiels au fonctionnement. <a href="confidentialite.html">En savoir plus</a>.',
+        'cookie-accept':    'Accepter',
+        'cookie-refuse':    'Refuser',
+        'nav-cta':          'Acheter',
+        'hero-overline':    'Anno Domini CXVII · Aventicum, Helvétie',
+        'hero-tagline':     '<strong>L\'aigle de la Legio XXI Rapax a été volée.</strong><br>L\'Empereur Hadrien arrive dans 90 minutes.<br>Retrouvez-la avant qu\'il ne soit trop tard.',
+        'hero-cta':         'Acheter la partie — dès 12 CHF',
+        'hero-price-note':  '1 code · équipe illimitée · valable 6 mois',
+        'hero-scroll':      'Découvrir',
+        'band-enigmes':     '<strong>8</strong> énigmes',
+        'band-monuments':   '<strong>8</strong> monuments romains',
+        'band-lieu':        'Avenches, Suisse',
+        'mission-h2':       'La Mission',
+        'mission-sub':      'Une enquête dans l\'Helvétie romaine',
+        'mission-p1':       '<em>117 après J.-C. Aventicum est au sommet de sa gloire — 20 000 habitants, un amphithéâtre de 14 000 places, un sanctuaire dédié à Jupiter, des thermes dignes de Rome.</em> Mais cette nuit, l\'aquila sacrée de la Legio XXI Rapax a disparu. L\'Empereur Hadrien fait route vers la ville.',
+        'mission-p2':       'Le Sénat vous mandate pour mener l\'enquête. À pied, armés de votre smartphone, vous parcourez les 8 monuments romains encore debout aujourd\'hui — et répondez aux énigmes qu\'ils recèlent.',
+        'mission-p3':       'Retrouvez l\'aigle avant l\'arrivée de l\'Empereur, et Aventicum vous devra la paix.',
+        'badge-lieu':       '📍 Avenches · Suisse',
+        'badge-phone':      '📱 Sur smartphone',
+        'badge-time':       '⏱ 90 min environ',
+        'badge-team':       '👥 En équipe',
+        'badge-age':        '🧒 Dès 8 ans',
+        'how-h2':           'Comment ça marche',
+        'how-sub':          'Trois étapes pour partir à l\'aventure',
+        'how-1-title':      'Achetez en ligne',
+        'how-1-desc':       'Commandez directement sur ce site. Un seul code débloque la partie pour toute votre équipe — quelle que soit sa taille.',
+        'how-2-title':      'Recevez votre code',
+        'how-2-desc':       'Votre code d\'accès arrive par e-mail dans les minutes qui suivent. Il est valable 6 mois — partez quand vous voulez.',
+        'how-3-title':      'Explorez Avenches',
+        'how-3-desc':       'Sur place, ouvrez aventicumquest.ch sur votre smartphone. Entrez le code, baptisez votre équipe, et partez résoudre les 8 énigmes.',
+        'stations-h2':      'Les 8 Stations',
+        'stations-sub':     'Huit monuments. Huit siècles d\'histoire.',
+        's1-num': 'Énigme I',   's1-name': 'Hôtel de Ville',          's1-teaser': 'La pierre garde les secrets de ceux qui ont gouverné.',
+        's2-num': 'Énigme II',  's2-name': 'Tour de Benneville',       's2-teaser': 'Du sommet, un monument romain se distingue dans le lointain.',
+        's3-num': 'Énigme III', 's3-name': 'Rue des Alpes',            's3-teaser': 'Regardez les façades — elles racontent plus qu\'il n\'y paraît.',
+        's4-num': 'Énigme IV',  's4-name': 'Les Arènes',               's4-teaser': '14 000 spectateurs. Un seul a vu ce que vous cherchez.',
+        's5-num': 'Énigme V',   's5-name': 'Sanctuaire du Cigognier',  's5-teaser': 'Une colonne unique pour le temple le plus grand d\'Helvétie.',
+        's6-num': 'Énigme VI',  's6-name': 'Théâtre du Selley',        's6-teaser': 'Les muses ont entendu ce que les acteurs chuchotaient.',
+        's7-num': 'Énigme VII', 's7-name': 'Thermes du Forum',         's7-teaser': 'L\'eau qui coulait ici venait d\'ailleurs — cherchez sa source.',
+        's8-num': 'Énigme VIII','s8-name': 'Porte de l\'Est',          's8-teaser': 'La dernière clé est gravée dans la pierre depuis 19 siècles.',
+        'exp-h2':           'L\'Expérience',
+        'exp-sub':          'Sur votre smartphone · Sans application à télécharger',
+        'exp-p':            'Tout se joue depuis votre navigateur. Ouvrez le site, entrez votre code, et l\'enquête commence — score en temps réel, énigmes photo, indices progressifs.',
+        'exp-caption':      'Interface web · Fonctionne sur iOS & Android · Aucun téléchargement',
+        'ps-tagline':       'L\'aigle est volée.<br>Rome attend.',
+        'ps-btn':           '🔱 LANCER LA MISSION',
+        'ps-monument':      'Sanctuaire du Cigognier',
+        'ps-q-label':       'ÉNIGME V / VIII',
+        'ps-q-text':        'Une colonne solitaire s\'élève vers Jupiter. Elle appartient à quel type de bâtiment romain ?',
+        'ps-input-mock':    'Votre réponse...',
+        'ps-cert-title':    'MISSION ACCOMPLIE',
+        'ps-cert-badge':    '🦅 L\'AIGLE EST RETROUVÉE',
+        'tarifs-h2':        'Tarifs',
+        'tarifs-sub':       'Prix par code · Équipe illimitée',
+        'tarif-adult':      'Adulte',
+        'tarif-adult-age':  '(16 ans et +)',
+        'tarif-child':      'Enfant',
+        'tarif-child-age':  '(6–15 ans)',
+        'tarif-u6':         'Moins de 6 ans',
+        'tarif-free':       'Gratuit',
+        'tarif-note':       'Un seul code par équipe — taille illimitée.<br>Valable 6 mois à partir de l\'achat.',
+        'tarifs-cta':       'Acheter maintenant →',
+        'tarifs-secure':    '🔒 Paiement sécurisé · Reçu par e-mail',
+      },
 
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          entry.target.style.transitionDelay = (i * 0.08) + 's';
-          entry.target.classList.add('visible');
-        }
+      en: {
+        'cookie-text':      'This site uses essential cookies. <a href="confidentialite.html">Learn more</a>.',
+        'cookie-accept':    'Accept',
+        'cookie-refuse':    'Decline',
+        'nav-cta':          'Buy',
+        'hero-overline':    'Anno Domini CXVII · Aventicum, Helvetia',
+        'hero-tagline':     '<strong>The eagle of Legio XXI Rapax has been stolen.</strong><br>Emperor Hadrian arrives in 90 minutes.<br>Find it before it\'s too late.',
+        'hero-cta':         'Buy your game — from CHF 12',
+        'hero-price-note':  '1 code · unlimited team · valid 6 months',
+        'hero-scroll':      'Discover',
+        'band-enigmes':     '<strong>8</strong> riddles',
+        'band-monuments':   '<strong>8</strong> Roman monuments',
+        'band-lieu':        'Avenches, Switzerland',
+        'mission-h2':       'The Mission',
+        'mission-sub':      'An investigation in Roman Helvetia',
+        'mission-p1':       '<em>117 AD. Aventicum is at the height of its glory — 20,000 inhabitants, an amphitheatre seating 14,000, a sanctuary dedicated to Jupiter, baths worthy of Rome itself.</em> But tonight, the sacred aquila of Legio XXI Rapax has vanished. Emperor Hadrian is on his way.',
+        'mission-p2':       'The Senate tasks you with the investigation. On foot, armed with your smartphone, you explore the 8 Roman monuments still standing today — and solve the riddles they conceal.',
+        'mission-p3':       'Find the eagle before the Emperor arrives, and Aventicum will owe you its peace.',
+        'badge-lieu':       '📍 Avenches · Switzerland',
+        'badge-phone':      '📱 On your smartphone',
+        'badge-time':       '⏱ Approx. 90 min',
+        'badge-team':       '👥 As a team',
+        'badge-age':        '🧒 Ages 8+',
+        'how-h2':           'How it works',
+        'how-sub':          'Three steps to start your adventure',
+        'how-1-title':      'Buy online',
+        'how-1-desc':       'Order directly on this site. A single code unlocks the game for your entire team — no matter the size.',
+        'how-2-title':      'Receive your code',
+        'how-2-desc':       'Your access code arrives by email within minutes. Valid for 6 months — go whenever you like.',
+        'how-3-title':      'Explore Avenches',
+        'how-3-desc':       'On site, open aventicumquest.ch on your smartphone. Enter the code, name your team, and start solving the 8 riddles.',
+        'stations-h2':      'The 8 Stations',
+        'stations-sub':     'Eight monuments. Eight centuries of history.',
+        's1-num': 'Riddle I',   's1-name': 'Town Hall',               's1-teaser': 'Stone keeps the secrets of those who governed.',
+        's2-num': 'Riddle II',  's2-name': 'Benneville Tower',         's2-teaser': 'From the top, a Roman monument stands out in the distance.',
+        's3-num': 'Riddle III', 's3-name': 'Rue des Alpes',            's3-teaser': 'Look at the facades — they tell more than meets the eye.',
+        's4-num': 'Riddle IV',  's4-name': 'The Arena',                's4-teaser': '14,000 spectators. Only one saw what you\'re looking for.',
+        's5-num': 'Riddle V',   's5-name': 'Cigognier Sanctuary',      's5-teaser': 'A single column for Helvetia\'s greatest temple.',
+        's6-num': 'Riddle VI',  's6-name': 'Selley Theatre',           's6-teaser': 'The muses heard what the actors whispered.',
+        's7-num': 'Riddle VII', 's7-name': 'Forum Baths',              's7-teaser': 'The water that flowed here came from elsewhere — find its source.',
+        's8-num': 'Riddle VIII','s8-name': 'East Gate',                's8-teaser': 'The final key has been carved in stone for 19 centuries.',
+        'exp-h2':           'The Experience',
+        'exp-sub':          'On your smartphone · No app to download',
+        'exp-p':            'Everything runs in your browser. Open the site, enter your code, and the investigation begins — live score, photo riddles, progressive hints.',
+        'exp-caption':      'Web interface · Works on iOS & Android · No download required',
+        'ps-tagline':       'The eagle is stolen.<br>Rome awaits.',
+        'ps-btn':           '🔱 START THE MISSION',
+        'ps-monument':      'Cigognier Sanctuary',
+        'ps-q-label':       'RIDDLE V / VIII',
+        'ps-q-text':        'A solitary column rises toward Jupiter. What type of Roman building does it belong to?',
+        'ps-input-mock':    'Your answer...',
+        'ps-cert-title':    'MISSION COMPLETE',
+        'ps-cert-badge':    '🦅 THE EAGLE IS FOUND',
+        'tarifs-h2':        'Prices',
+        'tarifs-sub':       'Price per code · Unlimited team',
+        'tarif-adult':      'Adult',
+        'tarif-adult-age':  '(16 years +)',
+        'tarif-child':      'Child',
+        'tarif-child-age':  '(6–15 years)',
+        'tarif-u6':         'Under 6 years',
+        'tarif-free':       'Free',
+        'tarif-note':       'One code per team — unlimited size.<br>Valid 6 months from purchase.',
+        'tarifs-cta':       'Buy now →',
+        'tarifs-secure':    '🔒 Secure payment · Receipt by email',
+      },
+
+      de: {
+        'cookie-text':      'Diese Website verwendet notwendige Cookies. <a href="confidentialite.html">Mehr erfahren</a>.',
+        'cookie-accept':    'Akzeptieren',
+        'cookie-refuse':    'Ablehnen',
+        'nav-cta':          'Kaufen',
+        'hero-overline':    'Anno Domini CXVII · Aventicum, Helvetien',
+        'hero-tagline':     '<strong>Der Adler der Legio XXI Rapax wurde gestohlen.</strong><br>Kaiser Hadrian trifft in 90 Minuten ein.<br>Findet ihn, bevor es zu spät ist.',
+        'hero-cta':         'Partie kaufen — ab 12 CHF',
+        'hero-price-note':  '1 Code · unbegrenzte Gruppe · 6 Monate gültig',
+        'hero-scroll':      'Entdecken',
+        'band-enigmes':     '<strong>8</strong> Rätsel',
+        'band-monuments':   '<strong>8</strong> Römerdenkmäler',
+        'band-lieu':        'Avenches, Schweiz',
+        'mission-h2':       'Die Mission',
+        'mission-sub':      'Eine Untersuchung im römischen Helvetien',
+        'mission-p1':       '<em>117 n. Chr. Aventicum ist auf dem Höhepunkt seines Ruhms — 20 000 Einwohner, ein Amphitheater mit 14 000 Plätzen, ein Jupiter geweihtes Heiligtum, Thermen würdig Roms.</em> Doch in dieser Nacht ist der heilige Aquila der Legio XXI Rapax verschwunden. Kaiser Hadrian ist auf dem Weg in die Stadt.',
+        'mission-p2':       'Der Senat beauftragt euch mit der Untersuchung. Zu Fuß, mit dem Smartphone bewaffnet, erkundet ihr die 8 noch erhaltenen Römerdenkmäler — und löst die Rätsel, die sie verbergen.',
+        'mission-p3':       'Findet den Adler vor der Ankunft des Kaisers, und Aventicum wird euch seinen Frieden schulden.',
+        'badge-lieu':       '📍 Avenches · Schweiz',
+        'badge-phone':      '📱 Auf dem Smartphone',
+        'badge-time':       '⏱ Ca. 90 Min.',
+        'badge-team':       '👥 Als Team',
+        'badge-age':        '🧒 Ab 8 Jahren',
+        'how-h2':           'So funktioniert es',
+        'how-sub':          'Drei Schritte zum Abenteuer',
+        'how-1-title':      'Online kaufen',
+        'how-1-desc':       'Bestellt direkt auf dieser Website. Ein einziger Code schaltet das Spiel für euer gesamtes Team frei — egal wie groß.',
+        'how-2-title':      'Code erhalten',
+        'how-2-desc':       'Euer Zugangscode kommt per E-Mail innerhalb von Minuten an. Gültig 6 Monate — brecht auf, wann ihr möchtet.',
+        'how-3-title':      'Avenches erkunden',
+        'how-3-desc':       'Öffnet aventicumquest.ch vor Ort auf eurem Smartphone. Gebt den Code ein, tauft euer Team und löst die 8 Rätsel.',
+        'stations-h2':      'Die 8 Stationen',
+        'stations-sub':     'Acht Denkmäler. Acht Jahrhunderte Geschichte.',
+        's1-num': 'Rätsel I',   's1-name': 'Rathaus',                  's1-teaser': 'Der Stein bewahrt die Geheimnisse derer, die regierten.',
+        's2-num': 'Rätsel II',  's2-name': 'Benneville-Turm',           's2-teaser': 'Von oben ist ein römisches Denkmal in der Ferne zu erkennen.',
+        's3-num': 'Rätsel III', 's3-name': 'Rue des Alpes',             's3-teaser': 'Betrachtet die Fassaden — sie erzählen mehr als man denkt.',
+        's4-num': 'Rätsel IV',  's4-name': 'Die Arena',                 's4-teaser': '14 000 Zuschauer. Nur einer hat gesehen, was ihr sucht.',
+        's5-num': 'Rätsel V',   's5-name': 'Cigognier-Heiligtum',       's5-teaser': 'Eine einzige Säule für Helvetiens größten Tempel.',
+        's6-num': 'Rätsel VI',  's6-name': 'Selley-Theater',            's6-teaser': 'Die Musen hörten, was die Schauspieler flüsterten.',
+        's7-num': 'Rätsel VII', 's7-name': 'Forum-Thermen',             's7-teaser': 'Das Wasser, das hier floss, kam von woanders — findet seine Quelle.',
+        's8-num': 'Rätsel VIII','s8-name': 'Osttor',                    's8-teaser': 'Der letzte Schlüssel ist seit 19 Jahrhunderten in Stein gemeißelt.',
+        'exp-h2':           'Das Erlebnis',
+        'exp-sub':          'Auf eurem Smartphone · Keine App erforderlich',
+        'exp-p':            'Alles läuft im Browser. Öffnet die Website, gebt euren Code ein, und die Untersuchung beginnt — Live-Punktestand, Foto-Rätsel, progressive Hinweise.',
+        'exp-caption':      'Weboberfläche · Läuft auf iOS & Android · Kein Download',
+        'ps-tagline':       'Der Adler ist gestohlen.<br>Rom wartet.',
+        'ps-btn':           '🔱 MISSION STARTEN',
+        'ps-monument':      'Cigognier-Heiligtum',
+        'ps-q-label':       'RÄTSEL V / VIII',
+        'ps-q-text':        'Eine einsame Säule erhebt sich zu Jupiter. Zu welchem Typ römischen Gebäudes gehört sie?',
+        'ps-input-mock':    'Eure Antwort...',
+        'ps-cert-title':    'MISSION ERFÜLLT',
+        'ps-cert-badge':    '🦅 DER ADLER IST GEFUNDEN',
+        'tarifs-h2':        'Preise',
+        'tarifs-sub':       'Preis pro Code · Unbegrenzte Gruppe',
+        'tarif-adult':      'Erwachsener',
+        'tarif-adult-age':  '(16 Jahre +)',
+        'tarif-child':      'Kind',
+        'tarif-child-age':  '(6–15 Jahre)',
+        'tarif-u6':         'Unter 6 Jahren',
+        'tarif-free':       'Gratis',
+        'tarif-note':       'Ein Code pro Team — unbegrenzte Größe.<br>6 Monate ab Kauf gültig.',
+        'tarifs-cta':       'Jetzt kaufen →',
+        'tarifs-secure':    '🔒 Sichere Zahlung · Quittung per E-Mail',
+      }
+    };
+
+    const PAGE_TITLES = {
+      fr: 'Aventicum Quest — Jeu d\'évasion outdoor à Avenches',
+      en: 'Aventicum Quest — Outdoor escape game in Avenches',
+      de: 'Aventicum Quest — Outdoor Escape Game in Avenches'
+    };
+
+    /* ══════════════════════════════════════════════════════════════
+       setLang — applies all translations to the DOM
+    ══════════════════════════════════════════════════════════════ */
+    function setLang(lang) {
+      if (!T[lang]) return;
+      const dict = T[lang];
+
+      // Update button states
+      document.querySelectorAll('.nav-lang').forEach(btn => {
+        const active = btn.textContent.trim() === lang.toUpperCase();
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
       });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      // Apply translations
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+
+      // Update html[lang] and page title
+      document.documentElement.lang = lang;
+      document.title = PAGE_TITLES[lang] || PAGE_TITLES.fr;
+
+      // Persist choice
+      localStorage.setItem('aq-lang', lang);
+    }
+
+    /* ── Cookie consent ──────────────────────────────────────── */
+    const banner = document.getElementById('cookie-banner');
+
+    function hideBanner() { banner.classList.add('hidden'); }
+    function acceptCookies() { localStorage.setItem('aq-cookies', 'accepted'); hideBanner(); }
+    function refuseCookies() { localStorage.setItem('aq-cookies', 'refused'); hideBanner(); }
+
+    if (localStorage.getItem('aq-cookies')) hideBanner();
+
+    /* ── Nav scroll effect ───────────────────────────────────── */
+    const nav = document.getElementById('nav');
+    let ticking = false;
+    function updateNav() { nav.classList.toggle('scrolled', window.scrollY > 60); ticking = false; }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(updateNav); ticking = true; }
+    }, { passive: true });
+
+    /* ── Hero photo load animation ───────────────────────────── */
+    const hero = document.getElementById('hero');
+    const heroImg = new Image();
+    heroImg.onload = () => hero.classList.add('loaded');
+    heroImg.src = 'images/hero.jpg';
+
+    /* ── Scroll-reveal (IntersectionObserver) ────────────────── */
+    const revealObserver = new IntersectionObserver(
+      entries => entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* ── Smooth scroll ───────────────────────────────────────── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+
+    /* ── Back to top ─────────────────────────────────────────── */
+    const backTop = document.getElementById('back-top');
+    window.addEventListener('scroll', () => {
+      backTop.classList.toggle('visible', window.scrollY > 500);
+    }, { passive: true });
+    backTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ── Apply saved language on load ────────────────────────── */
+    const savedLang = localStorage.getItem('aq-lang') || 'fr';
+    if (savedLang !== 'fr') setLang(savedLang);
+
   </script>
+
 </body>
 </html>
