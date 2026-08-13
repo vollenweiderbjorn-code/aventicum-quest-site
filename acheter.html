@@ -114,6 +114,30 @@
       transition: color .2s;
     }
     .buy-back:hover { color: var(--aurum); }
+    .buy-langs {
+      display: flex;
+      justify-content: center;
+      gap: .5rem;
+      margin-bottom: 2rem;
+    }
+    .buy-lang {
+      font-family: 'Space Mono', monospace;
+      font-size: .65rem;
+      letter-spacing: .1em;
+      color: var(--terre);
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: .45rem 1rem;
+      cursor: pointer;
+      transition: color .2s, border-color .2s, background .2s;
+    }
+    .buy-lang:hover { color: var(--scriptum); border-color: var(--border-strong); }
+    .buy-lang.active {
+      color: var(--obsidian);
+      background: var(--aurum);
+      border-color: var(--aurum);
+    }
   </style>
 </head>
 <body>
@@ -135,6 +159,12 @@
           <div class="stele-rule"><span class="stele-diamond">◆</span></div>
           <p class="stele-sub">Aventicum Quest — Operatio Aquila</p>
         </div>
+      </div>
+
+      <div class="buy-langs" role="group" aria-label="Langue">
+        <button class="buy-lang" data-lang="fr" onclick="setBuyLang('fr')">FR</button>
+        <button class="buy-lang" data-lang="en" onclick="setBuyLang('en')">EN</button>
+        <button class="buy-lang" data-lang="de" onclick="setBuyLang('de')">DE</button>
       </div>
 
       <div class="tarif-rows">
@@ -169,8 +199,7 @@
       </div>
 
       <div class="btn-buy-group">
-        <!-- Remplacez ce lien par votre lien Stripe -->
-        <a href="https://buy.stripe.com/cNi5kD3Mr4BYa5Z8ZYc7u00" class="btn-buy" aria-label="Payer via Stripe">
+        <a id="btn-buy-stripe" href="https://buy.stripe.com/aFa00j5Uz7Oa4LFa42c7u01" class="btn-buy" aria-label="Payer via Stripe">
           Payer maintenant →
         </a>
         <p class="buy-secure">🔒 Paiement sécurisé · Stripe · Reçu par e-mail</p>
@@ -181,6 +210,26 @@
   <script>
     const nav = document.getElementById('nav');
     nav.classList.add('scrolled');
+
+    /* ── Lien de paiement selon la langue choisie ── */
+    const STRIPE_LINKS = {
+      fr: 'https://buy.stripe.com/aFa00j5Uz7Oa4LFa42c7u01',
+      en: 'https://buy.stripe.com/6oU5kD2InfgC6TNccac7u02',
+      de: 'https://buy.stripe.com/5kQbJ1dn1d8uemfccac7u03'
+    };
+
+    function setBuyLang(lang) {
+      const link = STRIPE_LINKS[lang] || STRIPE_LINKS.fr;
+      document.getElementById('btn-buy-stripe').href = link;
+      document.querySelectorAll('.buy-lang').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      localStorage.setItem('aq-lang', lang);
+    }
+
+    // Langue initiale : celle choisie précédemment (index.html ou cette page), sinon FR
+    const initialLang = localStorage.getItem('aq-lang') || 'fr';
+    setBuyLang(STRIPE_LINKS[initialLang] ? initialLang : 'fr');
   </script>
 </body>
 </html>
