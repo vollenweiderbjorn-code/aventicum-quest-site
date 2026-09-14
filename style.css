@@ -747,8 +747,12 @@ section { position: relative; }
   box-shadow: 0 24px 60px rgba(0,0,0,.55);
 }
 #stations-map {
-  height: clamp(360px, 55vh, 520px);
+  height: clamp(460px, 66vh, 640px);
   background: #0a0a0b;
+}
+/* Mute the base map so the gold markers and the route dominate */
+#stations-map .leaflet-tile-pane {
+  filter: brightness(0.66) contrast(1.02) saturate(0.82);
 }
 /* Numbered gold marker */
 .aq-marker {
@@ -1082,6 +1086,62 @@ section { position: relative; }
 }
 .pt-input-caret { letter-spacing: .3em; }
 
+/* ── FAQ ─────────────────────────────────────────────────────── */
+#faq { background: var(--obsidian); }
+.faq-list {
+  max-width: 780px;
+  margin: 3rem auto 0;
+}
+.faq-item { border-top: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 1.25rem .25rem;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(.82rem, 1.9vw, 1rem);
+  font-weight: 600;
+  letter-spacing: .03em;
+  color: var(--scriptum);
+  transition: color .2s;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--aurum); }
+.faq-item[open] summary { color: var(--aurum); }
+.faq-item summary::after {
+  content: '+';
+  font-family: 'Space Mono', monospace;
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--aurum);
+  flex-shrink: 0;
+}
+.faq-item[open] summary::after { content: '\2212'; }
+.faq-a {
+  padding: 0 .25rem 1.5rem;
+  animation: faqReveal .28s ease both;
+}
+.faq-a p {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--scriptum-dim);
+  max-width: 660px;
+}
+.faq-a a {
+  color: var(--aurum);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+@keyframes faqReveal {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: none; }
+}
+
 /* ── Tarifs ──────────────────────────────────────────────────── */
 #tarifs { background: var(--obsidian); }
 .tarifs-inner {
@@ -1304,6 +1364,7 @@ footer {
   .phone:nth-child(2) { transform: none; opacity: 1; }
   #cookie-banner { flex-direction: column; gap: .75rem; }
   .tarif-table td { padding: .7rem .6rem; }
+  #stations-map { height: 78vh; min-height: 460px; }
 }
 
 @media (max-width: 420px) {
