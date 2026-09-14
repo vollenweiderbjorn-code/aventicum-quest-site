@@ -175,6 +175,91 @@ body::before {
   color: var(--aurum);
   border-color: var(--border);
 }
+
+/* ── Language selector (globe dropdown) ─────────────────────── */
+.lang-select { position: relative; }
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: 'Space Mono', monospace;
+  font-size: .58rem;
+  letter-spacing: .12em;
+  color: var(--scriptum-dim);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: .4rem .62rem;
+  cursor: pointer;
+  transition: color .2s, border-color .2s;
+}
+.lang-toggle:hover,
+.lang-select.open .lang-toggle {
+  color: var(--aurum);
+  border-color: var(--border-strong);
+}
+.lang-globe { font-size: .82rem; line-height: 1; }
+.lang-current { min-width: 1.4em; text-align: center; }
+.lang-caret {
+  font-size: .5rem;
+  line-height: 1;
+  transition: transform .25s ease;
+}
+.lang-select.open .lang-caret { transform: rotate(180deg); }
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + .5rem);
+  right: 0;
+  min-width: 158px;
+  list-style: none;
+  margin: 0;
+  padding: .3rem;
+  background: rgba(9,9,10,.97);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  box-shadow: 0 12px 34px rgba(0,0,0,.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+  z-index: 1100;
+}
+.lang-select.open .lang-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.lang-menu li { margin: 0; }
+.lang-opt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .8rem;
+  width: 100%;
+  font-family: 'Space Mono', monospace;
+  font-size: .62rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--scriptum-dim);
+  background: none;
+  border: none;
+  border-radius: 2px;
+  padding: .55rem .7rem;
+  cursor: pointer;
+  text-align: left;
+  transition: color .18s, background .18s;
+}
+.lang-opt:hover { color: var(--aurum); background: var(--aurum-faint); }
+.lang-opt[aria-selected="true"] { color: var(--aurum); }
+.lang-opt-code {
+  font-size: .5rem;
+  color: var(--terre);
+  letter-spacing: .1em;
+}
+
 .nav-cta {
   font-family: 'Cinzel', serif;
   font-size: .68rem;
@@ -231,7 +316,8 @@ body::before {
   font-size: .58rem;
   letter-spacing: .38em;
   text-transform: uppercase;
-  color: var(--aurum-dim);
+  color: var(--aurum);
+  text-shadow: 0 1px 10px rgba(0,0,0,.85), 0 0 2px rgba(0,0,0,.6);
   margin-bottom: 1.6rem;
   animation: fadeInDown .8s ease both;
 }
@@ -317,6 +403,45 @@ body::before {
   transform: translateY(-1px);
 }
 .btn-primary:focus-visible {
+  outline: 2px solid var(--aurum);
+  outline-offset: 3px;
+}
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  font-family: 'Cinzel', serif;
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--scriptum);
+  background: rgba(9,9,10,.28);
+  padding: .92rem 2rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: color .2s, border-color .2s, background .2s, box-shadow .25s, transform .15s;
+}
+.btn-ghost::after {
+  content: '↓';
+  font-family: 'Space Mono', monospace;
+  font-size: .82em;
+  line-height: 1;
+  transition: transform .2s ease;
+}
+.btn-ghost:hover {
+  color: var(--aurum);
+  border-color: var(--aurum);
+  background: rgba(201,164,78,.08);
+  box-shadow: 0 0 28px rgba(201,164,78,.22);
+  transform: translateY(-1px);
+}
+.btn-ghost:hover::after { transform: translateY(2px); }
+.btn-ghost:focus-visible {
   outline: 2px solid var(--aurum);
   outline-offset: 3px;
 }
@@ -605,6 +730,90 @@ section { position: relative; }
   transform: translateY(0);
 }
 
+/* ── Carte interactive des stations ──────────────────────────── */
+.stations-map-label {
+  text-align: center;
+  font-family: 'Space Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--terre);
+  margin: 3.5rem 0 1.2rem;
+}
+.stations-map-wrap {
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,.55);
+}
+#stations-map {
+  height: clamp(360px, 55vh, 520px);
+  background: #0a0a0b;
+}
+/* Numbered gold marker */
+.aq-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px; height: 30px;
+  background: var(--aurum);
+  color: var(--obsidian);
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: .68rem;
+  border-radius: 50%;
+  border: 2px solid #0a0a0b;
+  box-shadow: 0 2px 8px rgba(0,0,0,.6);
+}
+/* Leaflet popup themed to the site */
+.leaflet-popup-content-wrapper {
+  background: #12100c;
+  color: var(--scriptum);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.6);
+}
+.leaflet-popup-tip {
+  background: #12100c;
+  border-right: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-strong);
+}
+.leaflet-popup-content { margin: .75rem .9rem; line-height: 1.4; }
+.leaflet-container a.leaflet-popup-close-button { color: var(--terre); }
+.leaflet-container a.leaflet-popup-close-button:hover { color: var(--aurum); }
+.aq-pop-num {
+  font-family: 'Space Mono', monospace;
+  font-size: .58rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--terre);
+}
+.aq-pop-name {
+  font-family: 'Cinzel', serif;
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: var(--aurum);
+  margin: .15rem 0 .35rem;
+}
+.aq-pop-desc {
+  font-family: 'EB Garamond', serif;
+  font-size: .92rem;
+  color: var(--scriptum-dim);
+  max-width: 210px;
+}
+.leaflet-control-attribution {
+  background: rgba(9,9,10,.7) !important;
+  color: rgba(237,227,200,.5) !important;
+}
+.leaflet-control-attribution a { color: var(--terre) !important; }
+.leaflet-bar a {
+  background: #12100c !important;
+  color: var(--aurum) !important;
+  border-color: var(--border) !important;
+}
+.leaflet-bar a:hover { background: #1c1810 !important; }
+
 /* ── Experience / Social proof ───────────────────────────────── */
 #experience {
   background: var(--pierre);
@@ -807,6 +1016,71 @@ section { position: relative; }
   text-transform: uppercase;
   color: var(--terre);
 }
+
+/* ── Types d'énigmes ─────────────────────────────────────────── */
+#enigmes {
+  background: var(--pierre-mid);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.enig-intro {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 3.2rem;
+  color: var(--scriptum-dim);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.pt-hud { justify-content: center; }
+.pt-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: .34rem;
+  letter-spacing: .12em;
+  color: #C9A44E;
+  border: 1px solid rgba(201,164,78,.4);
+  border-radius: 2px;
+  padding: .12rem .32rem;
+  white-space: nowrap;
+}
+.pt-photo {
+  height: 44%;
+  margin-bottom: .55rem;
+  border-radius: 4px;
+  border: 1px solid rgba(201,164,78,.22);
+  background-image:
+    linear-gradient(rgba(12,10,6,.12), rgba(12,10,6,.6)),
+    url('images/s07.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.pt-choices {
+  display: flex;
+  flex-direction: column;
+  gap: .32rem;
+  margin-top: .6rem;
+}
+.pt-choice {
+  font-family: 'EB Garamond', serif;
+  font-size: .46rem;
+  line-height: 1.2;
+  color: rgba(237,227,200,.7);
+  border: 1px solid rgba(201,164,78,.18);
+  border-radius: 3px;
+  padding: .32rem .45rem;
+}
+.pt-choice-active {
+  color: #C9A44E;
+  border-color: rgba(201,164,78,.55);
+  background: rgba(201,164,78,.1);
+}
+.pt-icon {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: .5rem 0 .55rem;
+  filter: drop-shadow(0 0 6px rgba(201,164,78,.4));
+}
+.pt-input-caret { letter-spacing: .3em; }
 
 /* ── Tarifs ──────────────────────────────────────────────────── */
 #tarifs { background: var(--obsidian); }
@@ -1016,6 +1290,11 @@ footer {
   .nav-logo-sub  { display: none; }
   .nav-langs     { gap: .15rem; }
   .nav-lang      { font-size: .5rem; padding: .22rem .38rem; }
+  .nav-right     { gap: .7rem; }
+  .lang-toggle   { font-size: .52rem; padding: .34rem .5rem; gap: .3rem; }
+  .lang-globe    { font-size: .72rem; }
+  .lang-menu     { min-width: 140px; }
+  .lang-opt      { font-size: .58rem; padding: .5rem .6rem; }
   .nav-cta       { font-size: .62rem; padding: .5rem 1rem; }
   .stations-grid { grid-template-columns: repeat(2, 1fr); }
   .station-card  { aspect-ratio: 1/1; }
