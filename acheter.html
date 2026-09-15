@@ -3,9 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>Acheter — Aventicum Quest</title>
   <meta name="description" content="Réservez votre enquête Aventicum Quest à Avenches. 12 CHF / adulte, 8 CHF / enfant, gratuit avant 6 ans. Code reçu par e-mail, valable 6 mois, jouez quand vous voulez.">
   <link rel="stylesheet" href="style.css">
+  <!-- Analytics sans cookie (Plausible) — dormant tant que le domaine n'est pas ajouté au compte -->
+  <script defer data-domain="aventicumquest.ch" src="https://plausible.io/js/script.outbound-links.js"></script>
+  <script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}</script>
   <style>
     .buy-page {
       min-height: 100svh;
@@ -527,6 +532,13 @@
     // Langue initiale : celle choisie précédemment (index.html ou cette page), sinon FR
     const initialLang = localStorage.getItem('aq-lang') || 'fr';
     setBuyLang(initialLang);
+
+    /* ── Suivi de conversion : clic sur le bouton de paiement ── */
+    document.getElementById('btn-buy-stripe').addEventListener('click', function () {
+      try {
+        window.plausible('Checkout: clic Payer', { props: { langue: document.documentElement.lang || 'fr' } });
+      } catch (e) {}
+    });
   </script>
 </body>
 </html>
