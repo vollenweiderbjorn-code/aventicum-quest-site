@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Acheter — Aventicum Quest</title>
-  <meta name="description" content="Achetez votre partie Aventicum Quest. 12 CHF par adulte, 8 CHF par enfant. Un seul code pour toute l'équipe.">
+  <meta name="description" content="Réservez votre enquête Aventicum Quest à Avenches. 12 CHF / adulte, 8 CHF / enfant, gratuit avant 6 ans. Code reçu par e-mail, valable 6 mois, jouez quand vous voulez.">
   <link rel="stylesheet" href="style.css">
   <style>
     .buy-page {
@@ -12,26 +12,62 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: calc(var(--nav-h) + 3rem) 1.5rem 4rem;
-      background: var(--obsidian);
+      justify-content: flex-start;
+      padding: calc(var(--nav-h) + 2.5rem) 1.5rem 4rem;
+      background:
+        radial-gradient(120% 60% at 50% 0%, rgba(201,164,78,.06), transparent 60%),
+        var(--obsidian);
     }
+    .buy-hook {
+      font-family: 'Space Mono', monospace;
+      font-size: .6rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--terre);
+      text-align: center;
+      max-width: 34ch;
+      line-height: 1.9;
+      margin-bottom: 1.4rem;
+    }
+    .buy-hook strong { color: var(--aurum); font-weight: 400; }
     .buy-card {
       width: 100%;
-      max-width: 560px;
+      max-width: 580px;
       border: 1px solid var(--border-strong);
       border-radius: 4px;
-      padding: clamp(2rem, 5vw, 3.5rem);
+      padding: clamp(1.75rem, 5vw, 3.25rem);
       background: var(--pierre);
       box-shadow: 0 24px 80px rgba(0,0,0,.5);
     }
-    .buy-stele { margin-bottom: 2.5rem; }
-    .tarif-rows { margin-bottom: 2rem; }
+    .buy-stele { margin-bottom: 1.75rem; }
+
+    /* ── Value badges ── */
+    .buy-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .5rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Section labels ── */
+    .buy-sec-label {
+      font-family: 'Space Mono', monospace;
+      font-size: .58rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--terre);
+      margin-bottom: 1rem;
+    }
+
+    .tarif-rows { margin-bottom: .9rem; }
     .tarif-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: .85rem 0;
+      padding: .8rem 0;
       border-bottom: 1px solid var(--border);
     }
     .tarif-row:last-child { border-bottom: none; }
@@ -54,12 +90,25 @@
       font-weight: 700;
       color: var(--aurum);
     }
+    .buy-example {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: .9rem;
+      color: var(--scriptum-dim);
+      text-align: center;
+      padding: .85rem 1rem;
+      background: var(--aurum-faint);
+      border-radius: 3px;
+      margin-bottom: 2rem;
+    }
+    .buy-example strong { color: var(--aurum); font-style: normal; font-family: 'Cinzel', serif; font-weight: 700; }
+
     .qty-note {
       background: rgba(201,164,78,.06);
       border: 1px solid var(--border);
       border-radius: 3px;
       padding: .9rem 1.1rem;
-      margin-bottom: 2rem;
+      margin-bottom: 2.25rem;
     }
     .qty-note p {
       font-family: 'Space Mono', monospace;
@@ -70,29 +119,94 @@
       line-height: 1.75;
     }
     .qty-note p strong { color: var(--scriptum); }
+
+    /* ── How it works ── */
+    .buy-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin-bottom: 2.25rem;
+    }
+    .buy-step { display: flex; gap: .9rem; align-items: flex-start; }
+    .buy-step-num {
+      flex: 0 0 auto;
+      width: 1.85rem; height: 1.85rem;
+      display: grid; place-items: center;
+      border: 1px solid var(--border-strong);
+      border-radius: 50%;
+      font-family: 'Cinzel', serif;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--aurum);
+    }
+    .buy-step-txt { line-height: 1.5; }
+    .buy-step-txt b {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: .82rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--scriptum);
+      margin-bottom: .15rem;
+    }
+    .buy-step-txt span {
+      font-family: 'EB Garamond', serif;
+      font-size: .95rem;
+      color: var(--scriptum-dim);
+    }
+
+    /* ── Reassurance ── */
+    .buy-assur {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+      margin-bottom: 2.25rem;
+      padding: 1.25rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+    }
+    .buy-assur li {
+      display: flex;
+      gap: .65rem;
+      align-items: flex-start;
+      font-family: 'EB Garamond', serif;
+      font-size: .95rem;
+      color: var(--scriptum-dim);
+      line-height: 1.45;
+    }
+    .buy-assur li::before {
+      content: "✓";
+      color: var(--aurum);
+      font-weight: 700;
+      flex: 0 0 auto;
+    }
+
+    /* ── CTA ── */
     .btn-buy-group {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: .9rem;
       align-items: stretch;
     }
     .btn-buy {
       display: block;
       text-align: center;
       font-family: 'Cinzel', serif;
-      font-size: .78rem;
+      font-size: .82rem;
       font-weight: 700;
-      letter-spacing: .2em;
+      letter-spacing: .18em;
       text-transform: uppercase;
       color: var(--obsidian);
       background: var(--aurum);
-      padding: 1.1rem 2rem;
+      padding: 1.2rem 2rem;
       border-radius: 2px;
       border: none;
       cursor: pointer;
-      transition: background .2s;
+      box-shadow: 0 10px 30px rgba(201,164,78,.18);
+      transition: background .2s, transform .12s, box-shadow .2s;
     }
-    .btn-buy:hover { background: var(--scriptum); }
+    .btn-buy:hover { background: var(--scriptum); transform: translateY(-1px); box-shadow: 0 14px 36px rgba(201,164,78,.28); }
     .buy-secure {
       font-family: 'Space Mono', monospace;
       font-size: .56rem;
@@ -101,6 +215,7 @@
       color: var(--terre);
       text-align: center;
     }
+
     .buy-back {
       display: inline-flex;
       align-items: center;
@@ -110,7 +225,7 @@
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--terre);
-      margin-bottom: 2rem;
+      margin-bottom: 1.75rem;
       transition: color .2s;
     }
     .buy-back:hover { color: var(--aurum); }
@@ -149,60 +264,106 @@
   </nav>
 
   <main class="buy-page">
-    <a href="index.html" class="buy-back">← Retour à l'accueil</a>
+    <a href="index.html" class="buy-back" data-i18n="back">← Retour à l'accueil</a>
+
+    <p class="buy-hook" data-i18n-html="hook"><strong>L'aigle sacrée a disparu.</strong> L'Empereur arrive dans 120 minutes. Le Sénat compte sur vous.</p>
 
     <div class="buy-card">
       <div class="buy-stele">
         <div class="stele">
           <div class="stele-rule"><span class="stele-diamond">◆</span></div>
-          <h1 style="font-family:'Cinzel',serif;font-size:clamp(1rem,2.5vw,1.4rem);font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--scriptum);">Votre Partie</h1>
+          <h1 style="font-family:'Cinzel',serif;font-size:clamp(1rem,2.5vw,1.4rem);font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--scriptum);" data-i18n="title">Votre Partie</h1>
           <div class="stele-rule"><span class="stele-diamond">◆</span></div>
           <p class="stele-sub">Aventicum Quest — Operatio Aquila</p>
         </div>
       </div>
 
-      <div class="buy-langs" role="group" aria-label="Langue">
+      <div class="buy-langs" role="group" aria-label="Langue / Language / Sprache">
         <button class="buy-lang" data-lang="fr" onclick="setBuyLang('fr')">FR</button>
         <button class="buy-lang" data-lang="en" onclick="setBuyLang('en')">EN</button>
         <button class="buy-lang" data-lang="de" onclick="setBuyLang('de')">DE</button>
       </div>
 
+      <div class="buy-badges">
+        <span class="badge" data-i18n="b-lieu">📍 Avenches · Suisse</span>
+        <span class="badge" data-i18n="b-monu">🗺 8 monuments</span>
+        <span class="badge" data-i18n="b-time">⏱ 120 min</span>
+        <span class="badge">🌐 FR · EN · DE</span>
+        <span class="badge" data-i18n="b-team">👥 En équipe</span>
+        <span class="badge" data-i18n="b-phone">📱 Smartphone</span>
+      </div>
+
+      <p class="buy-sec-label" data-i18n="lbl-tarifs">Tarifs</p>
       <div class="tarif-rows">
         <div class="tarif-row">
           <div class="tarif-row-label">
-            Adulte
-            <small>16 ans et +</small>
+            <span data-i18n="t-adult">Adulte</span>
+            <small data-i18n="t-adult-age">16 ans et +</small>
           </div>
           <div class="tarif-row-price">12 CHF</div>
         </div>
         <div class="tarif-row">
           <div class="tarif-row-label">
-            Enfant
-            <small>6 – 15 ans</small>
+            <span data-i18n="t-child">Enfant</span>
+            <small data-i18n="t-child-age">6 – 15 ans</small>
           </div>
           <div class="tarif-row-price">8 CHF</div>
         </div>
         <div class="tarif-row">
           <div class="tarif-row-label">
-            Moins de 6 ans
+            <span data-i18n="t-free">Moins de 6 ans</span>
           </div>
-          <div class="tarif-row-price" style="color:var(--terre)">Gratuit</div>
+          <div class="tarif-row-price" style="color:var(--terre)" data-i18n="t-free-price">Gratuit</div>
         </div>
       </div>
 
+      <p class="buy-example" data-i18n-html="example">Exemple — une famille de 4 (2 adultes + 2 enfants) : <strong>40 CHF</strong></p>
+
       <div class="qty-note">
-        <p>
-          <strong>Un seul code pour toute votre équipe.</strong><br>
-          Achetez autant de codes que de participants (adultes et enfants de 6 ans et +).<br>
+        <p data-i18n-html="qty">
+          <strong>Un code par participant.</strong><br>
+          Achetez autant de codes que de joueurs (6 ans et +).<br>
           Valable 6 mois à partir de l'achat.
         </p>
       </div>
 
+      <p class="buy-sec-label" data-i18n="lbl-how">Comment ça marche</p>
+      <div class="buy-steps">
+        <div class="buy-step">
+          <div class="buy-step-num">I</div>
+          <div class="buy-step-txt">
+            <b data-i18n="s1-t">Achetez vos codes</b>
+            <span data-i18n="s1-d">Un code par joueur, paiement sécurisé en 1 minute.</span>
+          </div>
+        </div>
+        <div class="buy-step">
+          <div class="buy-step-num">II</div>
+          <div class="buy-step-txt">
+            <b data-i18n="s2-t">Recevez-les par e-mail</b>
+            <span data-i18n="s2-d">Vos codes arrivent aussitôt dans votre boîte de réception.</span>
+          </div>
+        </div>
+        <div class="buy-step">
+          <div class="buy-step-num">III</div>
+          <div class="buy-step-txt">
+            <b data-i18n="s3-t">Jouez à Avenches</b>
+            <span data-i18n="s3-d">Sur place, lancez la partie quand vous voulez. 120 min environ.</span>
+          </div>
+        </div>
+      </div>
+
+      <ul class="buy-assur">
+        <li data-i18n="a1">Code valable 6 mois — partez le jour que vous choisissez.</li>
+        <li data-i18n="a2">Mauvais temps ? Reportez : votre code reste valable.</li>
+        <li data-i18n="a3">Aucune application à installer — tout se joue dans le navigateur.</li>
+        <li data-i18n="a4">Dès 8 ans — parfait en famille ou entre amis.</li>
+      </ul>
+
       <div class="btn-buy-group">
-        <a id="btn-buy-stripe" href="https://buy.stripe.com/aFa00j5Uz7Oa4LFa42c7u01" class="btn-buy" aria-label="Payer via Stripe">
-          Payer maintenant →
+        <a id="btn-buy-stripe" href="https://buy.stripe.com/aFa00j5Uz7Oa4LFa42c7u01" class="btn-buy" data-i18n="cta" aria-label="Payer via Stripe">
+          Obtenir mon code de jeu →
         </a>
-        <p class="buy-secure">🔒 Paiement sécurisé · Stripe · Reçu par e-mail</p>
+        <p class="buy-secure" data-i18n="secure">🔒 Paiement sécurisé · Stripe · Reçu par e-mail</p>
       </div>
     </div>
   </main>
@@ -218,9 +379,101 @@
       de: 'https://buy.stripe.com/5kQbJ1dn1d8uemfccac7u03'
     };
 
+    /* ── Traductions de la page ── */
+    const BUY_I18N = {
+      fr: {
+        back: "← Retour à l'accueil",
+        hook: "<strong>L'aigle sacrée a disparu.</strong> L'Empereur arrive dans 120 minutes. Le Sénat compte sur vous.",
+        title: "Votre Partie",
+        'b-lieu': "📍 Avenches · Suisse",
+        'b-monu': "🗺 8 monuments",
+        'b-time': "⏱ 120 min",
+        'b-team': "👥 En équipe",
+        'b-phone': "📱 Smartphone",
+        'lbl-tarifs': "Tarifs",
+        't-adult': "Adulte", 't-adult-age': "16 ans et +",
+        't-child': "Enfant", 't-child-age': "6 – 15 ans",
+        't-free': "Moins de 6 ans", 't-free-price': "Gratuit",
+        example: "Exemple — une famille de 4 (2 adultes + 2 enfants) : <strong>40 CHF</strong>",
+        qty: "<strong>Un code par participant.</strong><br>Achetez autant de codes que de joueurs (6 ans et +).<br>Valable 6 mois à partir de l'achat.",
+        'lbl-how': "Comment ça marche",
+        's1-t': "Achetez vos codes", 's1-d': "Un code par joueur, paiement sécurisé en 1 minute.",
+        's2-t': "Recevez-les par e-mail", 's2-d': "Vos codes arrivent aussitôt dans votre boîte de réception.",
+        's3-t': "Jouez à Avenches", 's3-d': "Sur place, lancez la partie quand vous voulez. 120 min environ.",
+        a1: "Code valable 6 mois — partez le jour que vous choisissez.",
+        a2: "Mauvais temps ? Reportez : votre code reste valable.",
+        a3: "Aucune application à installer — tout se joue dans le navigateur.",
+        a4: "Dès 8 ans — parfait en famille ou entre amis.",
+        cta: "Obtenir mon code de jeu →",
+        secure: "🔒 Paiement sécurisé · Stripe · Reçu par e-mail"
+      },
+      en: {
+        back: "← Back to home",
+        hook: "<strong>The sacred eagle has vanished.</strong> The Emperor arrives in 120 minutes. The Senate is counting on you.",
+        title: "Your Game",
+        'b-lieu': "📍 Avenches · Switzerland",
+        'b-monu': "🗺 8 monuments",
+        'b-time': "⏱ 120 min",
+        'b-team': "👥 As a team",
+        'b-phone': "📱 Smartphone",
+        'lbl-tarifs': "Prices",
+        't-adult': "Adult", 't-adult-age': "16 and over",
+        't-child': "Child", 't-child-age': "ages 6 – 15",
+        't-free': "Under 6", 't-free-price': "Free",
+        example: "Example — a family of 4 (2 adults + 2 children): <strong>CHF 40</strong>",
+        qty: "<strong>One code per player.</strong><br>Buy as many codes as there are players (age 6+).<br>Valid for 6 months from purchase.",
+        'lbl-how': "How it works",
+        's1-t': "Buy your codes", 's1-d': "One code per player, secure payment in 1 minute.",
+        's2-t': "Get them by e-mail", 's2-d': "Your codes arrive in your inbox right away.",
+        's3-t': "Play in Avenches", 's3-d': "On site, start whenever you like. About 120 min.",
+        a1: "Code valid for 6 months — go on the day you choose.",
+        a2: "Bad weather? Postpone — your code stays valid.",
+        a3: "No app to install — everything runs in your browser.",
+        a4: "Ages 8 and up — perfect for family or friends.",
+        cta: "Get my game code →",
+        secure: "🔒 Secure payment · Stripe · E-mail receipt"
+      },
+      de: {
+        back: "← Zurück zur Startseite",
+        hook: "<strong>Der heilige Adler ist verschwunden.</strong> Der Kaiser kommt in 120 Minuten. Der Senat zählt auf Sie.",
+        title: "Ihr Spiel",
+        'b-lieu': "📍 Avenches · Schweiz",
+        'b-monu': "🗺 8 Monumente",
+        'b-time': "⏱ 120 Min",
+        'b-team': "👥 Im Team",
+        'b-phone': "📱 Smartphone",
+        'lbl-tarifs': "Preise",
+        't-adult': "Erwachsene", 't-adult-age': "ab 16 Jahren",
+        't-child': "Kind", 't-child-age': "6 – 15 Jahre",
+        't-free': "Unter 6 Jahren", 't-free-price': "Gratis",
+        example: "Beispiel — eine Familie mit 4 Personen (2 Erwachsene + 2 Kinder): <strong>40 CHF</strong>",
+        qty: "<strong>Ein Code pro Teilnehmer.</strong><br>Kaufen Sie so viele Codes wie Spieler (ab 6 Jahren).<br>6 Monate ab Kauf gültig.",
+        'lbl-how': "So funktioniert's",
+        's1-t': "Codes kaufen", 's1-d': "Ein Code pro Spieler, sichere Zahlung in 1 Minute.",
+        's2-t': "Per E-Mail erhalten", 's2-d': "Ihre Codes kommen sofort in Ihr Postfach.",
+        's3-t': "In Avenches spielen", 's3-d': "Vor Ort starten Sie, wann Sie möchten. Etwa 120 Min.",
+        a1: "Code 6 Monate gültig — spielen Sie am Tag Ihrer Wahl.",
+        a2: "Schlechtes Wetter? Verschieben Sie — Ihr Code bleibt gültig.",
+        a3: "Keine App nötig — alles läuft im Browser.",
+        a4: "Ab 8 Jahren — ideal für Familie oder Freunde.",
+        cta: "Meinen Spielcode erhalten →",
+        secure: "🔒 Sichere Zahlung · Stripe · Beleg per E-Mail"
+      }
+    };
+
     function setBuyLang(lang) {
-      const link = STRIPE_LINKS[lang] || STRIPE_LINKS.fr;
-      document.getElementById('btn-buy-stripe').href = link;
+      if (!STRIPE_LINKS[lang]) lang = 'fr';
+      document.getElementById('btn-buy-stripe').href = STRIPE_LINKS[lang];
+      const dict = BUY_I18N[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const v = dict[el.getAttribute('data-i18n')];
+        if (v != null) el.textContent = v;
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const v = dict[el.getAttribute('data-i18n-html')];
+        if (v != null) el.innerHTML = v;
+      });
+      document.documentElement.lang = lang;
       document.querySelectorAll('.buy-lang').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
@@ -229,7 +482,7 @@
 
     // Langue initiale : celle choisie précédemment (index.html ou cette page), sinon FR
     const initialLang = localStorage.getItem('aq-lang') || 'fr';
-    setBuyLang(STRIPE_LINKS[initialLang] ? initialLang : 'fr');
+    setBuyLang(initialLang);
   </script>
 </body>
 </html>
