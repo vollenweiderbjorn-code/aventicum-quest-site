@@ -31,13 +31,50 @@
     }
     .buy-hook strong { color: var(--aurum); font-weight: 400; }
     .buy-card {
+      --card-pad: clamp(1.75rem, 5vw, 3.25rem);
       width: 100%;
       max-width: 580px;
       border: 1px solid var(--border-strong);
       border-radius: 4px;
-      padding: clamp(1.75rem, 5vw, 3.25rem);
+      padding: var(--card-pad);
       background: var(--pierre);
       box-shadow: 0 24px 80px rgba(0,0,0,.5);
+      overflow: hidden;
+    }
+
+    /* ── Bandeau visuel plein cadre en haut de la carte ── */
+    .buy-hero {
+      position: relative;
+      margin: calc(var(--card-pad) * -1) calc(var(--card-pad) * -1) 2rem;
+      height: clamp(140px, 30vw, 210px);
+    }
+    .buy-hero img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 42%;
+      display: block;
+      filter: saturate(.82) brightness(.92);
+    }
+    .buy-hero::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(9,9,10,.35) 0%,
+        rgba(28,22,18,0) 32%,
+        rgba(28,22,18,.55) 74%,
+        var(--pierre) 100%);
+    }
+    .buy-hero-cap {
+      position: absolute;
+      left: 0; right: 0; bottom: .7rem;
+      z-index: 1;
+      text-align: center;
+      font-family: 'Space Mono', monospace;
+      font-size: .55rem;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--aurum-dim);
     }
     .buy-stele { margin-bottom: 1.75rem; }
 
@@ -269,6 +306,10 @@
     <p class="buy-hook" data-i18n-html="hook"><strong>L'aigle sacrée a disparu.</strong> L'Empereur arrive dans 120 minutes. Le Sénat compte sur vous.</p>
 
     <div class="buy-card">
+      <div class="buy-hero">
+        <img src="images/hero.jpg" alt="" aria-hidden="true" loading="eager" width="1920" height="1440">
+        <span class="buy-hero-cap" data-i18n="hero-cap">Avenches · L'Helvétie romaine</span>
+      </div>
       <div class="buy-stele">
         <div class="stele">
           <div class="stele-rule"><span class="stele-diamond">◆</span></div>
@@ -385,6 +426,7 @@
         back: "← Retour à l'accueil",
         hook: "<strong>L'aigle sacrée a disparu.</strong> L'Empereur arrive dans 120 minutes. Le Sénat compte sur vous.",
         title: "Votre Partie",
+        'hero-cap': "Avenches · L'Helvétie romaine",
         'b-lieu': "📍 Avenches · Suisse",
         'b-monu': "🗺 8 monuments",
         'b-time': "⏱ 120 min",
@@ -411,6 +453,7 @@
         back: "← Back to home",
         hook: "<strong>The sacred eagle has vanished.</strong> The Emperor arrives in 120 minutes. The Senate is counting on you.",
         title: "Your Game",
+        'hero-cap': "Avenches · Roman Helvetia",
         'b-lieu': "📍 Avenches · Switzerland",
         'b-monu': "🗺 8 monuments",
         'b-time': "⏱ 120 min",
@@ -437,6 +480,7 @@
         back: "← Zurück zur Startseite",
         hook: "<strong>Der heilige Adler ist verschwunden.</strong> Der Kaiser kommt in 120 Minuten. Der Senat zählt auf Sie.",
         title: "Ihr Spiel",
+        'hero-cap': "Avenches · Das römische Helvetien",
         'b-lieu': "📍 Avenches · Schweiz",
         'b-monu': "🗺 8 Monumente",
         'b-time': "⏱ 120 Min",
