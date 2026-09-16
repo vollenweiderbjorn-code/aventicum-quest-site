@@ -26,6 +26,20 @@
       fr: 'Politique de confidentialité — Aventicum Quest',
       en: 'Privacy Policy — Aventicum Quest',
       de: 'Datenschutzerklärung — Aventicum Quest'
+    },
+    avenches: {
+      fr: 'Que faire à Avenches ? Activités romaines et en famille',
+      en: 'What to Do in Avenches? Roman Sites and Family Activities',
+      de: 'Was tun in Avenches? Römische Stätten und Familienausflüge'
+    }
+  };
+
+  /* ── Meta descriptions par page (balise <meta name="description">) ─ */
+  const PAGE_DESCS = {
+    avenches: {
+      fr: 'Avenches, capitale romaine de la Suisse : arènes, musée romain et une chasse au trésor grandeur nature pour toute la famille. Découvrez le programme.',
+      en: 'Avenches, the Roman capital of Switzerland: an amphitheatre, a Roman museum, and a life-size treasure hunt for the whole family. Discover the program.',
+      de: 'Avenches, die römische Hauptstadt der Schweiz: Amphitheater, Römermuseum und eine Schatzsuche in Originalgröße für die ganze Familie. Entdecken Sie das Programm.'
     }
   };
 
@@ -41,6 +55,37 @@
       'foot-cgv':      'Conditions générales',
       'foot-conf':     'Confidentialité',
       'foot-copy':     '© 2026 Aventicum Quest · Avenches, Suisse',
+      /* ── Page "Que faire à Avenches" ── */
+      'foot-guide':    'Que faire à Avenches',
+      'av-overline':   'Avenches · Vaud · Suisse',
+      'av-h1':         'Que faire à Avenches : entre histoire romaine et aventure en famille',
+      'av-home':       'Accueil',
+      'av-bc':         'Que faire à Avenches',
+      'av-lead':       'Nichée sur les rives du lac de Morat, Avenches n\'est pas une ville vaudoise comme les autres. Il y a deux mille ans, elle s\'appelait Aventicum et c\'était la capitale de l\'Helvétie romaine, avec près de vingt mille habitants.',
+      'av-p1':         'Aujourd\'hui encore, les vestiges de cette époque marquent chaque coin de rue : un amphithéâtre où l\'on donne toujours des spectacles, un temple, des thermes, une tour qui domine la ville. Avenches se visite comme on tourne les pages d\'un livre d\'histoire, sauf qu\'ici on peut marcher dedans.',
+      'av-h2-1':       'L\'Avenches romaine, à ciel ouvert',
+      'av-s1-p1':      'Le cœur de la ville reste organisé autour des vestiges d\'Aventicum. Les arènes, l\'un des amphithéâtres romains les mieux conservés de Suisse, accueillent encore aujourd\'hui des événements en plein air, dont un festival d\'opéra chaque été. À quelques minutes à pied, le sanctuaire du Cigognier et sa tour intriguent par leur silhouette isolée dans la campagne. Le musée romain d\'Avenches, installé dans la tour du château, retrace deux millénaires d\'histoire à travers des objets retrouvés sur place.',
+      'av-s1-p2':      'Se balader dans Avenches, c\'est croiser ces vestiges presque par hasard, au détour d\'une ruelle ou d\'un jardin.',
+      'av-h2-2':       'Aventicum Quest : la chasse au trésor romaine d\'Avenches',
+      'av-f-p1':       'Pour découvrir cette histoire autrement qu\'en lisant des panneaux, <strong>Aventicum Quest</strong> propose un jeu de piste outdoor en pleine ville. Le principe : suivre huit stations réparties dans Avenches, résoudre des énigmes inspirées de l\'histoire romaine de la cité, et progresser jusqu\'au dénouement final.',
+      'av-f-p2':       'Le jeu se fait en autonomie, avec son téléphone, à son propre rythme, sur un parcours pensé pour les familles comme pour les adultes qui veulent tester leur sens de l\'observation. Comptez environ deux heures pour boucler les huit énigmes, entre les arènes, le centre historique et les autres sites emblématiques de la ville. Le <a class="inline-link" href="index.html#stations">parcours des huit stations est visible sur la carte interactive</a> de la page d\'accueil.',
+      'av-f-p3':       'C\'est une manière concrète de transformer une balade en aventure, sans avoir besoin de réserver un guide ou de suivre un horaire fixe.',
+      'av-b-lieu':     '📍 Avenches · Suisse',
+      'av-b-stations': '🗺 8 stations',
+      'av-b-time':     '⏱ ~120 min',
+      'av-b-fam':      '👥 En famille',
+      'av-h2-3':       'Une sortie idéale en famille',
+      'av-s3-p1':      'Avenches se prête particulièrement bien à une sortie avec des enfants. La ville est petite, largement piétonne dans son centre historique, et les distances entre les sites romains se parcourent facilement à pied. Aventicum Quest a été conçu justement pour ce public : les énigmes mélangent observation, logique et un peu de culture générale, sans jamais devenir trop difficiles pour les plus jeunes.',
+      'av-s3-p2':      'C\'est aussi une bonne option pour un anniversaire, une sortie d\'école, ou simplement une après-midi différente pendant les vacances.',
+      'av-h2-4':       'Autres idées de balade à Avenches',
+      'av-list-intro': 'Au-delà des vestiges romains, Avenches offre :',
+      'av-li1':        'Une promenade le long du lac de Morat, à quelques minutes du centre.',
+      'av-li2':        'Le vieux bourg médiéval, avec ses maisons anciennes et ses remparts.',
+      'av-li3':        'Des terrasses et petits commerces locaux où faire une pause après la visite.',
+      'av-cta-h':      'Prêt à explorer Avenches autrement ?',
+      'av-cta-p':      'Que vous soyez de passage pour la journée ou que vous viviez dans la région, Aventicum Quest est une façon différente de découvrir Avenches : active, ludique, et ancrée dans deux mille ans d\'histoire.',
+      'av-cta-ghost':  'Découvrir le jeu',
+      'av-cta-buy':    'Réserver ma partie →',
 
       /* ── Mentions légales ── */
       'ml-title':      'Mentions légales',
@@ -130,6 +175,37 @@
       'foot-cgv':      'Terms & Conditions',
       'foot-conf':     'Privacy',
       'foot-copy':     '© 2026 Aventicum Quest · Avenches, Switzerland',
+      /* ── Page "What to do in Avenches" ── */
+      'foot-guide':    'What to do in Avenches',
+      'av-overline':   'Avenches · Vaud · Switzerland',
+      'av-h1':         'What to Do in Avenches: Roman History Meets Family Adventure',
+      'av-home':       'Home',
+      'av-bc':         'What to do in Avenches',
+      'av-lead':       'Set on the shores of Lake Morat, Avenches is not just another town in Vaud. Two thousand years ago, it was called Aventicum and served as the capital of Roman Helvetia, home to nearly twenty thousand people.',
+      'av-p1':         'The traces of that era still shape almost every corner of town today: an amphitheatre still used for performances, a temple, thermal baths, a tower overlooking the city. Visiting Avenches feels like walking through a history book, except here you can actually walk inside it.',
+      'av-h2-1':       'Roman Avenches, Under the Open Sky',
+      'av-s1-p1':      'The heart of the town is still organized around the remains of Aventicum. The arena, one of the best-preserved Roman amphitheatres in Switzerland, still hosts open-air events today, including an annual summer opera festival. A short walk away, the Cigognier sanctuary and its tower stand out with their striking silhouette in the open countryside. The Roman Museum of Avenches, housed in the castle tower, traces two thousand years of history through objects found on site.',
+      'av-s1-p2':      'Walking through Avenches means stumbling upon these remains almost by chance, around a corner or in a garden.',
+      'av-h2-2':       'Aventicum Quest: The Roman Treasure Hunt of Avenches',
+      'av-f-p1':       'To discover this history in a more hands-on way than reading plaques, <strong>Aventicum Quest</strong> offers an outdoor treasure hunt right through town. The idea: follow eight stations spread across Avenches, solve puzzles inspired by the city\'s Roman past, and progress toward the final reveal.',
+      'av-f-p2':       'The game is self-guided, played on your own phone, at your own pace, along a route designed for families as much as for adults who enjoy testing their observation skills. Expect around two hours to complete all eight puzzles, moving between the arena, the historic center, and the other landmark sites of the city. The <a class="inline-link" href="index.html#stations">route of the eight stations is shown on the interactive map</a> on the homepage.',
+      'av-f-p3':       'It\'s a concrete way to turn a simple walk into an adventure, with no guide to book and no fixed schedule to follow.',
+      'av-b-lieu':     '📍 Avenches · Switzerland',
+      'av-b-stations': '🗺 8 stations',
+      'av-b-time':     '⏱ ~120 min',
+      'av-b-fam':      '👥 As a family',
+      'av-h2-3':       'A Great Family Outing',
+      'av-s3-p1':      'Avenches lends itself particularly well to a day out with children. The town is small, largely pedestrian in its historic center, and the distances between the Roman sites are easy to cover on foot. Aventicum Quest was designed with exactly this audience in mind: the puzzles mix observation, logic, and a bit of general knowledge, without ever becoming too difficult for younger players.',
+      'av-s3-p2':      'It also makes a great choice for a birthday, a school outing, or simply a different kind of afternoon during the holidays.',
+      'av-h2-4':       'Other Things to See in Avenches',
+      'av-list-intro': 'Beyond the Roman remains, Avenches also offers:',
+      'av-li1':        'A lakeside walk along Lake Morat, just minutes from the center.',
+      'av-li2':        'The medieval old town, with its historic houses and remaining ramparts.',
+      'av-li3':        'Terraces and small local shops for a break after your visit.',
+      'av-cta-h':      'Ready to Explore Avenches Differently?',
+      'av-cta-p':      'Whether you\'re visiting for the day or living in the region, Aventicum Quest is a different way to discover Avenches: active, playful, and rooted in two thousand years of history.',
+      'av-cta-ghost':  'Discover the game',
+      'av-cta-buy':    'Book my game →',
 
       'ml-title':      'Legal notice',
       'ml-h1':         'Site publisher',
@@ -216,6 +292,37 @@
       'foot-cgv':      'AGB',
       'foot-conf':     'Datenschutz',
       'foot-copy':     '© 2026 Aventicum Quest · Avenches, Schweiz',
+      /* ── Seite "Was tun in Avenches" ── */
+      'foot-guide':    'Was in Avenches unternehmen',
+      'av-overline':   'Avenches · Waadt · Schweiz',
+      'av-h1':         'Was tun in Avenches: Römische Geschichte trifft auf Familienabenteuer',
+      'av-home':       'Startseite',
+      'av-bc':         'Was in Avenches unternehmen',
+      'av-lead':       'Am Ufer des Murtensees gelegen, ist Avenches keine gewöhnliche Waadtländer Stadt. Vor zweitausend Jahren hiess sie Aventicum und war die Hauptstadt des römischen Helvetiens, mit fast zwanzigtausend Einwohnern.',
+      'av-p1':         'Die Spuren dieser Epoche prägen noch heute fast jede Straßenecke: ein Amphitheater, in dem weiterhin Veranstaltungen stattfinden, ein Tempel, Thermen, ein Turm, der die Stadt überragt. Avenches zu besuchen ist wie das Durchblättern eines Geschichtsbuchs, nur dass man hier tatsächlich hineingehen kann.',
+      'av-h2-1':       'Das römische Avenches, unter freiem Himmel',
+      'av-s1-p1':      'Das Herz der Stadt ist noch immer um die Überreste von Aventicum organisiert. Die Arena, eines der am besten erhaltenen römischen Amphitheater der Schweiz, ist bis heute Schauplatz von Freiluftveranstaltungen, darunter ein jährliches Opernfestival im Sommer. Wenige Minuten entfernt beeindrucken das Cigognier-Heiligtum und sein Turm mit ihrer markanten Silhouette inmitten der Landschaft. Das Römermuseum von Avenches, untergebracht im Turm des Schlosses, erzählt zweitausend Jahre Geschichte anhand von vor Ort gefundenen Objekten.',
+      'av-s1-p2':      'Ein Spaziergang durch Avenches bedeutet, fast zufällig auf diese Überreste zu stossen, um eine Ecke oder in einem Garten.',
+      'av-h2-2':       'Aventicum Quest: Die römische Schatzsuche von Avenches',
+      'av-f-p1':       'Um diese Geschichte anders zu entdecken als nur durch das Lesen von Schildern, bietet <strong>Aventicum Quest</strong> eine Outdoor-Schatzsuche mitten in der Stadt. Das Prinzip: acht über Avenches verteilte Stationen ablaufen, Rätsel lösen, die von der römischen Geschichte der Stadt inspiriert sind, und bis zur finalen Auflösung vordringen.',
+      'av-f-p2':       'Das Spiel wird eigenständig gespielt, mit dem eigenen Handy, im eigenen Tempo, auf einer Strecke, die sowohl für Familien als auch für Erwachsene gedacht ist, die ihren Beobachtungssinn testen möchten. Rechnen Sie mit rund zwei Stunden, um alle acht Rätsel zu lösen, zwischen der Arena, der Altstadt und den weiteren markanten Orten der Stadt. Die <a class="inline-link" href="index.html#stations">Strecke der acht Stationen ist auf der interaktiven Karte</a> der Startseite zu sehen.',
+      'av-f-p3':       'Es ist eine konkrete Art, aus einem Spaziergang ein Abenteuer zu machen, ganz ohne Führung oder festen Zeitplan.',
+      'av-b-lieu':     '📍 Avenches · Schweiz',
+      'av-b-stations': '🗺 8 Stationen',
+      'av-b-time':     '⏱ ~120 Min',
+      'av-b-fam':      '👥 Als Familie',
+      'av-h2-3':       'Ein ideales Familienausflugsziel',
+      'av-s3-p1':      'Avenches eignet sich besonders gut für einen Ausflug mit Kindern. Die Stadt ist klein, im historischen Zentrum weitgehend autofrei, und die Entfernungen zwischen den römischen Stätten lassen sich leicht zu Fuss zurücklegen. Aventicum Quest wurde genau für dieses Publikum entwickelt: Die Rätsel kombinieren Beobachtung, Logik und etwas Allgemeinwissen, ohne für jüngere Teilnehmer je zu schwierig zu werden.',
+      'av-s3-p2':      'Es eignet sich auch gut für einen Geburtstag, einen Schulausflug oder einfach einen anderen Nachmittag in den Ferien.',
+      'av-h2-4':       'Weitere Ausflugsideen in Avenches',
+      'av-list-intro': 'Neben den römischen Überresten bietet Avenches:',
+      'av-li1':        'Einen Spaziergang am Murtensee, wenige Minuten vom Zentrum entfernt.',
+      'av-li2':        'Die mittelalterliche Altstadt mit ihren historischen Häusern und erhaltenen Stadtmauern.',
+      'av-li3':        'Terrassen und kleine lokale Geschäfte für eine Pause nach dem Besuch.',
+      'av-cta-h':      'Bereit, Avenches anders zu entdecken?',
+      'av-cta-p':      'Ob auf der Durchreise oder als Einwohner der Region: Aventicum Quest ist eine andere Art, Avenches zu entdecken: aktiv, spielerisch und in zweitausend Jahren Geschichte verwurzelt.',
+      'av-cta-ghost':  'Spiel entdecken',
+      'av-cta-buy':    'Meine Partie buchen →',
 
       'ml-title':      'Impressum',
       'ml-h1':         'Betreiber der Website',
@@ -321,6 +428,13 @@
     document.documentElement.lang = lang;
     const titles = PAGE_TITLES[page] || PAGE_TITLES.ml;
     document.title = titles[lang] || titles.fr;
+
+    // Meta description (uniquement si la page en définit une par langue)
+    const descs = PAGE_DESCS[page];
+    if (descs) {
+      const meta = document.querySelector('meta[name="description"]');
+      if (meta && (descs[lang] || descs.fr)) meta.setAttribute('content', descs[lang] || descs.fr);
+    }
 
     localStorage.setItem('aq-lang', lang);
   }
