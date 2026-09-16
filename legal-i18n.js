@@ -39,7 +39,7 @@
     avenches: {
       fr: 'Avenches, capitale romaine de la Suisse : arènes, musée romain et une chasse au trésor grandeur nature pour toute la famille. Découvrez le programme.',
       en: 'Avenches, the Roman capital of Switzerland: an amphitheatre, a Roman museum, and a life-size treasure hunt for the whole family. Discover the program.',
-      de: 'Avenches, die römische Hauptstadt der Schweiz: Amphitheater, Römermuseum und eine Schatzsuche in Originalgröße für die ganze Familie. Entdecken Sie das Programm.'
+      de: 'Avenches, die römische Hauptstadt der Schweiz: Amphitheater, Römermuseum und eine Schatzsuche in Originalgrösse für die ganze Familie. Entdecken Sie das Programm.'
     }
   };
 
@@ -303,7 +303,7 @@
       'av-home':       'Startseite',
       'av-bc':         'Was in Avenches unternehmen',
       'av-lead':       'Am Ufer des Murtensees gelegen, ist Avenches keine gewöhnliche Waadtländer Stadt. Vor zweitausend Jahren hiess sie Aventicum und war die Hauptstadt des römischen Helvetiens, mit fast zwanzigtausend Einwohnern.',
-      'av-p1':         'Die Spuren dieser Epoche prägen noch heute fast jede Straßenecke: ein Amphitheater, in dem weiterhin Veranstaltungen stattfinden, ein Tempel, Thermen, ein Turm, der die Stadt überragt. Avenches zu besuchen ist wie das Durchblättern eines Geschichtsbuchs, nur dass man hier tatsächlich hineingehen kann.',
+      'av-p1':         'Die Spuren dieser Epoche prägen noch heute fast jede Strassenecke: ein Amphitheater, in dem weiterhin Veranstaltungen stattfinden, ein Tempel, Thermen, ein Turm, der die Stadt überragt. Avenches zu besuchen ist wie das Durchblättern eines Geschichtsbuchs, nur dass man hier tatsächlich hineingehen kann.',
       'av-h2-1':       'Das römische Avenches, unter freiem Himmel',
       'av-s1-p1':      'Das Herz der Stadt ist noch immer um die Überreste von Aventicum organisiert. Die Arena, eines der am besten erhaltenen römischen Amphitheater der Schweiz, ist bis heute Schauplatz von Freiluftveranstaltungen, darunter ein jährliches Opernfestival im Sommer. Wenige Minuten entfernt beeindrucken das Cigognier-Heiligtum und sein Turm mit ihrer markanten Silhouette inmitten der Landschaft. Das Römermuseum von Avenches, untergebracht im Turm des Schlosses, erzählt zweitausend Jahre Geschichte anhand von vor Ort gefundenen Objekten.',
       'av-s1-p2':      'Ein Spaziergang durch Avenches bedeutet, fast zufällig auf diese Überreste zu stossen, um eine Ecke oder in einem Garten.',
