@@ -154,6 +154,16 @@ body::before {
   align-items: center;
   gap: 1.5rem;
 }
+.nav-link {
+  font-family: 'Space Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--scriptum-dim);
+  white-space: nowrap;
+  transition: color .2s;
+}
+.nav-link:hover { color: var(--aurum); }
 .nav-langs {
   display: flex;
   gap: .25rem;
@@ -1346,6 +1356,7 @@ footer {
 
 @media (max-width: 640px) {
   :root { --nav-h: 60px; }
+  .nav-link      { display: none; }
   .nav-logo-text { font-size: .62rem; }
   .nav-logo-sub  { display: none; }
   .nav-langs     { gap: .15rem; }
