@@ -57,6 +57,7 @@
       'foot-copy':     '© 2026 Aventicum Quest · Avenches, Suisse',
       /* ── Page "Que faire à Avenches" ── */
       'foot-guide':    'Que faire à Avenches',
+      'foot-family':   'Jeu de piste en famille',
       'av-overline':   'Avenches · Vaud · Suisse',
       'av-h1':         'Que faire à Avenches : entre histoire romaine et aventure en famille',
       'av-home':       'Accueil',
@@ -179,6 +180,7 @@
       'foot-copy':     '© 2026 Aventicum Quest · Avenches, Switzerland',
       /* ── Page "What to do in Avenches" ── */
       'foot-guide':    'What to do in Avenches',
+      'foot-family':   'Family treasure hunt',
       'av-overline':   'Avenches · Vaud · Switzerland',
       'av-h1':         'What to Do in Avenches: Roman History Meets Family Adventure',
       'av-home':       'Home',
@@ -298,6 +300,7 @@
       'foot-copy':     '© 2026 Aventicum Quest · Avenches, Schweiz',
       /* ── Seite "Was tun in Avenches" ── */
       'foot-guide':    'Was in Avenches unternehmen',
+      'foot-family':   'Schnitzeljagd für Familien',
       'av-overline':   'Avenches · Waadt · Schweiz',
       'av-h1':         'Was tun in Avenches: Römische Geschichte trifft auf Familienabenteuer',
       'av-home':       'Startseite',
