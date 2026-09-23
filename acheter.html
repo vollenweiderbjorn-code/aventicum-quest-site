@@ -279,6 +279,94 @@
       text-align: center;
     }
 
+    /* ── Calculateur de prix ── */
+    .buy-calc {
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 1.25rem 1.1rem 1.1rem;
+      margin-bottom: 2rem;
+      background: rgba(201,164,78,.04);
+    }
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .6rem 0;
+    }
+    .calc-label { font-family: 'EB Garamond', serif; font-size: 1.05rem; color: var(--scriptum-dim); }
+    .calc-label small {
+      display: block;
+      font-family: 'Space Mono', monospace;
+      font-size: .55rem;
+      letter-spacing: .08em;
+      color: var(--terre);
+      margin-top: .12rem;
+    }
+    .calc-stepper { display: flex; align-items: center; gap: .5rem; }
+    .calc-btn {
+      width: 2rem; height: 2rem;
+      display: grid; place-items: center;
+      border: 1px solid var(--border-strong);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--aurum);
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem; line-height: 1;
+      cursor: pointer;
+      transition: background .15s, color .15s, border-color .15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .calc-btn:hover { border-color: var(--aurum); }
+    .calc-btn:active { background: var(--aurum); color: var(--obsidian); }
+    .calc-btn:disabled { opacity: .3; cursor: default; }
+    .calc-val {
+      min-width: 1.6rem; text-align: center;
+      font-family: 'Cinzel', serif; font-size: 1.05rem; font-weight: 700; color: var(--scriptum);
+    }
+    .calc-total {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-top: .5rem; padding-top: .9rem;
+      border-top: 1px solid var(--border);
+      font-family: 'Space Mono', monospace; font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--terre);
+    }
+    .calc-total-val { font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 700; letter-spacing: normal; color: var(--aurum); text-transform: none; }
+    .calc-note {
+      font-family: 'EB Garamond', serif; font-style: italic; font-size: .82rem;
+      color: var(--terre); text-align: center; margin-top: .8rem; line-height: 1.4;
+    }
+
+    /* ── Moyens de paiement ── */
+    .pay-methods { display: flex; justify-content: center; align-items: center; gap: .5rem; margin-top: .1rem; }
+    .pay-chip {
+      display: inline-flex; align-items: center; justify-content: center;
+      height: 24px; padding: 0 7px;
+      background: #f4f4f6; border-radius: 4px;
+    }
+    .pay-chip svg { display: block; height: 15px; width: auto; }
+
+    /* ── CTA collant mobile ── */
+    .buy-sticky {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 60;
+      display: none;
+      align-items: center;
+      gap: .8rem;
+      padding: .7rem .9rem calc(.7rem + env(safe-area-inset-bottom, 0px));
+      background: rgba(9,9,10,.92);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid var(--border-strong);
+    }
+    .buy-sticky .btn-buy { flex: 1; padding: .95rem 1rem; box-shadow: none; }
+    .buy-sticky-price {
+      font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.05rem; color: var(--aurum);
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .buy-sticky.show { display: flex; }
+      .buy-page { padding-bottom: 6rem; }
+    }
+
     .buy-back {
       display: inline-flex;
       align-items: center;
@@ -384,7 +472,42 @@
         </div>
       </div>
 
-      <p class="buy-example" data-i18n-html="example">Exemple — une famille de 4 (2 adultes + 2 enfants) : <strong>40 CHF</strong></p>
+      <div class="buy-calc">
+        <p class="buy-sec-label" data-i18n="calc-title" style="margin-bottom:.6rem">Combien de joueurs ?</p>
+        <div class="calc-row">
+          <div class="calc-label">
+            <span data-i18n="calc-adult">Adultes</span>
+            <small data-i18n="calc-adult-age">16 ans et + · 12 CHF</small>
+          </div>
+          <div class="calc-stepper">
+            <button type="button" class="calc-btn" data-step="adult" data-dir="-1" aria-label="Retirer un adulte">−</button>
+            <span class="calc-val" id="calcAdult">2</span>
+            <button type="button" class="calc-btn" data-step="adult" data-dir="1" aria-label="Ajouter un adulte">+</button>
+          </div>
+        </div>
+        <div class="calc-row">
+          <div class="calc-label">
+            <span data-i18n="calc-child">Enfants</span>
+            <small data-i18n="calc-child-age">6 – 15 ans · 8 CHF</small>
+          </div>
+          <div class="calc-stepper">
+            <button type="button" class="calc-btn" data-step="child" data-dir="-1" aria-label="Retirer un enfant">−</button>
+            <span class="calc-val" id="calcChild">2</span>
+            <button type="button" class="calc-btn" data-step="child" data-dir="1" aria-label="Ajouter un enfant">+</button>
+          </div>
+        </div>
+        <div class="calc-total">
+          <span data-i18n="calc-total">Total</span>
+          <span class="calc-total-val"><span id="calcTotal">40</span> CHF</span>
+        </div>
+        <p class="calc-note" data-i18n="calc-note">Vous choisirez le nombre exact de codes à l'étape de paiement.</p>
+      </div>
+
+      <div class="btn-buy-group" style="margin-bottom:2.25rem">
+        <a href="https://buy.stripe.com/aFa00j5Uz7Oa4LFa42c7u01" class="btn-buy js-stripe-link" data-i18n="cta" aria-label="Payer via Stripe">
+          Obtenir mon code de jeu →
+        </a>
+      </div>
 
       <div class="qty-note">
         <p data-i18n-html="qty">
@@ -427,13 +550,26 @@
       </ul>
 
       <div class="btn-buy-group">
-        <a id="btn-buy-stripe" href="https://buy.stripe.com/aFa00j5Uz7Oa4LFa42c7u01" class="btn-buy" data-i18n="cta" aria-label="Payer via Stripe">
+        <a id="btn-buy-stripe" href="https://buy.stripe.com/aFa00j5Uz7Oa4LFa42c7u01" class="btn-buy js-stripe-link" data-i18n="cta" aria-label="Payer via Stripe">
           Obtenir mon code de jeu →
         </a>
         <p class="buy-secure" data-i18n="secure">🔒 Paiement sécurisé · Stripe · Reçu par e-mail</p>
+        <div class="pay-methods" aria-label="Cartes acceptées">
+          <span class="pay-chip" title="Visa">
+            <svg viewBox="0 0 48 16" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Visa"><text x="0" y="13" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" font-style="italic" fill="#1434CB" letter-spacing="1">VISA</text></svg>
+          </span>
+          <span class="pay-chip" title="Mastercard">
+            <svg viewBox="0 0 34 22" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mastercard"><circle cx="13" cy="11" r="9" fill="#EB001B"/><circle cx="21" cy="11" r="9" fill="#F79E1B" fill-opacity="0.9"/></svg>
+          </span>
+        </div>
       </div>
     </div>
   </main>
+
+  <div class="buy-sticky" id="buySticky" aria-hidden="true">
+    <span class="buy-sticky-price"><span id="stickyTotal">40</span> CHF</span>
+    <a href="https://buy.stripe.com/aFa00j5Uz7Oa4LFa42c7u01" class="btn-buy js-stripe-link" data-i18n="cta-short" aria-label="Payer via Stripe">Obtenir mon code →</a>
+  </div>
 
   <script>
     const nav = document.getElementById('nav');
@@ -473,7 +609,13 @@
         a3: "Aucune application à installer — tout se joue dans le navigateur.",
         a4: "Dès 8 ans — parfait en famille ou entre amis.",
         cta: "Obtenir mon code de jeu →",
-        secure: "🔒 Paiement sécurisé · Stripe · Reçu par e-mail"
+        'cta-short': "Obtenir mon code →",
+        secure: "🔒 Paiement sécurisé · Stripe · Reçu par e-mail",
+        'calc-title': "Combien de joueurs ?",
+        'calc-adult': "Adultes", 'calc-adult-age': "16 ans et + · 12 CHF",
+        'calc-child': "Enfants", 'calc-child-age': "6 – 15 ans · 8 CHF",
+        'calc-total': "Total",
+        'calc-note': "Vous choisirez le nombre exact de codes à l'étape de paiement."
       },
       en: {
         back: "← Back to home",
@@ -500,7 +642,13 @@
         a3: "No app to install — everything runs in your browser.",
         a4: "Ages 8 and up — perfect for family or friends.",
         cta: "Get my game code →",
-        secure: "🔒 Secure payment · Stripe · E-mail receipt"
+        'cta-short': "Get my code →",
+        secure: "🔒 Secure payment · Stripe · E-mail receipt",
+        'calc-title': "How many players?",
+        'calc-adult': "Adults", 'calc-adult-age': "16 and over · CHF 12",
+        'calc-child': "Children", 'calc-child-age': "ages 6 – 15 · CHF 8",
+        'calc-total': "Total",
+        'calc-note': "You'll choose the exact number of codes at checkout."
       },
       de: {
         back: "← Zurück zur Startseite",
@@ -527,13 +675,19 @@
         a3: "Keine App nötig — alles läuft im Browser.",
         a4: "Ab 8 Jahren — ideal für Familie oder Freunde.",
         cta: "Meinen Spielcode erhalten →",
-        secure: "🔒 Sichere Zahlung · Stripe · Beleg per E-Mail"
+        'cta-short': "Code erhalten →",
+        secure: "🔒 Sichere Zahlung · Stripe · Beleg per E-Mail",
+        'calc-title': "Wie viele Spieler?",
+        'calc-adult': "Erwachsene", 'calc-adult-age': "ab 16 Jahren · 12 CHF",
+        'calc-child': "Kinder", 'calc-child-age': "6 – 15 Jahre · 8 CHF",
+        'calc-total': "Total",
+        'calc-note': "Die genaue Anzahl der Codes wählen Sie beim Bezahlen."
       }
     };
 
     function setBuyLang(lang) {
       if (!STRIPE_LINKS[lang]) lang = 'fr';
-      document.getElementById('btn-buy-stripe').href = STRIPE_LINKS[lang];
+      document.querySelectorAll('.js-stripe-link').forEach(function (a) { a.href = STRIPE_LINKS[lang]; });
       const dict = BUY_I18N[lang];
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const v = dict[el.getAttribute('data-i18n')];
@@ -554,11 +708,48 @@
     const initialLang = localStorage.getItem('aq-lang') || 'fr';
     setBuyLang(initialLang);
 
-    /* ── Suivi de conversion : clic sur le bouton de paiement ── */
-    document.getElementById('btn-buy-stripe').addEventListener('click', function () {
-      try {
-        window.plausible('Checkout: clic Payer', { props: { langue: document.documentElement.lang || 'fr' } });
-      } catch (e) {}
+    /* ── Calculateur de prix ── */
+    const PRICE = { adult: 12, child: 8 };
+    const qty = { adult: 2, child: 2 };
+    function updateCalc() {
+      qty.adult = Math.max(0, qty.adult);
+      qty.child = Math.max(0, qty.child);
+      document.getElementById('calcAdult').textContent = qty.adult;
+      document.getElementById('calcChild').textContent = qty.child;
+      const total = qty.adult * PRICE.adult + qty.child * PRICE.child;
+      document.getElementById('calcTotal').textContent = total;
+      document.getElementById('stickyTotal').textContent = total;
+      document.querySelectorAll('.calc-btn[data-dir="-1"]').forEach(function (b) {
+        b.disabled = qty[b.dataset.step] <= 0;
+      });
+    }
+    document.querySelectorAll('.calc-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        qty[btn.dataset.step] += parseInt(btn.dataset.dir, 10);
+        updateCalc();
+      });
+    });
+    updateCalc();
+
+    /* ── CTA collant mobile : visible tant qu'on n'a pas atteint le bouton principal ── */
+    const sticky = document.getElementById('buySticky');
+    const mainCta = document.getElementById('btn-buy-stripe');
+    function updateSticky() {
+      const r = mainCta.getBoundingClientRect();
+      const mainVisible = r.top < (window.innerHeight - 40) && r.bottom > 0;
+      sticky.classList.toggle('show', !mainVisible);
+    }
+    window.addEventListener('scroll', updateSticky, { passive: true });
+    window.addEventListener('resize', updateSticky);
+    updateSticky();
+
+    /* ── Suivi de conversion : clic sur un bouton de paiement ── */
+    document.querySelectorAll('.js-stripe-link').forEach(function (a) {
+      a.addEventListener('click', function () {
+        try {
+          window.plausible('Checkout: clic Payer', { props: { langue: document.documentElement.lang || 'fr' } });
+        } catch (e) {}
+      });
     });
   </script>
 </body>
