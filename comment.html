@@ -6,7 +6,9 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <title>Comment ça marche — Aventicum Quest | Operatio Aquila</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Comment ça marche — Aventicum Quest</title>
   <meta name="description" content="Découvrez comment fonctionne Aventicum Quest : achat en ligne, réception de votre code, et résolution des 8 énigmes à travers les monuments d'Avenches.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://aventicumquest.ch/comment.html">
@@ -24,765 +26,673 @@
   <meta name="twitter:description" content="Achat en ligne, code par e-mail, puis 8 énigmes dans les monuments romains d'Avenches.">
   <meta name="twitter:image" content="https://aventicumquest.ch/images/og_image.jpg">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* ══════════════════════════════════
-       PAGE HERO (inner pages)
-    ══════════════════════════════════ */
-    .page-hero {
-      background: var(--dark);
-      padding: 140px 2rem 80px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .page-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at center top, rgba(201,168,76,0.1) 0%, transparent 55%);
-    }
-    .page-hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 1px;
-      background: var(--border);
-    }
-    .page-hero-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .page-hero h1 {
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      color: var(--cream);
-      margin-bottom: 0.75rem;
-    }
-    .page-hero p {
-      font-size: 1.15rem;
-      font-style: italic;
-      color: rgba(250,247,240,0.6);
-    }
-    .breadcrumb {
-      font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: rgba(201,168,76,0.55);
-      margin-bottom: 1.5rem;
-    }
-    .breadcrumb a { color: inherit; }
-    .breadcrumb a:hover { color: var(--gold); }
-
-    /* ══════════════════════════════════
-       STEPS SECTION
-    ══════════════════════════════════ */
-    .section-steps {
-      padding: 6rem 2rem;
-      background: var(--cream);
-    }
-    .steps-inner {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .steps-header {
-      text-align: center;
-      margin-bottom: 5rem;
-    }
-    .steps-header h2 {
-      font-size: clamp(1.7rem, 4vw, 2.5rem);
-    }
-
-    .steps-timeline {
-      position: relative;
-    }
-    /* Vertical line */
-    .steps-timeline::before {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      left: 38px;
-      width: 1px;
-      background: linear-gradient(var(--gold), rgba(201,168,76,0.1));
-      opacity: 0.4;
-    }
-
-    .step-item {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 2rem;
-      margin-bottom: 3.5rem;
-      position: relative;
-    }
-    .step-item:last-child { margin-bottom: 0; }
-
-    .step-marker {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      position: relative;
-      z-index: 1;
-    }
-    .step-circle {
-      width: 76px; height: 76px;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-      background: var(--dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      flex-shrink: 0;
-      position: relative;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .step-item:hover .step-circle {
-      transform: scale(1.08);
-      box-shadow: 0 0 25px rgba(201,168,76,0.25);
-    }
-    .step-circle-num {
-      position: absolute;
-      top: -8px; right: -8px;
-      width: 22px; height: 22px;
-      border-radius: 50%;
-      background: var(--gold);
-      font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
-      font-weight: 700;
-      color: var(--dark);
-      display: flex; align-items: center; justify-content: center;
-    }
-
-    .step-body {
-      padding-top: 0.5rem;
-    }
-    .step-body h3 {
-      font-size: 1.25rem;
-      letter-spacing: 0.06em;
-      color: var(--dark);
-      margin-bottom: 0.75rem;
-    }
-    .step-body p {
-      color: var(--text-light);
-      line-height: 1.7;
-      margin-bottom: 1rem;
-      font-size: 1.05rem;
-    }
-    .step-detail {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .step-tag {
-      font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.75rem;
-      border: 1px solid rgba(201,168,76,0.35);
-      color: var(--gold);
-      background: rgba(201,168,76,0.06);
-      border-radius: 2px;
-    }
-
-    /* ══════════════════════════════════
-       WHAT'S INCLUDED
-    ══════════════════════════════════ */
-    .section-includes {
-      padding: 5rem 2rem;
-      background: var(--dark-mid);
-    }
-    .includes-inner {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .includes-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-    .includes-header h2 {
-      color: var(--cream);
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
-    }
-
-    .includes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1.5px;
-      background: rgba(201,168,76,0.15);
-    }
-    .include-item {
-      background: var(--dark);
-      padding: 2rem;
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      transition: background 0.2s;
-    }
-    .include-item:hover {
-      background: var(--dark-light);
-    }
-    .include-icon {
-      font-size: 1.5rem;
-      flex-shrink: 0;
-    }
-    .include-text h4 {
-      font-size: 0.85rem;
-      letter-spacing: 0.06em;
-      color: var(--cream);
-      margin-bottom: 0.3rem;
-    }
-    .include-text p {
-      font-size: 0.88rem;
-      color: rgba(250,247,240,0.5);
-      line-height: 1.5;
-    }
-
-    /* ══════════════════════════════════
-       FAQ
-    ══════════════════════════════════ */
-    .section-faq {
-      padding: 6rem 2rem;
-      background: var(--cream-dark);
-    }
-    .faq-inner {
-      max-width: 750px;
-      margin: 0 auto;
-    }
-    .faq-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-    .faq-header h2 {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-    }
-
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      background: rgba(201,168,76,0.15);
-    }
-    .faq-item {
-      background: var(--cream);
-      overflow: hidden;
-    }
-    .faq-question {
-      width: 100%;
-      padding: 1.4rem 1.75rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      cursor: pointer;
-      background: none;
-      border: none;
-      text-align: left;
-      font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
-      letter-spacing: 0.04em;
-      color: var(--dark);
-      transition: background 0.2s;
-    }
-    .faq-question:hover {
-      background: rgba(201,168,76,0.06);
-    }
-    .faq-item.open .faq-question {
-      color: var(--gold-dark);
-      background: rgba(201,168,76,0.06);
-    }
-    .faq-chevron {
-      width: 20px; height: 20px;
-      flex-shrink: 0;
-      transition: transform 0.3s;
-      opacity: 0.5;
-    }
-    .faq-item.open .faq-chevron {
-      transform: rotate(180deg);
-      opacity: 1;
-    }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s;
-      padding: 0 1.75rem;
-    }
-    .faq-item.open .faq-answer {
-      max-height: 300px;
-      padding: 0 1.75rem 1.5rem;
-    }
-    .faq-answer p {
-      color: var(--text-light);
-      font-size: 1rem;
-      line-height: 1.7;
-      border-left: 2px solid var(--gold);
-      padding-left: 1rem;
-      margin-left: 0.25rem;
-    }
-
-    /* ══════════════════════════════════
-       TIPS BANNER
-    ══════════════════════════════════ */
-    .section-tips {
-      padding: 4rem 2rem;
-      background: var(--dark);
-      text-align: center;
-    }
-    .tips-inner {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .tips-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 2rem;
-      margin-top: 2.5rem;
-    }
-    .tip-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .tip-icon { font-size: 2rem; }
-    .tip-text {
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(250,247,240,0.5);
-      text-align: center;
-    }
-
-    /* ══════════════════════════════════
-       ANIMATIONS
-    ══════════════════════════════════ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(25px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 640px) {
-      .steps-timeline::before { left: 28px; }
-      .step-item { grid-template-columns: 60px 1fr; gap: 1.25rem; }
-      .step-circle { width: 60px; height: 60px; font-size: 1.4rem; }
-    }
-  </style>
   <!-- Privacy-friendly analytics by Plausible -->
   <script async src="https://plausible.io/js/pa-ELx2kKywInJ5MKZ1ST8au.js"></script>
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
   </script>
+  <style>
+    /* ── En-tête de page ─────────────────────────────────────── */
+    #cm-hero {
+      padding: calc(var(--nav-h) + 3rem) 1.5rem 3.5rem;
+      text-align: center;
+      background: radial-gradient(120% 60% at 50% 0%, rgba(201,164,78,.07), transparent 60%), var(--obsidian);
+    }
+    .cm-breadcrumb {
+      font-family: 'Space Mono', monospace;
+      font-size: .6rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--terre);
+      margin-bottom: 1.75rem;
+    }
+    .cm-breadcrumb a { color: inherit; }
+    .cm-breadcrumb a:hover { color: var(--aurum); }
+    .cm-hero-sub {
+      max-width: 46ch;
+      margin: 1.1rem auto 0;
+      font-style: italic;
+      color: var(--scriptum-dim);
+    }
+
+    /* ── Étapes ──────────────────────────────────────────────── */
+    #cm-steps {
+      background: var(--pierre);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .cm-steps-list {
+      max-width: 720px;
+      margin: 3rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+    .cm-step {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 1.5rem;
+    }
+    .cm-step-marker {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      border: 1px solid var(--border-strong);
+      background: var(--obsidian);
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+      position: relative;
+    }
+    .cm-step-num {
+      position: absolute;
+      top: -6px; right: -6px;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--aurum);
+      color: var(--obsidian);
+      font-family: 'Cinzel', serif;
+      font-size: .6rem;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+    }
+    .cm-step h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      letter-spacing: .04em;
+      color: var(--scriptum);
+      margin-bottom: .6rem;
+    }
+    .cm-step p {
+      color: var(--scriptum-dim);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    .cm-step-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+    /* ── Ce qui est inclus ───────────────────────────────────── */
+    #cm-includes { background: var(--obsidian); }
+    .cm-includes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      margin-top: 2.5rem;
+    }
+    .cm-include {
+      background: var(--pierre);
+      padding: 1.75rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .cm-include-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .cm-include h4 {
+      font-family: 'Cinzel', serif;
+      font-size: .82rem;
+      letter-spacing: .05em;
+      color: var(--scriptum);
+      margin-bottom: .35rem;
+    }
+    .cm-include p {
+      font-size: .9rem;
+      color: var(--scriptum-dim);
+      line-height: 1.55;
+    }
+
+    /* ── Conseils pratiques ──────────────────────────────────── */
+    #cm-tips {
+      background: var(--pierre-mid);
+      text-align: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .cm-tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cm-tip { display: flex; flex-direction: column; align-items: center; gap: .6rem; }
+    .cm-tip-icon { font-size: 1.7rem; }
+    .cm-tip-text {
+      font-family: 'Space Mono', monospace;
+      font-size: .6rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--scriptum-dim);
+      text-align: center;
+    }
+
+    /* ── FAQ ─────────────────────────────────────────────────── */
+    #cm-faq { background: var(--obsidian); }
+    .cm-faq-more {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    .cm-faq-more p { color: var(--scriptum-dim); font-style: italic; margin-bottom: 1.25rem; }
+    .cm-faq-btn {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: .62rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--aurum);
+      border: 1px solid var(--border-strong);
+      padding: .7rem 1.4rem;
+      border-radius: 2px;
+      transition: color .2s, border-color .2s;
+    }
+    .cm-faq-btn:hover { color: var(--scriptum); border-color: var(--aurum); }
+
+    /* ── CTA final ───────────────────────────────────────────── */
+    #cm-cta {
+      background: var(--pierre);
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    #cm-cta .cm-cta-tag {
+      color: var(--scriptum-dim);
+      font-style: italic;
+      margin: 1.1rem auto 2rem;
+      max-width: 44ch;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ═══════════════ NAV ═══════════════ -->
-  <nav class="nav" id="mainNav">
-    <a href="index.html" class="nav-logo">
-      Aventicum Quest
-      <span>Operatio Aquila</span>
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <nav id="nav" class="scrolled" role="navigation" aria-label="Navigation principale">
+    <a href="index.html" class="nav-logo" aria-label="Aventicum Quest Accueil">
+      <img src="images/logo.svg" alt="" class="nav-logo-img" width="36" height="36" aria-hidden="true">
+      <span class="nav-logo-text">
+        Aventicum Quest
+        <span class="nav-logo-sub">Operatio Aquila</span>
+      </span>
     </a>
-    <button class="nav-burger" id="burger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="comment.html" class="active">Comment ça marche</a></li>
-      <li><a href="acheter.html" class="nav-cta">Réserver — 29 CHF</a></li>
-    </ul>
+    <div class="nav-right">
+      <div class="lang-select" role="group" aria-label="Langue / Language / Sprache">
+        <button type="button" class="lang-toggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Choisir la langue">
+          <span class="lang-globe" aria-hidden="true">🌐</span>
+          <span class="lang-current">FR</span>
+          <span class="lang-caret" aria-hidden="true">▾</span>
+        </button>
+        <ul class="lang-menu" role="listbox" aria-label="Langue">
+          <li><button type="button" class="lang-opt" role="option" data-lang="fr" aria-selected="true" onclick="setLang('fr')"><span>Français</span><span class="lang-opt-code">FR</span></button></li>
+          <li><button type="button" class="lang-opt" role="option" data-lang="de" aria-selected="false" onclick="setLang('de')"><span>Deutsch</span><span class="lang-opt-code">DE</span></button></li>
+          <li><button type="button" class="lang-opt" role="option" data-lang="en" aria-selected="false" onclick="setLang('en')"><span>English</span><span class="lang-opt-code">EN</span></button></li>
+        </ul>
+      </div>
+      <a href="acheter.html" class="nav-cta" data-i18n="nav-cta">Acheter</a>
+    </div>
   </nav>
 
-  <!-- ═══════════════ PAGE HERO ═══════════════ -->
-  <section class="page-hero">
-    <div class="page-hero-inner">
-      <p class="breadcrumb"><a href="index.html">Accueil</a> &nbsp;/&nbsp; Comment ça marche</p>
-      <h1>Comment ça marche ?</h1>
-      <div class="ornament"><span class="ornament-symbol" style="color:var(--gold)">⚔</span></div>
-      <p>En 5 étapes simples, de l'achat jusqu'à la révélation finale.</p>
-    </div>
-  </section>
+  <main>
 
-  <!-- ═══════════════ STEPS ═══════════════ -->
-  <section class="section-steps">
-    <div class="steps-inner">
-      <div class="steps-header reveal">
-        <span class="section-label">Le déroulement</span>
-        <h2>Votre mission en 5 étapes</h2>
-        <div class="ornament"><span class="ornament-symbol">✦</span></div>
-        <p style="max-width:500px; margin:0 auto; color:var(--text-light); font-style:italic;">
-          Aucune coordination préalable requise. Tout ce dont vous avez besoin arrive sur votre téléphone.
-        </p>
+    <!-- ── En-tête ────────────────────────────────────────────── -->
+    <section id="cm-hero">
+      <p class="cm-breadcrumb"><a href="index.html" data-i18n="bc-home">Accueil</a> &nbsp;/&nbsp; <span data-i18n="bc-current">Comment ça marche</span></p>
+      <div class="stele">
+        <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+        <h1 style="font-family:'Cinzel',serif;font-size:clamp(1.6rem,4.5vw,2.6rem);font-weight:700;letter-spacing:.08em;color:var(--scriptum);text-shadow:0 2px 8px rgba(0,0,0,.7)" data-i18n="hero-h1">Comment ça marche ?</h1>
+        <div class="stele-rule"><span class="stele-diamond">◆</span></div>
       </div>
+      <p class="cm-hero-sub" data-i18n="hero-sub">De l'achat en ligne à la dernière énigme, en cinq étapes.</p>
+    </section>
 
-      <div class="steps-timeline">
-
-        <div class="step-item reveal">
-          <div class="step-marker">
-            <div class="step-circle">
-              💳
-              <span class="step-circle-num">1</span>
-            </div>
-          </div>
-          <div class="step-body">
-            <h3>Achat en ligne</h3>
-            <p>
-              Rendez-vous sur notre page d'achat et réglez vos 29 CHF par carte bancaire, Twint ou Apple Pay.
-              La transaction prend moins de 2 minutes. Aucun compte à créer.
-            </p>
-            <div class="step-detail">
-              <span class="step-tag">29 CHF par groupe</span>
-              <span class="step-tag">Paiement sécurisé</span>
-              <span class="step-tag">Twint · Apple Pay · Carte</span>
-            </div>
-          </div>
+    <!-- ── Étapes ─────────────────────────────────────────────── -->
+    <section id="cm-steps">
+      <div class="section-inner">
+        <div class="stele reveal">
+          <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+          <h2 data-i18n="steps-h2">Votre mission en 5 étapes</h2>
+          <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+          <p class="stele-sub" data-i18n="steps-sub">Aucune coordination préalable requise</p>
         </div>
 
-        <div class="step-item reveal">
-          <div class="step-marker">
-            <div class="step-circle">
-              📧
-              <span class="step-circle-num">2</span>
-            </div>
-          </div>
-          <div class="step-body">
-            <h3>Réception de votre code</h3>
-            <p>
-              Immédiatement après le paiement, vous recevez par e-mail votre code personnel à 6 chiffres
-              ainsi que le lien vers l'application web de jeu. Aucun téléchargement d'application nécessaire —
-              tout se joue dans votre navigateur.
-            </p>
-            <div class="step-detail">
-              <span class="step-tag">Envoi instantané</span>
-              <span class="step-tag">Valable 6 mois</span>
-              <span class="step-tag">Aucune app à installer</span>
-            </div>
-          </div>
-        </div>
+        <div class="cm-steps-list">
 
-        <div class="step-item reveal">
-          <div class="step-marker">
-            <div class="step-circle">
-              📍
-              <span class="step-circle-num">3</span>
+          <div class="cm-step reveal">
+            <div class="cm-step-marker">💳<span class="cm-step-num">1</span></div>
+            <div>
+              <h3 data-i18n="s1-h3">Achat en ligne</h3>
+              <p data-i18n="s1-p">Achetez votre code directement sur ce site, dans la langue de votre choix. Le prix est par joueur : 12 CHF dès 18 ans, 8 CHF de 5 à 17 ans, gratuit pour les moins de 5 ans. Vous recevez un seul code par commande, valable pour toute votre équipe. La transaction prend moins de 2 minutes, aucun compte à créer.</p>
+              <div class="cm-step-tags">
+                <span class="badge" data-i18n="s1-t1">12 CHF adulte</span>
+                <span class="badge" data-i18n="s1-t2">8 CHF enfant</span>
+                <span class="badge" data-i18n="s1-t3">💳 Visa · Mastercard</span>
+                <span class="badge" data-i18n="s1-t5">1 code pour l'équipe</span>
+              </div>
             </div>
           </div>
-          <div class="step-body">
-            <h3>Arriver à Avenches</h3>
-            <p>
-              Rejoignez Avenches quand vous le souhaitez — le week-end, en semaine, seul, en famille ou entre amis.
-              Le point de départ est l'Hôtel de Ville, en plein cœur d'Avenches, accessible à pied depuis la gare.
-              Entrez votre code pour lancer la mission.
-            </p>
-            <div class="step-detail">
-              <span class="step-tag">Départ libre</span>
-              <span class="step-tag">Accessible en train</span>
-              <span class="step-tag">Parking gratuit disponible</span>
-            </div>
-          </div>
-        </div>
 
-        <div class="step-item reveal">
-          <div class="step-marker">
-            <div class="step-circle">
-              🧩
-              <span class="step-circle-num">4</span>
+          <div class="cm-step reveal">
+            <div class="cm-step-marker">✉️<span class="cm-step-num">2</span></div>
+            <div>
+              <h3 data-i18n="s2-h3">Réception de votre code</h3>
+              <p data-i18n="s2-p">Immédiatement après le paiement, vous recevez par e-mail votre code personnel au format AQUILA-XXXXXXXX, ainsi que le lien vers le jeu. Aucune application à installer, tout se joue dans votre navigateur.</p>
+              <div class="cm-step-tags">
+                <span class="badge" data-i18n="s2-t1">Envoi instantané</span>
+                <span class="badge" data-i18n="s2-t2">Valable 6 mois</span>
+                <span class="badge" data-i18n="s2-t3">Aucune app à installer</span>
+              </div>
             </div>
           </div>
-          <div class="step-body">
-            <h3>Résoudre les 8 énigmes</h3>
-            <p>
-              L'application vous guide de monument en monument. À chaque étape, une énigme mêlant histoire
-              romaine, observation et logique. Les indices sont visibles sur place — nul besoin d'avoir étudié
-              l'Antiquité. En cas de blocage, un système d'indices progressifs vous aide sans tout révéler.
-            </p>
-            <div class="step-detail">
-              <span class="step-tag">8 énigmes</span>
-              <span class="step-tag">7 monuments</span>
-              <span class="step-tag">Indices disponibles</span>
-              <span class="step-tag">90 minutes environ</span>
-            </div>
-          </div>
-        </div>
 
-        <div class="step-item reveal">
-          <div class="step-marker">
-            <div class="step-circle">
-              🦅
-              <span class="step-circle-num">5</span>
+          <div class="cm-step reveal">
+            <div class="cm-step-marker">📍<span class="cm-step-num">3</span></div>
+            <div>
+              <h3 data-i18n="s3-h3">Arriver à Avenches</h3>
+              <p data-i18n="s3-p">Rejoignez Avenches quand vous le souhaitez, le week-end ou en semaine, seul, en famille ou entre amis. Le point de départ est l'Hôtel de Ville d'Avenches, accessible à pied depuis la gare. Entrez votre code pour lancer la mission.</p>
+              <div class="cm-step-tags">
+                <span class="badge" data-i18n="s3-t1">Départ libre</span>
+                <span class="badge" data-i18n="s3-t2">Accessible depuis la gare</span>
+              </div>
             </div>
           </div>
-          <div class="step-body">
-            <h3>La révélation finale</h3>
-            <p>
-              Au terme des 7 monuments, votre équipe assemble les fragments collectés pour déchiffrer
-              l'emplacement secret de l'aigle. La révélation vous emmène vers un lieu méconnu d'Avenches
-              pour un dénouement… digne d'un légionnaire.
-            </p>
-            <div class="step-detail">
-              <span class="step-tag">Fin scénarisée</span>
-              <span class="step-tag">Photo souvenir</span>
-              <span class="step-tag">Certifié légionnaire</span>
-            </div>
-          </div>
-        </div>
 
+          <div class="cm-step reveal">
+            <div class="cm-step-marker">🧩<span class="cm-step-num">4</span></div>
+            <div>
+              <h3 data-i18n="s4-h3">Résoudre les 8 énigmes</h3>
+              <p data-i18n="s4-p">Le jeu vous guide de monument en monument à travers les 8 stations du parcours. Chaque énigme mêle observation, logique et histoire romaine : les indices sont sur place, nul besoin d'avoir étudié l'Antiquité. En cas de blocage, un système d'indices progressifs vous aide sans tout révéler.</p>
+              <div class="cm-step-tags">
+                <span class="badge" data-i18n="s4-t1">8 énigmes</span>
+                <span class="badge" data-i18n="s4-t2">8 monuments</span>
+                <span class="badge" data-i18n="s4-t3">Indices disponibles</span>
+                <span class="badge" data-i18n="s4-t4">≈ 120 minutes</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cm-step reveal">
+            <div class="cm-step-marker">🦅<span class="cm-step-num">5</span></div>
+            <div>
+              <h3 data-i18n="s5-h3">Le dénouement</h3>
+              <p data-i18n="s5-p">Au terme du parcours, votre équipe rassemble ce qu'elle a trouvé pour retrouver l'aigle de la Legio XXI Rapax avant l'arrivée de l'Empereur Hadrien. Mission accomplie, et une autre façon d'avoir découvert Avenches.</p>
+              <div class="cm-step-tags">
+                <span class="badge" data-i18n="s5-t1">Fin scénarisée</span>
+                <span class="badge" data-i18n="s5-t2">Mission accomplie</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══════════════ INCLUS ═══════════════ -->
-  <section class="section-includes">
-    <div class="includes-inner">
-      <div class="includes-header reveal">
-        <span class="section-label" style="color:var(--gold)">Ce qui est inclus</span>
-        <h2>Tout pour 29 CHF</h2>
-        <div class="ornament"><span class="ornament-symbol" style="color:var(--gold)">✦</span></div>
-      </div>
-      <div class="includes-grid reveal">
-        <div class="include-item">
-          <span class="include-icon">🧩</span>
-          <div class="include-text">
-            <h4>12 Énigmes originales</h4>
-            <p>Scénarisées autour de l'histoire réelle d'Aventicum.</p>
-          </div>
+    <!-- ── Ce qui est inclus ──────────────────────────────────── -->
+    <section id="cm-includes">
+      <div class="section-inner">
+        <div class="stele reveal">
+          <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+          <h2 data-i18n="inc-h2">Un code, une aventure complète</h2>
+          <div class="stele-rule"><span class="stele-diamond">◆</span></div>
         </div>
-        <div class="include-item">
-          <span class="include-icon">📱</span>
-          <div class="include-text">
-            <h4>Application web guidée</h4>
-            <p>Interface intuitive, fonctionne sur tout smartphone.</p>
+
+        <div class="cm-includes-grid reveal">
+          <div class="cm-include">
+            <span class="cm-include-icon">🧩</span>
+            <div><h4 data-i18n="inc1-h4">8 énigmes originales</h4><p data-i18n="inc1-p">Scénarisées autour de l'histoire réelle d'Aventicum.</p></div>
           </div>
-        </div>
-        <div class="include-item">
-          <span class="include-icon">💬</span>
-          <div class="include-text">
-            <h4>Narration immersive</h4>
-            <p>Histoire et dialogues en français, fiches historiques intégrées.</p>
+          <div class="cm-include">
+            <span class="cm-include-icon">📱</span>
+            <div><h4 data-i18n="inc2-h4">Application web guidée</h4><p data-i18n="inc2-p">Fonctionne dans le navigateur de votre smartphone, sans rien installer.</p></div>
           </div>
-        </div>
-        <div class="include-item">
-          <span class="include-icon">🔦</span>
-          <div class="include-text">
-            <h4>Système d'indices</h4>
-            <p>3 niveaux d'indice par énigme pour ne jamais rester bloqué.</p>
+          <div class="cm-include">
+            <span class="cm-include-icon">🔎</span>
+            <div><h4 data-i18n="inc3-h4">Trois formats d'énigmes</h4><p data-i18n="inc3-p">Photo à observer, choix multiple, ou indice à retrouver sur place.</p></div>
           </div>
-        </div>
-        <div class="include-item">
-          <span class="include-icon">🕐</span>
-          <div class="include-text">
-            <h4>Minuteur intégré</h4>
-            <p>La tension des 90 minutes simulée en temps réel.</p>
+          <div class="cm-include">
+            <span class="cm-include-icon">🗺️</span>
+            <div><h4 data-i18n="inc4-h4">Carte interactive du parcours</h4><p data-i18n="inc4-p">Les 8 stations reliées sur une carte, consultable avant de partir.</p></div>
           </div>
-        </div>
-        <div class="include-item">
-          <span class="include-icon">🏆</span>
-          <div class="include-text">
-            <h4>Certificat de fin</h4>
-            <p>Diplôme de légionnaire téléchargeable à partager.</p>
+          <div class="cm-include">
+            <span class="cm-include-icon">💬</span>
+            <div><h4 data-i18n="inc5-h4">Narration immersive</h4><p data-i18n="inc5-p">L'enquête de l'aigle volée, en français, anglais et allemand.</p></div>
+          </div>
+          <div class="cm-include">
+            <span class="cm-include-icon">✉️</span>
+            <div><h4 data-i18n="inc6-h4">Une question ?</h4><p data-i18n-html="inc6-p">Écrivez-nous à <a href="mailto:info@aventicumquest.ch" style="color:var(--aurum)">info@aventicumquest.ch</a>.</p></div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══════════════ TIPS ═══════════════ -->
-  <section class="section-tips">
-    <div class="tips-inner">
-      <span class="section-label">Conseils pratiques</span>
-      <h2 style="color:var(--cream); font-size: clamp(1.4rem,3.5vw,2rem); reveal">Préparez votre mission</h2>
-      <div class="tips-grid reveal">
-        <div class="tip-item">
-          <span class="tip-icon">☀️</span>
-          <span class="tip-text">Idéal en fin d'après-midi ou le matin</span>
+    <!-- ── Conseils pratiques ─────────────────────────────────── -->
+    <section id="cm-tips">
+      <div class="section-inner">
+        <div class="stele reveal">
+          <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+          <h2 data-i18n="tips-h2">Préparez votre mission</h2>
+          <div class="stele-rule"><span class="stele-diamond">◆</span></div>
         </div>
-        <div class="tip-item">
-          <span class="tip-icon">👟</span>
-          <span class="tip-text">Chaussures de marche recommandées</span>
-        </div>
-        <div class="tip-item">
-          <span class="tip-icon">🔋</span>
-          <span class="tip-text">Chargez votre téléphone avant</span>
-        </div>
-        <div class="tip-item">
-          <span class="tip-icon">👥</span>
-          <span class="tip-text">Idéal pour 2 à 6 personnes</span>
+        <div class="cm-tips-grid reveal">
+          <div class="cm-tip"><span class="cm-tip-icon">☀️</span><span class="cm-tip-text" data-i18n="tip1">À faire de préférence en journée</span></div>
+          <div class="cm-tip"><span class="cm-tip-icon">👟</span><span class="cm-tip-text" data-i18n="tip2">Chaussures de marche confortables</span></div>
+          <div class="cm-tip"><span class="cm-tip-icon">🔋</span><span class="cm-tip-text" data-i18n="tip3">Chargez votre téléphone avant de partir</span></div>
+          <div class="cm-tip"><span class="cm-tip-icon">🌦️</span><span class="cm-tip-text" data-i18n="tip4">Jouable par tous les temps, sauf orage</span></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══════════════ FAQ ═══════════════ -->
-  <section class="section-faq">
-    <div class="faq-inner">
-      <div class="faq-header reveal">
-        <span class="section-label">Questions fréquentes</span>
-        <h2>Tout ce que vous voulez savoir</h2>
-        <div class="ornament"><span class="ornament-symbol">⚔</span></div>
+    <!-- ── FAQ ────────────────────────────────────────────────── -->
+    <section id="cm-faq">
+      <div class="section-inner">
+        <div class="stele reveal">
+          <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+          <h2 data-i18n="faq-h2">Tout ce que vous voulez savoir</h2>
+          <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+        </div>
+
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary><span class="faq-q" data-i18n="faq-q1">Combien de temps dure la mission ?</span></summary>
+            <div class="faq-a"><p data-i18n="faq-a1">Comptez environ 120 minutes. Ce n'est pas un compte à rebours qui vous arrête : vous avancez à votre rythme et terminez l'enquête quand vous le souhaitez.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q" data-i18n="faq-q2">À partir de quel âge peut-on jouer ?</span></summary>
+            <div class="faq-a"><p data-i18n="faq-a2">Il n'y a pas d'âge minimum fixé : c'est une sortie pensée pour être partagée en famille. Le tarif enfant (8 CHF) s'applique de 5 à 17 ans, gratuit pour les moins de 5 ans, et le tarif adulte (12 CHF) dès 18 ans.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q" data-i18n="faq-q3">Que se passe-t-il en cas de mauvais temps ?</span></summary>
+            <div class="faq-a"><p data-i18n="faq-a3">Le jeu se pratique en extérieur. Sous une pluie légère il reste jouable, prévoyez une tenue adaptée. En cas d'orage, mieux vaut reporter : votre code est valable 6 mois, vous pouvez revenir un autre jour.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q" data-i18n="faq-q4">Puis-je obtenir un remboursement ?</span></summary>
+            <div class="faq-a"><p data-i18n-html="faq-a4">Le code, s'il n'a pas encore été activé, peut être remboursé dans les 14 jours suivant l'achat, conformément au droit de rétractation prévu par l'art. 40d CO. Une fois le code activé, aucun remboursement n'est possible. Pour toute demande, écrivez à <a href="mailto:info@aventicumquest.ch">info@aventicumquest.ch</a>.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q" data-i18n="faq-q5">En quelles langues le jeu est-il disponible ?</span></summary>
+            <div class="faq-a"><p data-i18n="faq-a5">Aventicum Quest est disponible en français, en anglais et en allemand. Vous choisissez votre langue au lancement de la partie.</p></div>
+          </details>
+        </div>
+
+        <div class="cm-faq-more reveal">
+          <p data-i18n="faq-more">D'autres questions ?</p>
+          <a href="mailto:info@aventicumquest.ch" class="cm-faq-btn" data-i18n="faq-contact">Contacter l'équipe</a>
+        </div>
       </div>
+    </section>
 
-      <div class="faq-list reveal">
-
-        <div class="faq-item">
-          <button class="faq-question">
-            Combien de temps dure la mission ?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="6 9 12 15 18 9"/>
-            </svg>
-          </button>
-          <div class="faq-answer">
-            <p>
-              Le parcours est conçu pour durer environ 90 minutes — le temps imparti dans le scénario.
-              En réalité, selon votre rythme et le temps que vous prenez pour admirer les monuments,
-              comptez entre 75 et 120 minutes. Les groupes très rapides terminent en 65 minutes.
-              Il n'y a pas de limite de temps stricte : vous jouez à votre rythme.
-            </p>
-          </div>
+    <!-- ── CTA final ──────────────────────────────────────────── -->
+    <section id="cm-cta">
+      <div class="section-inner" style="max-width:640px">
+        <div class="stele reveal">
+          <div class="stele-rule"><span class="stele-diamond">◆</span></div>
+          <h2 data-i18n="cta-h2">Lancez votre mission</h2>
+          <div class="stele-rule"><span class="stele-diamond">◆</span></div>
         </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            À partir de quel âge peut-on jouer ?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="6 9 12 15 18 9"/>
-            </svg>
-          </button>
-          <div class="faq-answer">
-            <p>
-              L'expérience est accessible dès 10 ans avec un adulte. Les enfants à partir de 12 ans
-              s'en sortent généralement très bien en autonomie. Pour les familles avec des enfants
-              plus jeunes, le parcours reste jouable — c'est l'occasion d'une découverte guidée
-              d'Avenches. Les adultes qui aiment l'histoire romaine ou les puzzles seront particulièrement
-              dans leur élément.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            Que se passe-t-il en cas de mauvais temps ?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="6 9 12 15 18 9"/>
-            </svg>
-          </button>
-          <div class="faq-answer">
-            <p>
-              L'expérience se déroule en extérieur — prévoyez une veste imperméable si le temps est
-              incertain. Votre code est valable 6 mois : si vous décidez de reporter votre visite
-              en raison de la météo, revenez simplement à une date plus clémente. Les énigmes
-              fonctionnent par toutes les météos, y compris sous la pluie.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            Puis-je obtenir un remboursement ?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="6 9 12 15 18 9"/>
-            </svg>
-          </button>
-          <div class="faq-answer">
-            <p>
-              Les codes non activés peuvent être remboursés dans les 14 jours suivant l'achat,
-              conformément au droit de rétractation européen. Une fois votre code activé (c'est-à-dire
-              dès que vous entrez votre code pour démarrer la mission), aucun remboursement n'est
-              possible. Pour toute demande, écrivez à info@aventicumquest.ch.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            En quelles langues est disponible le jeu ?
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="6 9 12 15 18 9"/>
-            </svg>
-          </button>
-          <div class="faq-answer">
-            <p>
-              Aventicum Quest est actuellement disponible en <strong>français</strong> et en
-              <strong>allemand</strong>. Une version anglaise est prévue pour l'automne 2026.
-              Lors de l'achat, vous choisissez votre langue — votre code sera lié à cette langue.
-              Si vous avez un besoin spécifique, contactez-nous à info@aventicumquest.ch.
-            </p>
-          </div>
-        </div>
-
+        <p class="cm-cta-tag reveal" data-i18n="cta-tag">Un code, huit énigmes, environ 120 minutes pour retrouver l'aigle avant l'arrivée de l'Empereur.</p>
+        <a href="acheter.html" class="btn-primary reveal" data-i18n="cta-btn">Obtenir mon code de jeu →</a>
       </div>
+    </section>
 
-      <div style="text-align:center; margin-top:3rem;" class="reveal">
-        <p style="color:var(--text-light); font-style:italic; margin-bottom:1.5rem;">
-          D'autres questions ? Nous répondons sous 24 heures.
-        </p>
-        <a href="mailto:info@aventicumquest.ch" class="btn btn-outline">Contacter l'équipe</a>
-      </div>
-    </div>
-  </section>
+  </main>
 
-  <!-- ═══════════════ CTA ═══════════════ -->
-  <section style="padding: 5rem 2rem; background: var(--dark); text-align:center; position:relative; overflow:hidden;">
-    <div style="position:absolute; inset:0; background: radial-gradient(ellipse at center, rgba(201,168,76,0.07) 0%, transparent 65%);"></div>
-    <div style="position:relative; max-width:600px; margin:0 auto;">
-      <span class="section-label">Prêt à partir</span>
-      <h2 style="color:var(--cream); font-size:clamp(1.8rem,5vw,3rem); margin-bottom:1rem;" class="reveal">Lancez la mission</h2>
-      <p style="color:rgba(250,247,240,0.55); font-style:italic; margin-bottom:2.5rem;" class="reveal">
-        Un code. Une ville. 90 minutes. L'histoire de Rome n'attend pas.
-      </p>
-      <a href="acheter.html" class="btn btn-gold reveal">Rejoindre la mission — 29 CHF</a>
-    </div>
-  </section>
-
-  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <!-- ── Footer ─────────────────────────────────────────────────── -->
   <footer>
-    <p class="footer-logo">AVENTICUM QUEST</p>
-    <p class="footer-sub">OPERATIO AQUILA</p>
-    <nav class="footer-links">
-      <a href="index.html">Accueil</a>
-      <a href="comment.html">Comment ça marche</a>
-      <a href="acheter.html">Acheter</a>
-      <a href="mailto:info@aventicumquest.ch">Contact</a>
-    </nav>
-    <div class="footer-divider"></div>
-    <p class="copyright">© 2026 Aventicum Quest — Tous droits réservés · Avenches, Suisse</p>
+    <div class="footer-inner">
+      <p class="footer-logo">Aventicum Quest</p>
+      <nav class="footer-links" aria-label="Liens légaux">
+        <a href="que-faire-a-avenches.html" data-i18n="foot-guide">Que faire à Avenches</a>
+        <span class="footer-sep" aria-hidden="true">·</span>
+        <a href="jeu-de-piste-famille-suisse-romande.html" data-i18n="foot-family">Jeu de piste en famille</a>
+        <span class="footer-sep" aria-hidden="true">·</span>
+        <a href="mentions-legales.html" data-i18n="foot-ml">Mentions légales</a>
+        <span class="footer-sep" aria-hidden="true">·</span>
+        <a href="cgv.html" data-i18n="foot-cgv">Conditions générales</a>
+        <span class="footer-sep" aria-hidden="true">·</span>
+        <a href="confidentialite.html" data-i18n="foot-conf">Confidentialité</a>
+      </nav>
+      <p class="footer-copy" data-i18n="foot-copy">© 2026 Aventicum Quest · Avenches, Suisse · aventicumquest.ch</p>
+    </div>
   </footer>
 
   <script>
-    // Nav
-    const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
-    const burger = document.getElementById('burger');
-    const navLinks = document.getElementById('navLinks');
-    burger.addEventListener('click', () => {
-      burger.classList.toggle('open');
-      navLinks.classList.toggle('open');
-    });
+    /* ══════════════════════════════════════════════════════════════
+       TRANSLATIONS
+    ══════════════════════════════════════════════════════════════ */
+    const PAGE_TITLES = {
+      fr: 'Comment ça marche — Aventicum Quest',
+      en: 'How it works — Aventicum Quest',
+      de: 'So funktioniert\'s — Aventicum Quest'
+    };
+    const PAGE_DESCS = {
+      fr: 'Découvrez comment fonctionne Aventicum Quest : achat en ligne, réception de votre code, et résolution des 8 énigmes à travers les monuments d\'Avenches.',
+      en: 'How Aventicum Quest works: buy online, get your code by email, and solve 8 riddles across the Roman monuments of Avenches.',
+      de: 'So funktioniert Aventicum Quest: online kaufen, Code per E-Mail erhalten und 8 Rätsel bei den römischen Monumenten von Avenches lösen.'
+    };
 
-    // FAQ accordion
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.closest('.faq-item');
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
+    const T = {
+      fr: {
+        'nav-cta': 'Acheter',
+        'bc-home': 'Accueil',
+        'bc-current': 'Comment ça marche',
+        'hero-h1': 'Comment ça marche ?',
+        'hero-sub': 'De l\'achat en ligne à la dernière énigme, en cinq étapes.',
+        'steps-h2': 'Votre mission en 5 étapes',
+        'steps-sub': 'Aucune coordination préalable requise',
+        's1-h3': 'Achat en ligne',
+        's1-p': 'Achetez votre code directement sur ce site, dans la langue de votre choix. Le prix est par joueur : 12 CHF dès 18 ans, 8 CHF de 5 à 17 ans, gratuit pour les moins de 5 ans. Vous recevez un seul code par commande, valable pour toute votre équipe. La transaction prend moins de 2 minutes, aucun compte à créer.',
+        's1-t1': '12 CHF adulte', 's1-t2': '8 CHF enfant', 's1-t3': '💳 Visa · Mastercard', 's1-t5': '1 code pour l\'équipe',
+        's2-h3': 'Réception de votre code',
+        's2-p': 'Immédiatement après le paiement, vous recevez par e-mail votre code personnel au format AQUILA-XXXXXXXX, ainsi que le lien vers le jeu. Aucune application à installer, tout se joue dans votre navigateur.',
+        's2-t1': 'Envoi instantané', 's2-t2': 'Valable 6 mois', 's2-t3': 'Aucune app à installer',
+        's3-h3': 'Arriver à Avenches',
+        's3-p': 'Rejoignez Avenches quand vous le souhaitez, le week-end ou en semaine, seul, en famille ou entre amis. Le point de départ est l\'Hôtel de Ville d\'Avenches, accessible à pied depuis la gare. Entrez votre code pour lancer la mission.',
+        's3-t1': 'Départ libre', 's3-t2': 'Accessible depuis la gare',
+        's4-h3': 'Résoudre les 8 énigmes',
+        's4-p': 'Le jeu vous guide de monument en monument à travers les 8 stations du parcours. Chaque énigme mêle observation, logique et histoire romaine : les indices sont sur place, nul besoin d\'avoir étudié l\'Antiquité. En cas de blocage, un système d\'indices progressifs vous aide sans tout révéler.',
+        's4-t1': '8 énigmes', 's4-t2': '8 monuments', 's4-t3': 'Indices disponibles', 's4-t4': '≈ 120 minutes',
+        's5-h3': 'Le dénouement',
+        's5-p': 'Au terme du parcours, votre équipe rassemble ce qu\'elle a trouvé pour retrouver l\'aigle de la Legio XXI Rapax avant l\'arrivée de l\'Empereur Hadrien. Mission accomplie, et une autre façon d\'avoir découvert Avenches.',
+        's5-t1': 'Fin scénarisée', 's5-t2': 'Mission accomplie',
+        'inc-h2': 'Un code, une aventure complète',
+        'inc1-h4': '8 énigmes originales', 'inc1-p': 'Scénarisées autour de l\'histoire réelle d\'Aventicum.',
+        'inc2-h4': 'Application web guidée', 'inc2-p': 'Fonctionne dans le navigateur de votre smartphone, sans rien installer.',
+        'inc3-h4': 'Trois formats d\'énigmes', 'inc3-p': 'Photo à observer, choix multiple, ou indice à retrouver sur place.',
+        'inc4-h4': 'Carte interactive du parcours', 'inc4-p': 'Les 8 stations reliées sur une carte, consultable avant de partir.',
+        'inc5-h4': 'Narration immersive', 'inc5-p': 'L\'enquête de l\'aigle volée, en français, anglais et allemand.',
+        'inc6-h4': 'Une question ?', 'inc6-p': 'Écrivez-nous à <a href="mailto:info@aventicumquest.ch" style="color:var(--aurum)">info@aventicumquest.ch</a>.',
+        'tips-h2': 'Préparez votre mission',
+        'tip1': 'À faire de préférence en journée', 'tip2': 'Chaussures de marche confortables',
+        'tip3': 'Chargez votre téléphone avant de partir', 'tip4': 'Jouable par tous les temps, sauf orage',
+        'faq-h2': 'Tout ce que vous voulez savoir',
+        'faq-q1': 'Combien de temps dure la mission ?',
+        'faq-a1': 'Comptez environ 120 minutes. Ce n\'est pas un compte à rebours qui vous arrête : vous avancez à votre rythme et terminez l\'enquête quand vous le souhaitez.',
+        'faq-q2': 'À partir de quel âge peut-on jouer ?',
+        'faq-a2': 'Il n\'y a pas d\'âge minimum fixé : c\'est une sortie pensée pour être partagée en famille. Le tarif enfant (8 CHF) s\'applique de 5 à 17 ans, gratuit pour les moins de 5 ans, et le tarif adulte (12 CHF) dès 18 ans.',
+        'faq-q3': 'Que se passe-t-il en cas de mauvais temps ?',
+        'faq-a3': 'Le jeu se pratique en extérieur. Sous une pluie légère il reste jouable, prévoyez une tenue adaptée. En cas d\'orage, mieux vaut reporter : votre code est valable 6 mois, vous pouvez revenir un autre jour.',
+        'faq-q4': 'Puis-je obtenir un remboursement ?',
+        'faq-a4': 'Les codes non encore activés peuvent être remboursés dans les 14 jours suivant l\'achat, conformément au droit de rétractation prévu par l\'art. 40d CO. Une fois le code activé, aucun remboursement n\'est possible. Pour toute demande, écrivez à <a href="mailto:info@aventicumquest.ch">info@aventicumquest.ch</a>.',
+        'faq-q5': 'En quelles langues le jeu est-il disponible ?',
+        'faq-a5': 'Aventicum Quest est disponible en français, en anglais et en allemand. Vous choisissez votre langue au lancement de la partie.',
+        'faq-more': 'D\'autres questions ?',
+        'faq-contact': 'Contacter l\'équipe',
+        'cta-h2': 'Lancez votre mission',
+        'cta-tag': 'Un code, huit énigmes, environ 120 minutes pour retrouver l\'aigle avant l\'arrivée de l\'Empereur.',
+        'cta-btn': 'Obtenir mon code de jeu →',
+        'foot-guide': 'Que faire à Avenches', 'foot-family': 'Jeu de piste en famille',
+        'foot-ml': 'Mentions légales', 'foot-cgv': 'Conditions générales', 'foot-conf': 'Confidentialité',
+        'foot-copy': '© 2026 Aventicum Quest · Avenches, Suisse · aventicumquest.ch'
+      },
+      en: {
+        'nav-cta': 'Buy',
+        'bc-home': 'Home',
+        'bc-current': 'How it works',
+        'hero-h1': 'How does it work?',
+        'hero-sub': 'From buying online to the final riddle, in five steps.',
+        'steps-h2': 'Your mission in 5 steps',
+        'steps-sub': 'No prior coordination needed',
+        's1-h3': 'Buy online',
+        's1-p': 'Buy your code directly on this site, in the language of your choice. The price is per player: CHF 12 from age 18, CHF 8 from ages 5 to 17, free under age 5. You receive a single code per order, valid for your whole team. The transaction takes less than 2 minutes, no account needed.',
+        's1-t1': 'CHF 12 adult', 's1-t2': 'CHF 8 child', 's1-t3': '💳 Visa · Mastercard', 's1-t5': '1 code for the team',
+        's2-h3': 'Get your code',
+        's2-p': 'Right after payment, you receive your personal code by email in the format AQUILA-XXXXXXXX, along with the link to the game. No app to install, everything runs in your browser.',
+        's2-t1': 'Instant delivery', 's2-t2': 'Valid 6 months', 's2-t3': 'No app required',
+        's3-h3': 'Arrive in Avenches',
+        's3-p': 'Join us in Avenches whenever you like, on a weekend or a weekday, alone, with family or with friends. The starting point is Avenches Town Hall (Hôtel de Ville), within walking distance of the train station. Enter your code to start the mission.',
+        's3-t1': 'Go whenever you like', 's3-t2': 'Walking distance from the station',
+        's4-h3': 'Solve the 8 riddles',
+        's4-p': 'The game guides you from monument to monument across the 8 stations of the trail. Each riddle mixes observation, logic and Roman history: the clues are on site, no need to have studied antiquity. If you get stuck, a system of progressive hints helps without giving everything away.',
+        's4-t1': '8 riddles', 's4-t2': '8 monuments', 's4-t3': 'Hints available', 's4-t4': '≈ 120 minutes',
+        's5-h3': 'The finale',
+        's5-p': 'At the end of the trail, your team pieces together what it has found to recover the eagle of Legio XXI Rapax before the Emperor Hadrian arrives. Mission accomplished, and another way to have discovered Avenches.',
+        's5-t1': 'Scripted ending', 's5-t2': 'Mission accomplished',
+        'inc-h2': 'One code, a full adventure',
+        'inc1-h4': '8 original riddles', 'inc1-p': 'Scripted around the real history of Aventicum.',
+        'inc2-h4': 'Guided web app', 'inc2-p': 'Runs in your smartphone\'s browser, nothing to install.',
+        'inc3-h4': 'Three riddle formats', 'inc3-p': 'A photo to study, a multiple choice, or a clue to find on site.',
+        'inc4-h4': 'Interactive trail map', 'inc4-p': 'The 8 stations linked on a map, ready to check before you go.',
+        'inc5-h4': 'Immersive narration', 'inc5-p': 'The investigation of the stolen eagle, in French, English and German.',
+        'inc6-h4': 'A question?', 'inc6-p': 'Write to us at <a href="mailto:info@aventicumquest.ch" style="color:var(--aurum)">info@aventicumquest.ch</a>.',
+        'tips-h2': 'Get ready for your mission',
+        'tip1': 'Best played during daylight', 'tip2': 'Comfortable walking shoes',
+        'tip3': 'Charge your phone before you go', 'tip4': 'Playable in any weather, except storms',
+        'faq-h2': 'Everything you want to know',
+        'faq-q1': 'How long does the mission take?',
+        'faq-a1': 'Count on about 120 minutes. It is not a countdown that stops you: you move at your own pace and finish the investigation whenever you like.',
+        'faq-q2': 'From what age can you play?',
+        'faq-a2': 'There is no fixed minimum age: it is an outing designed to be shared as a family. The child rate (CHF 8) applies from ages 5 to 17, free under age 5, and the adult rate (CHF 12) from age 18.',
+        'faq-q3': 'What happens in bad weather?',
+        'faq-a3': 'The game is played outdoors. In light rain it is still playable, so plan suitable clothing. In a storm, it is better to postpone: your code is valid for 6 months, so you can come back another day.',
+        'faq-q4': 'Can I get a refund?',
+        'faq-a4': 'The code, if it has not yet been activated, can be refunded within 14 days of purchase, in line with the right of withdrawal under art. 40d of the Swiss Code of Obligations. Once the code has been activated, no refund is possible. For any request, write to <a href="mailto:info@aventicumquest.ch">info@aventicumquest.ch</a>.',
+        'faq-q5': 'What languages is the game available in?',
+        'faq-a5': 'Aventicum Quest is available in French, English and German. You choose your language when you start the game.',
+        'faq-more': 'Other questions?',
+        'faq-contact': 'Contact the team',
+        'cta-h2': 'Start your mission',
+        'cta-tag': 'One code, eight riddles, about 120 minutes to find the eagle before the Emperor arrives.',
+        'cta-btn': 'Get my game code →',
+        'foot-guide': 'What to do in Avenches', 'foot-family': 'Family treasure hunt',
+        'foot-ml': 'Legal notice', 'foot-cgv': 'Terms & Conditions', 'foot-conf': 'Privacy',
+        'foot-copy': '© 2026 Aventicum Quest · Avenches, Switzerland · aventicumquest.ch'
+      },
+      de: {
+        'nav-cta': 'Kaufen',
+        'bc-home': 'Startseite',
+        'bc-current': 'So funktioniert\'s',
+        'hero-h1': 'Wie funktioniert das?',
+        'hero-sub': 'Vom Online-Kauf bis zum letzten Rätsel, in fünf Schritten.',
+        'steps-h2': 'Eure Mission in 5 Schritten',
+        'steps-sub': 'Keine Vorabkoordination nötig',
+        's1-h3': 'Online kaufen',
+        's1-p': 'Kauft euren Code direkt auf dieser Seite, in der Sprache eurer Wahl. Der Preis gilt pro Spieler: 12 CHF ab 18 Jahren, 8 CHF von 5 bis 17 Jahren, gratis unter 5 Jahren. Ihr erhaltet einen einzigen Code pro Bestellung, gültig für euer ganzes Team. Die Zahlung dauert weniger als 2 Minuten, kein Konto nötig.',
+        's1-t1': '12 CHF Erwachsene', 's1-t2': '8 CHF Kinder', 's1-t3': '💳 Visa · Mastercard', 's1-t5': '1 Code für das Team',
+        's2-h3': 'Code erhalten',
+        's2-p': 'Direkt nach der Zahlung erhaltet ihr per E-Mail euren persönlichen Code im Format AQUILA-XXXXXXXX sowie den Link zum Spiel. Keine App nötig, alles läuft im Browser.',
+        's2-t1': 'Sofortversand', 's2-t2': '6 Monate gültig', 's2-t3': 'Keine App nötig',
+        's3-h3': 'In Avenches ankommen',
+        's3-p': 'Kommt nach Avenches, wann immer ihr wollt, am Wochenende oder unter der Woche, allein, mit der Familie oder mit Freunden. Startpunkt ist das Rathaus Avenches (Hôtel de Ville), zu Fuss vom Bahnhof erreichbar. Gebt euren Code ein, um die Mission zu starten.',
+        's3-t1': 'Freie Startzeit', 's3-t2': 'Zu Fuss vom Bahnhof erreichbar',
+        's4-h3': 'Die 8 Rätsel lösen',
+        's4-p': 'Das Spiel führt euch von Monument zu Monument durch die 8 Stationen der Strecke. Jedes Rätsel verbindet Beobachtung, Logik und römische Geschichte: Die Hinweise findet ihr vor Ort, ohne Vorkenntnisse der Antike. Kommt ihr nicht weiter, hilft ein System aus stufenweisen Tipps, ohne alles zu verraten.',
+        's4-t1': '8 Rätsel', 's4-t2': '8 Monumente', 's4-t3': 'Tipps verfügbar', 's4-t4': '≈ 120 Minuten',
+        's5-h3': 'Der Ausklang',
+        's5-p': 'Am Ende der Strecke fügt euer Team seine Funde zusammen, um den Adler der Legio XXI Rapax vor der Ankunft von Kaiser Hadrian wiederzufinden. Mission erfüllt, und Avenches auf eine andere Art entdeckt.',
+        's5-t1': 'Inszeniertes Ende', 's5-t2': 'Mission erfüllt',
+        'inc-h2': 'Ein Code, ein ganzes Abenteuer',
+        'inc1-h4': '8 originelle Rätsel', 'inc1-p': 'Rund um die reale Geschichte von Aventicum inszeniert.',
+        'inc2-h4': 'Geführte Web-App', 'inc2-p': 'Läuft im Browser des Smartphones, nichts zu installieren.',
+        'inc3-h4': 'Drei Rätselformate', 'inc3-p': 'Ein Foto zum Beobachten, eine Mehrfachauswahl oder ein Hinweis vor Ort.',
+        'inc4-h4': 'Interaktive Streckenkarte', 'inc4-p': 'Die 8 Stationen auf einer Karte verbunden, vorab einsehbar.',
+        'inc5-h4': 'Immersive Erzählung', 'inc5-p': 'Die Suche nach dem gestohlenen Adler, auf Französisch, Englisch und Deutsch.',
+        'inc6-h4': 'Eine Frage?', 'inc6-p': 'Schreibt uns an <a href="mailto:info@aventicumquest.ch" style="color:var(--aurum)">info@aventicumquest.ch</a>.',
+        'tips-h2': 'Bereitet eure Mission vor',
+        'tip1': 'Am besten tagsüber spielen', 'tip2': 'Bequeme Wanderschuhe',
+        'tip3': 'Handy vorher aufladen', 'tip4': 'Bei jedem Wetter spielbar, ausser Gewitter',
+        'faq-h2': 'Alles, was ihr wissen wollt',
+        'faq-q1': 'Wie lange dauert die Mission?',
+        'faq-a1': 'Rechnet mit etwa 120 Minuten. Das ist kein Countdown, der euch stoppt: Ihr geht in eurem eigenen Tempo vor und beendet die Untersuchung, wann ihr wollt.',
+        'faq-q2': 'Ab welchem Alter kann man spielen?',
+        'faq-a2': 'Es gibt kein festgelegtes Mindestalter: Es ist ein Ausflug, der als Familie unternommen werden kann. Der Kindertarif (8 CHF) gilt von 5 bis 17 Jahren, gratis unter 5 Jahren, der Erwachsenentarif (12 CHF) ab 18 Jahren.',
+        'faq-q3': 'Was passiert bei schlechtem Wetter?',
+        'faq-a3': 'Das Spiel findet im Freien statt. Bei leichtem Regen bleibt es spielbar, plant passende Kleidung ein. Bei einem Gewitter verschiebt ihr besser: Euer Code ist 6 Monate gültig, ihr könnt an einem anderen Tag zurückkommen.',
+        'faq-q4': 'Kann ich eine Rückerstattung erhalten?',
+        'faq-a4': 'Der Code kann, sofern er noch nicht aktiviert wurde, innerhalb von 14 Tagen nach dem Kauf zurückerstattet werden, gemäss dem Widerrufsrecht nach Art. 40d OR. Sobald der Code aktiviert wurde, ist keine Rückerstattung mehr möglich. Für Anfragen schreibt an <a href="mailto:info@aventicumquest.ch">info@aventicumquest.ch</a>.',
+        'faq-q5': 'In welchen Sprachen ist das Spiel verfügbar?',
+        'faq-a5': 'Aventicum Quest ist auf Französisch, Englisch und Deutsch verfügbar. Ihr wählt eure Sprache beim Start der Partie.',
+        'faq-more': 'Weitere Fragen?',
+        'faq-contact': 'Team kontaktieren',
+        'cta-h2': 'Startet eure Mission',
+        'cta-tag': 'Ein Code, acht Rätsel, etwa 120 Minuten, um den Adler vor der Ankunft des Kaisers zu finden.',
+        'cta-btn': 'Meinen Spielcode erhalten →',
+        'foot-guide': 'Was in Avenches unternehmen', 'foot-family': 'Schnitzeljagd für Familien',
+        'foot-ml': 'Impressum', 'foot-cgv': 'AGB', 'foot-conf': 'Datenschutz',
+        'foot-copy': '© 2026 Aventicum Quest · Avenches, Schweiz · aventicumquest.ch'
+      }
+    };
+
+    /* ══════════════════════════════════════════════════════════════
+       setLang applies all translations to the DOM
+    ══════════════════════════════════════════════════════════════ */
+    function setLang(lang) {
+      if (!T[lang]) return;
+      const dict = T[lang];
+
+      document.querySelectorAll('.lang-current').forEach(el => el.textContent = lang.toUpperCase());
+      document.querySelectorAll('.lang-opt').forEach(opt => {
+        opt.setAttribute('aria-selected', opt.getAttribute('data-lang') === lang ? 'true' : 'false');
+      });
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+
+      document.documentElement.lang = lang;
+      document.title = PAGE_TITLES[lang] || PAGE_TITLES.fr;
+
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute('content', PAGE_DESCS[lang] || PAGE_DESCS.fr);
+
+      localStorage.setItem('aq-lang', lang);
+    }
+
+    /* ── Language dropdown open / close ──────────────────────── */
+    document.querySelectorAll('.lang-select').forEach(sel => {
+      const toggle = sel.querySelector('.lang-toggle');
+      toggle.addEventListener('click', e => {
+        e.stopPropagation();
+        const open = sel.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
     });
+    function closeLangMenus() {
+      document.querySelectorAll('.lang-select.open').forEach(sel => {
+        sel.classList.remove('open');
+        sel.querySelector('.lang-toggle').setAttribute('aria-expanded', 'false');
+      });
+    }
+    document.addEventListener('click', closeLangMenus);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLangMenus(); });
 
-    // Scroll reveal
-    const observer = new IntersectionObserver(entries => {
+    /* ── Apply saved language on load ────────────────────────── */
+    const savedLang = localStorage.getItem('aq-lang') || 'fr';
+    if (savedLang !== 'fr') setLang(savedLang);
+
+    /* ── Nav scroll effect ────────────────────────────────────── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+
+    /* ── Scroll reveal ────────────────────────────────────────── */
+    const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
       });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   </script>
 </body>
 </html>
