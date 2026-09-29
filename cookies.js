@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════
-   AVENTICUM QUEST — Bandeau cookies partagé
+   AVENTICUM QUEST : bandeau cookies partagé
 
    À inclure en tout début de <body> :
      <script src="cookies.js"></script>

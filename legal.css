@@ -40,6 +40,8 @@
   color: var(--scriptum);
   margin-bottom: .75rem;
   line-height: 1.2;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .legal-date {
