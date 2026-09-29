@@ -31,6 +31,11 @@
       fr: 'Que faire à Avenches ? Activités romaines et en famille',
       en: 'What to Do in Avenches? Roman Sites and Family Activities',
       de: 'Was tun in Avenches? Römische Stätten und Familienausflüge'
+    },
+    gift: {
+      fr: 'Bon cadeau Aventicum Quest : offrez une chasse au trésor à Avenches',
+      en: 'Aventicum Quest gift voucher: give a treasure hunt in Avenches',
+      de: 'Geschenkgutschein Aventicum Quest: eine Schatzsuche in Avenches schenken'
     }
   };
 
@@ -40,6 +45,11 @@
       fr: 'Avenches, capitale romaine de la Suisse : arènes, musée romain et une chasse au trésor grandeur nature pour toute la famille. Découvrez le programme.',
       en: 'Avenches, the Roman capital of Switzerland: an amphitheatre, a Roman museum, and a life-size treasure hunt for the whole family. Discover the program.',
       de: 'Avenches, die römische Hauptstadt der Schweiz: Amphitheater, Römermuseum und eine Schatzsuche in Originalgrösse für die ganze Familie. Entdecken Sie das Programm.'
+    },
+    gift: {
+      fr: 'Offrez Aventicum Quest : un bon cadeau pour une équipe jusqu\'à 5 personnes, 39 CHF, valable 12 mois. Une chasse au trésor à Avenches.',
+      en: 'Give Aventicum Quest: a gift voucher for a team of up to 5 people, CHF 39, valid for 12 months. A treasure hunt in Avenches.',
+      de: 'Schenkt Aventicum Quest: einen Gutschein für ein Team mit bis zu 5 Personen, 39 CHF, 12 Monate gültig. Eine Schatzsuche in Avenches.'
     }
   };
 
@@ -58,6 +68,45 @@
       /* ── Page "Que faire à Avenches" ── */
       'foot-guide':    'Que faire à Avenches',
       'foot-family':   'Jeu de piste en famille',
+
+      /* Liens bons cadeaux (nav / footer) */
+      'nav-gift':      'Bons cadeaux',
+      'foot-gift':     'Bons cadeaux',
+
+      /* Bandeau cookies (cookies.js) */
+      'cookie-text':   'Ce site utilise des cookies essentiels au fonctionnement. <a href="confidentialite.html">En savoir plus</a>.',
+      'cookie-accept': 'Accepter',
+      'cookie-refuse': 'Refuser',
+
+      /* ── Page bon-cadeau.html ── */
+      'gc-overline':   'Bons cadeaux · Avenches',
+      'gc-h1':         'Offrez une enquête dans l\'Avenches romaine',
+      'gc-home':       'Accueil',
+      'gc-bc':         'Bons cadeaux',
+      'gc-lead':       'Un anniversaire, Noël, un merci ? Offrez une aventure à vivre en équipe dans les rues d\'Avenches. La personne choisit son jour, vous n\'avez rien à organiser.',
+      'gc-how-h2':     'Comment ça marche',
+      'gc-s1-t':       'Vous achetez en ligne',
+      'gc-s1-d':       'Le paiement est sécurisé et ne prend que quelques minutes.',
+      'gc-s2-t':       'Vous recevez le bon',
+      'gc-s2-d':       'Un bon à imprimer ou à transférer par e-mail, avec le code d\'accès au jeu.',
+      'gc-s3-t':       'La personne joue quand elle veut',
+      'gc-s3-d':       'Le bon est valable 12 mois. Il suffit de venir à Avenches et de saisir le code pour lancer la partie.',
+      'gc-prod-label': 'Le bon cadeau',
+      'gc-prod-name':  'Bon cadeau Forfait Équipe',
+      'gc-prod-desc':  'Jusqu\'à 5 personnes, tous âges confondus.',
+      'gc-prod-valid': 'Valable 12 mois à partir de l\'achat',
+      'gc-cta':        'Offrir ce bon →',
+      'gc-soon':       'Bientôt disponible',
+      'gc-faq-h2':     'Questions fréquentes',
+      'gc-q1':         'Le bon est-il nominatif ?',
+      'gc-a1':         'Non. Le prénom inscrit sur le bon sert à personnaliser le cadeau. Le code fonctionne pour une équipe jusqu\'à 5 personnes, quelle qu\'elle soit.',
+      'gc-q2':         'Combien de temps est-il valable ?',
+      'gc-a2':         '12 mois à partir de la date d\'achat. Pendant cette période, l\'équipe choisit librement son jour.',
+      'gc-q3':         'Peut-on l\'utiliser en anglais ou en allemand ?',
+      'gc-a3':         'Oui. Le jeu est disponible en français, en anglais et en allemand. La langue se choisit au lancement de la partie, quelle que soit la langue du bon.',
+      'gc-end-h2':     'Pas encore sûr ?',
+      'gc-end-p':      'Découvrez la mission, les 8 stations et le déroulé du jeu avant d\'offrir.',
+      'gc-end-btn':    'Découvrir le jeu',
       'av-overline':   'Avenches · Vaud · Suisse',
       'av-h1':         'Que faire à Avenches : entre histoire romaine et aventure en famille',
       'av-home':       'Accueil',
@@ -181,6 +230,45 @@
       /* ── Page "What to do in Avenches" ── */
       'foot-guide':    'What to do in Avenches',
       'foot-family':   'Family treasure hunt',
+
+      /* Gift voucher links (nav / footer) */
+      'nav-gift':      'Gift vouchers',
+      'foot-gift':     'Gift vouchers',
+
+      /* Cookie banner (cookies.js) */
+      'cookie-text':   'This site uses essential cookies. <a href="confidentialite.html">Learn more</a>.',
+      'cookie-accept': 'Accept',
+      'cookie-refuse': 'Decline',
+
+      /* ── bon-cadeau.html ── */
+      'gc-overline':   'Gift vouchers · Avenches',
+      'gc-h1':         'Give an investigation in Roman Avenches',
+      'gc-home':       'Home',
+      'gc-bc':         'Gift vouchers',
+      'gc-lead':       'A birthday, Christmas, a thank-you? Give an adventure to share as a team in the streets of Avenches. They pick the day, you have nothing to organise.',
+      'gc-how-h2':     'How it works',
+      'gc-s1-t':       'You buy online',
+      'gc-s1-d':       'Payment is secure and only takes a few minutes.',
+      'gc-s2-t':       'You receive the voucher',
+      'gc-s2-d':       'A voucher to print or forward by e-mail, with the game access code.',
+      'gc-s3-t':       'They play whenever they like',
+      'gc-s3-d':       'The voucher is valid for 12 months. They just come to Avenches and enter the code to start the game.',
+      'gc-prod-label': 'The gift voucher',
+      'gc-prod-name':  'Team Pass gift voucher',
+      'gc-prod-desc':  'Up to 5 people, any age.',
+      'gc-prod-valid': 'Valid for 12 months from purchase',
+      'gc-cta':        'Give this voucher →',
+      'gc-soon':       'Coming soon',
+      'gc-faq-h2':     'Frequently asked questions',
+      'gc-q1':         'Is the voucher personal?',
+      'gc-a1':         'No. The first name on the voucher is there to personalise the gift. The code works for any team of up to 5 people.',
+      'gc-q2':         'How long is it valid?',
+      'gc-a2':         '12 months from the date of purchase. Within that period, the team picks its day freely.',
+      'gc-q3':         'Can it be used in English or German?',
+      'gc-a3':         'Yes. The game is available in French, English and German. The language is chosen when the game starts, whatever the language of the voucher.',
+      'gc-end-h2':     'Not sure yet?',
+      'gc-end-p':      'Discover the mission, the 8 stations and how the game works before you give it.',
+      'gc-end-btn':    'Discover the game',
       'av-overline':   'Avenches · Vaud · Switzerland',
       'av-h1':         'What to Do in Avenches: Roman History Meets Family Adventure',
       'av-home':       'Home',
@@ -301,6 +389,45 @@
       /* ── Seite "Was tun in Avenches" ── */
       'foot-guide':    'Was in Avenches unternehmen',
       'foot-family':   'Schnitzeljagd für Familien',
+
+      /* Links Geschenkgutscheine (Nav / Footer) */
+      'nav-gift':      'Geschenkgutscheine',
+      'foot-gift':     'Geschenkgutscheine',
+
+      /* Cookie-Banner (cookies.js) */
+      'cookie-text':   'Diese Website verwendet notwendige Cookies. <a href="confidentialite.html">Mehr erfahren</a>.',
+      'cookie-accept': 'Akzeptieren',
+      'cookie-refuse': 'Ablehnen',
+
+      /* ── bon-cadeau.html ── */
+      'gc-overline':   'Geschenkgutscheine · Avenches',
+      'gc-h1':         'Schenkt eine Ermittlung im römischen Avenches',
+      'gc-home':       'Startseite',
+      'gc-bc':         'Geschenkgutscheine',
+      'gc-lead':       'Ein Geburtstag, Weihnachten, ein Dankeschön? Schenkt ein Abenteuer, das man im Team in den Strassen von Avenches erlebt. Die beschenkte Person wählt ihren Tag, ihr müsst nichts organisieren.',
+      'gc-how-h2':     'So funktioniert\'s',
+      'gc-s1-t':       'Ihr kauft online',
+      'gc-s1-d':       'Die Zahlung ist sicher und dauert nur wenige Minuten.',
+      'gc-s2-t':       'Ihr erhaltet den Gutschein',
+      'gc-s2-d':       'Einen Gutschein zum Ausdrucken oder zum Weiterleiten per E-Mail, mit dem Zugangscode zum Spiel.',
+      'gc-s3-t':       'Die beschenkte Person spielt, wann sie will',
+      'gc-s3-d':       'Der Gutschein ist 12 Monate gültig. Einfach nach Avenches kommen und den Code eingeben, um das Spiel zu starten.',
+      'gc-prod-label': 'Der Geschenkgutschein',
+      'gc-prod-name':  'Geschenkgutschein Team-Pauschale',
+      'gc-prod-desc':  'Bis zu 5 Personen, jedes Alter.',
+      'gc-prod-valid': '12 Monate ab Kauf gültig',
+      'gc-cta':        'Diesen Gutschein schenken →',
+      'gc-soon':       'Bald verfügbar',
+      'gc-faq-h2':     'Häufige Fragen',
+      'gc-q1':         'Ist der Gutschein an eine Person gebunden?',
+      'gc-a1':         'Nein. Der Vorname auf dem Gutschein dient der persönlichen Note. Der Code funktioniert für jedes Team mit bis zu 5 Personen.',
+      'gc-q2':         'Wie lange ist er gültig?',
+      'gc-a2':         '12 Monate ab Kaufdatum. In dieser Zeit wählt das Team seinen Tag frei.',
+      'gc-q3':         'Kann man ihn auf Englisch oder Deutsch nutzen?',
+      'gc-a3':         'Ja. Das Spiel gibt es auf Französisch, Englisch und Deutsch. Die Sprache wird beim Start des Spiels gewählt, unabhängig von der Sprache des Gutscheins.',
+      'gc-end-h2':     'Noch unsicher?',
+      'gc-end-p':      'Entdeckt die Mission, die 8 Stationen und den Ablauf des Spiels, bevor ihr es verschenkt.',
+      'gc-end-btn':    'Das Spiel entdecken',
       'av-overline':   'Avenches · Waadt · Schweiz',
       'av-h1':         'Was tun in Avenches: Römische Geschichte trifft auf Familienabenteuer',
       'av-home':       'Startseite',
@@ -446,6 +573,9 @@
     }
 
     localStorage.setItem('aq-lang', lang);
+
+    // Signale le changement de langue aux scripts propres à une page (liens Stripe, mailto…)
+    document.dispatchEvent(new CustomEvent('aq:langchange', { detail: { lang: lang, dict: dict } }));
   }
   window.setLang = setLang;
 

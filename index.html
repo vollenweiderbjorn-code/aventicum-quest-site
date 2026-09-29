@@ -192,16 +192,13 @@
 </head>
 <body>
 
-  <!-- ── Cookie banner ──────────────────────────────────────── -->
-  <div id="cookie-banner" role="dialog" aria-label="Consentement cookies" aria-live="polite">
-    <p class="cookie-text" data-i18n-html="cookie-text">
-      Ce site utilise des cookies essentiels au fonctionnement.
-      <a href="confidentialite.html">En savoir plus</a>.
-    </p>
-    <div class="cookie-btns">
-      <button class="btn-cookie btn-cookie-accept" onclick="acceptCookies()" data-i18n="cookie-accept">Accepter</button>
-      <button class="btn-cookie" onclick="refuseCookies()" data-i18n="cookie-refuse">Refuser</button>
-    </div>
+  <!-- ── Cookie banner (partagé : cookies.js) ───────────────── -->
+  <script src="cookies.js"></script>
+
+  <!-- ── Bandeau Noël (15 nov. → 31 déc., ou ?xmas=1 pour tester) ── -->
+  <div class="xmas-bar" id="xmas-bar" hidden>
+    <a href="bon-cadeau.html" class="xmas-link" data-i18n="xmas-text">Offrez l'aventure pour Noël →</a>
+    <button type="button" class="xmas-close" id="xmas-close"><span aria-hidden="true">×</span><span class="xmas-sr" data-i18n="xmas-close">Fermer</span></button>
   </div>
 
   <!-- ── Navigation ─────────────────────────────────────────── -->
@@ -215,6 +212,7 @@
     </a>
     <div class="nav-right">
       <a href="que-faire-a-avenches.html" class="nav-link" data-i18n="nav-guide">Que faire à Avenches</a>
+      <a href="bon-cadeau.html" class="nav-link" data-i18n="nav-gift">Bons cadeaux</a>
       <div class="lang-select" role="group" aria-label="Langue / Language / Sprache">
         <button type="button" class="lang-toggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Choisir la langue">
           <span class="lang-globe" aria-hidden="true">🌐</span>
@@ -648,6 +646,8 @@
         <span class="footer-sep" aria-hidden="true">·</span>
         <a href="jeu-de-piste-famille-suisse-romande.html" data-i18n="foot-family">Jeu de piste en famille</a>
         <span class="footer-sep" aria-hidden="true">·</span>
+        <a href="bon-cadeau.html" data-i18n="foot-gift">Bons cadeaux</a>
+        <span class="footer-sep" aria-hidden="true">·</span>
         <a href="mentions-legales.html" data-i18n="foot-ml">Mentions légales</a>
         <span class="footer-sep" aria-hidden="true">·</span>
         <a href="cgv.html" data-i18n="foot-cgv">Conditions générales</a>
@@ -677,6 +677,8 @@
         'cookie-text':      'Ce site utilise des cookies essentiels au fonctionnement. <a href="confidentialite.html">En savoir plus</a>.',
         'cookie-accept':    'Accepter',
         'cookie-refuse':    'Refuser',
+        'xmas-text':        'Offrez l\'aventure pour Noël →',
+        'xmas-close':       'Fermer',
         'nav-cta':          'Acheter',
         'hero-overline':    'Anno Domini CXVII · Aventicum, Helvétie',
         'hero-tagline':     '<strong>L\'aigle de la Legio XXI Rapax a été volée.</strong><br>L\'Empereur Hadrien arrive dans 120 minutes.<br>Retrouvez-la avant qu\'il ne soit trop tard.',
@@ -784,6 +786,8 @@
         'nav-guide':        'Que faire à Avenches',
         'foot-guide':       'Que faire à Avenches',
         'foot-family':      'Jeu de piste en famille',
+        'nav-gift':         'Bons cadeaux',
+        'foot-gift':        'Bons cadeaux',
         'foot-ml':          'Mentions légales',
         'foot-cgv':         'Conditions générales',
         'foot-conf':        'Confidentialité',
@@ -794,6 +798,8 @@
         'cookie-text':      'This site uses essential cookies. <a href="confidentialite.html">Learn more</a>.',
         'cookie-accept':    'Accept',
         'cookie-refuse':    'Decline',
+        'xmas-text':        'Give the adventure for Christmas →',
+        'xmas-close':       'Close',
         'nav-cta':          'Buy',
         'hero-overline':    'Anno Domini CXVII · Aventicum, Helvetia',
         'hero-tagline':     '<strong>The eagle of Legio XXI Rapax has been stolen.</strong><br>Emperor Hadrian arrives in 120 minutes.<br>Find it before it\'s too late.',
@@ -901,6 +907,8 @@
         'nav-guide':        'What to do in Avenches',
         'foot-guide':       'What to do in Avenches',
         'foot-family':      'Family treasure hunt',
+        'nav-gift':         'Gift vouchers',
+        'foot-gift':        'Gift vouchers',
         'foot-ml':          'Legal notice',
         'foot-cgv':         'Terms & Conditions',
         'foot-conf':        'Privacy',
@@ -911,6 +919,8 @@
         'cookie-text':      'Diese Website verwendet notwendige Cookies. <a href="confidentialite.html">Mehr erfahren</a>.',
         'cookie-accept':    'Akzeptieren',
         'cookie-refuse':    'Ablehnen',
+        'xmas-text':        'Schenkt das Abenteuer zu Weihnachten →',
+        'xmas-close':       'Schliessen',
         'nav-cta':          'Kaufen',
         'hero-overline':    'Anno Domini CXVII · Aventicum, Helvetien',
         'hero-tagline':     '<strong>Der Adler der Legio XXI Rapax wurde gestohlen.</strong><br>Kaiser Hadrian trifft in 120 Minuten ein.<br>Findet ihn, bevor es zu spät ist.',
@@ -1018,6 +1028,8 @@
         'nav-guide':        'Was in Avenches unternehmen',
         'foot-guide':       'Was in Avenches unternehmen',
         'foot-family':      'Schnitzeljagd für Familien',
+        'nav-gift':         'Geschenkgutscheine',
+        'foot-gift':        'Geschenkgutscheine',
         'foot-ml':          'Impressum',
         'foot-cgv':         'AGB',
         'foot-conf':        'Datenschutz',
@@ -1075,14 +1087,28 @@
       if (window.updateMapLang) window.updateMapLang(lang);
     }
 
-    /* ── Cookie consent ──────────────────────────────────────── */
-    const banner = document.getElementById('cookie-banner');
+    /* ── Cookie consent : voir cookies.js ── */
 
-    function hideBanner() { banner.classList.add('hidden'); }
-    function acceptCookies() { localStorage.setItem('aq-cookies', 'accepted'); hideBanner(); }
-    function refuseCookies() { localStorage.setItem('aq-cookies', 'refused'); hideBanner(); }
-
-    if (localStorage.getItem('aq-cookies')) hideBanner();
+    /* ── Bandeau Noël : visible du 15 novembre au 31 décembre (date du navigateur),
+          ou forcé avec ?xmas=1. Fermeture mémorisée pour la session. ── */
+    (function () {
+      const bar = document.getElementById('xmas-bar');
+      if (!bar) return;
+      const now = new Date();
+      const m = now.getMonth(), d = now.getDate();
+      const inSeason = (m === 10 && d >= 15) || m === 11;
+      let forced = false, closed = false;
+      try { forced = new URLSearchParams(window.location.search).get('xmas') === '1'; } catch (e) {}
+      try { closed = sessionStorage.getItem('aq-xmas-closed') === '1'; } catch (e) {}
+      if (!(inSeason || forced) || closed) return;
+      bar.hidden = false;
+      document.body.classList.add('has-xmas-bar');
+      document.getElementById('xmas-close').addEventListener('click', function () {
+        bar.hidden = true;
+        document.body.classList.remove('has-xmas-bar');
+        try { sessionStorage.setItem('aq-xmas-closed', '1'); } catch (e) {}
+      });
+    })();
 
     /* ── Nav scroll effect ───────────────────────────────────── */
     const nav = document.getElementById('nav');

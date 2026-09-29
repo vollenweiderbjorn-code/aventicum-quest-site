@@ -1322,6 +1322,56 @@ footer {
   color: rgba(139,106,62,.55);
 }
 
+/* ── Bandeau Noël (index.html) ───────────────────────────────── */
+:root { --xmas-h: 38px; }
+.xmas-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1001;
+  height: var(--xmas-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2.75rem;
+  background: var(--pierre);
+  border-bottom: 1px solid var(--border-strong);
+}
+.xmas-bar[hidden] { display: none; }
+.xmas-link {
+  font-family: 'Space Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--aurum);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color .2s;
+}
+.xmas-link:hover { color: var(--scriptum); }
+.xmas-close {
+  position: absolute;
+  right: .6rem; top: 50%;
+  transform: translateY(-50%);
+  width: 30px; height: 30px;
+  background: transparent;
+  border: none;
+  color: var(--terre);
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color .2s;
+}
+.xmas-close:hover { color: var(--aurum); }
+.xmas-sr {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+body.has-xmas-bar #nav { top: var(--xmas-h); }
+
 /* ── Cookie banner ───────────────────────────────────────────── */
 #cookie-banner {
   position: fixed;
