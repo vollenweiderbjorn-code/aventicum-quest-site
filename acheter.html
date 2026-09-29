@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <!-- Ouverture des ventes (Forfait Équipe / bon cadeau) : passer à true le jour du lancement. -->
+  <script>const SALES_OPEN = false;</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -661,11 +663,11 @@
     };
 
     /* ── Lien de paiement Forfait Équipe (39 CHF, jusqu'à 5 personnes) ──
-       Tant qu'une URL commence par "TODO", le bouton reste désactivé ("Bientôt disponible"). */
+       Tant que SALES_OPEN vaut false (ou qu'une URL commence par "TODO"), le bouton reste désactivé ("Bientôt disponible"). */
     const STRIPE_LINKS_TEAM = {
-      fr: 'TODO_STRIPE_TEAM_FR',
-      en: 'TODO_STRIPE_TEAM_EN',
-      de: 'TODO_STRIPE_TEAM_DE'
+      fr: 'https://buy.stripe.com/eVqfZh2IngkGdib8ZYc7u04',
+      en: 'https://buy.stripe.com/9B65kD82H8Se6TN0tsc7u05',
+      de: 'https://buy.stripe.com/dRmeVd0AffgC5PJ2BAc7u06'
     };
 
     /* ── Traductions de la page ── */
@@ -815,7 +817,7 @@
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
       const teamUrl = STRIPE_LINKS_TEAM[lang] || '';
-      const teamReady = teamUrl && teamUrl.indexOf('TODO') !== 0;
+      const teamReady = SALES_OPEN && teamUrl && teamUrl.indexOf('TODO') !== 0;
       document.querySelectorAll('.js-stripe-team-link').forEach(function (a) {
         if (teamReady) {
           a.href = teamUrl;

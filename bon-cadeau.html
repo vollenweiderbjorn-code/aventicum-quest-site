@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <!-- Ouverture des ventes (Forfait Équipe / bon cadeau) : passer à true le jour du lancement. -->
+  <script>const SALES_OPEN = false;</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -344,7 +346,6 @@
       <div class="faq-list gc-faq">
         <details class="faq-item">
           <summary><span class="faq-q" data-i18n="gc-q1">Le bon est-il nominatif ?</span></summary>
-          <!-- TODO BJORN: confirmer que le code d'un bon cadeau n'est lié à aucune identité (réponse déduite du fonctionnement actuel : un code par équipe, sans contrôle de nom). -->
           <div class="faq-a"><p data-i18n="gc-a1">Non. Le prénom inscrit sur le bon sert à personnaliser le cadeau. Le code fonctionne pour une équipe jusqu'à 5 personnes, quelle qu'elle soit.</p></div>
         </details>
         <details class="faq-item">
@@ -395,17 +396,17 @@
 
   <script>
     /* ── Lien de paiement Bon cadeau (39 CHF, Forfait Équipe) ──
-       Tant qu'une URL commence par "TODO", le bouton reste désactivé ("Bientôt disponible"). */
+       Tant que SALES_OPEN vaut false (ou qu'une URL commence par "TODO"), le bouton reste désactivé ("Bientôt disponible"). */
     const STRIPE_LINKS_GIFT = {
-      fr: 'TODO_STRIPE_GIFT_FR',
-      en: 'TODO_STRIPE_GIFT_EN',
-      de: 'TODO_STRIPE_GIFT_DE'
+      fr: 'https://buy.stripe.com/bJebJ13Mr0lIgunb86c7u07',
+      en: 'https://buy.stripe.com/fZuaEXgzd9Wi6TNfomc7u08',
+      de: 'https://buy.stripe.com/6oU28r6YDfgCdiba42c7u09'
     };
 
     document.addEventListener('aq:langchange', function (e) {
       const lang = e.detail.lang, dict = e.detail.dict;
       const url = STRIPE_LINKS_GIFT[lang] || '';
-      const ready = url && url.indexOf('TODO') !== 0;
+      const ready = SALES_OPEN && url && url.indexOf('TODO') !== 0;
       document.querySelectorAll('.js-stripe-gift-link').forEach(function (a) {
         if (ready) {
           a.href = url;
