@@ -36,6 +36,11 @@
       fr: 'Bon cadeau Aventicum Quest : offrez une chasse au trésor à Avenches',
       en: 'Aventicum Quest gift voucher: give a treasure hunt in Avenches',
       de: 'Geschenkgutschein Aventicum Quest: eine Schatzsuche in Avenches schenken'
+    },
+    groups: {
+      fr: 'Groupes, écoles et entreprises : Aventicum Quest à Avenches',
+      en: 'Groups, schools and companies: Aventicum Quest in Avenches',
+      de: 'Gruppen, Schulen und Firmen: Aventicum Quest in Avenches'
     }
   };
 
@@ -50,6 +55,11 @@
       fr: 'Offrez Aventicum Quest : un bon cadeau pour une équipe jusqu\'à 5 personnes, 39 CHF, valable 12 mois. Une chasse au trésor à Avenches.',
       en: 'Give Aventicum Quest: a gift voucher for a team of up to 5 people, CHF 39, valid for 12 months. A treasure hunt in Avenches.',
       de: 'Schenkt Aventicum Quest: einen Gutschein für ein Team mit bis zu 5 Personen, 39 CHF, 12 Monate gültig. Eine Schatzsuche in Avenches.'
+    },
+    groups: {
+      fr: 'Course d\'école, sortie d\'entreprise ou anniversaire : jouez Aventicum Quest en groupe à Avenches. Plusieurs équipes en parallèle, tarif sur demande.',
+      en: 'School trip, company outing or birthday: play Aventicum Quest as a group in Avenches. Several teams in parallel, price on request.',
+      de: 'Schulreise, Firmenausflug oder Geburtstag: Aventicum Quest in der Gruppe in Avenches spielen. Mehrere Teams gleichzeitig, Preis auf Anfrage.'
     }
   };
 
@@ -107,6 +117,32 @@
       'gc-end-h2':     'Pas encore sûr ?',
       'gc-end-p':      'Découvrez la mission, les 8 stations et le déroulé du jeu avant d\'offrir.',
       'gc-end-btn':    'Découvrir le jeu',
+
+      /* Liens groupes (nav / footer) */
+      'nav-groups':    'Groupes et écoles',
+      'foot-groups':   'Groupes et écoles',
+
+      /* ── Page groupes.html ── */
+      'gr-overline':   'Groupes · Écoles · Entreprises',
+      'gr-h1':         'Une enquête romaine pour votre groupe',
+      'gr-home':       'Accueil',
+      'gr-bc':         'Groupes et écoles',
+      'gr-lead':       'Une classe, une équipe de travail ou un anniversaire ? Aventicum Quest se joue aussi en groupe. Dites-nous qui vous êtes, nous revenons vers vous avec une offre.',
+      'gr-price':      'Tarif sur demande',
+      'gr-cta':        'Demander une offre',
+      'gr-school-h':   'Écoles',
+      'gr-school-p':   'Le jeu fait découvrir l\'histoire romaine d\'Avenches sur le terrain. Les élèves avancent par petits groupes, en autonomie, sous la responsabilité de leurs accompagnants, et résolvent les énigmes en observant les lieux. Une sortie idéale pour une course d\'école, qui complète l\'histoire romaine vue en classe.',
+      'gr-company-h':  'Entreprises et sorties de groupe',
+      'gr-company-p':  'Plusieurs équipes jouent en parallèle sur le même parcours, chacune avec son code. De quoi lancer une petite compétition amicale entre équipes, en plein air, pour une sortie d\'entreprise, un club ou une association.',
+      'gr-bday-h':     'Anniversaires',
+      'gr-bday-p':     'Une sortie originale pour fêter un anniversaire, pour les enfants dès 5 ans. Les plus jeunes cherchent les indices sur le terrain, les adultes les aident à recomposer l\'enquête.',
+      'gr-subj-school':  'Demande d\'offre : sortie scolaire',
+      'gr-subj-company': 'Demande d\'offre : entreprise ou groupe',
+      'gr-subj-bday':    'Demande d\'offre : anniversaire',
+      'gr-body':       'Bonjour,\n\nNous aimerions organiser une partie d\'Aventicum Quest.\n\nDate souhaitée :\nNombre de participants :\nÂge des participants :\nLangue (français, anglais ou allemand) :\n\nMerci et à bientôt,\n',
+      'gr-end-h2':     'Une autre question ?',
+      'gr-end-p':      'Écrivez-nous à info@aventicumquest.ch, ou découvrez d\'abord le jeu et ses 8 stations.',
+      'gr-end-btn':    'Découvrir le jeu',
       'av-overline':   'Avenches · Vaud · Suisse',
       'av-h1':         'Que faire à Avenches : entre histoire romaine et aventure en famille',
       'av-home':       'Accueil',
@@ -269,6 +305,32 @@
       'gc-end-h2':     'Not sure yet?',
       'gc-end-p':      'Discover the mission, the 8 stations and how the game works before you give it.',
       'gc-end-btn':    'Discover the game',
+
+      /* Group links (nav / footer) */
+      'nav-groups':    'Groups and schools',
+      'foot-groups':   'Groups and schools',
+
+      /* ── groupes.html ── */
+      'gr-overline':   'Groups · Schools · Companies',
+      'gr-h1':         'A Roman investigation for your group',
+      'gr-home':       'Home',
+      'gr-bc':         'Groups and schools',
+      'gr-lead':       'A class, a work team or a birthday? Aventicum Quest can be played as a group too. Tell us who you are and we will get back to you with an offer.',
+      'gr-price':      'Price on request',
+      'gr-cta':        'Request an offer',
+      'gr-school-h':   'Schools',
+      'gr-school-p':   'The game brings the Roman history of Avenches to life on site. Pupils move in small groups, on their own, under the responsibility of their supervisors, and solve the riddles by observing the places around them. An ideal school trip that complements the Roman history covered in class.',
+      'gr-company-h':  'Companies and group outings',
+      'gr-company-p':  'Several teams play the same trail in parallel, each with its own code. A great way to start a friendly competition between teams, outdoors, for a company outing, a club or an association.',
+      'gr-bday-h':     'Birthdays',
+      'gr-bday-p':     'An original outing to celebrate a birthday, for children aged 5 and over. The youngest look for clues on site, the adults help them piece the investigation together.',
+      'gr-subj-school':  'Offer request: school trip',
+      'gr-subj-company': 'Offer request: company or group',
+      'gr-subj-bday':    'Offer request: birthday',
+      'gr-body':       'Hello,\n\nWe would like to organise a game of Aventicum Quest.\n\nPreferred date:\nNumber of participants:\nAge of participants:\nLanguage (French, English or German):\n\nThank you and best regards,\n',
+      'gr-end-h2':     'Another question?',
+      'gr-end-p':      'Write to us at info@aventicumquest.ch, or discover the game and its 8 stations first.',
+      'gr-end-btn':    'Discover the game',
       'av-overline':   'Avenches · Vaud · Switzerland',
       'av-h1':         'What to Do in Avenches: Roman History Meets Family Adventure',
       'av-home':       'Home',
@@ -428,6 +490,32 @@
       'gc-end-h2':     'Noch unsicher?',
       'gc-end-p':      'Entdeckt die Mission, die 8 Stationen und den Ablauf des Spiels, bevor ihr es verschenkt.',
       'gc-end-btn':    'Das Spiel entdecken',
+
+      /* Links Gruppen (Nav / Footer) */
+      'nav-groups':    'Gruppen und Schulen',
+      'foot-groups':   'Gruppen und Schulen',
+
+      /* ── groupes.html ── */
+      'gr-overline':   'Gruppen · Schulen · Firmen',
+      'gr-h1':         'Eine römische Ermittlung für eure Gruppe',
+      'gr-home':       'Startseite',
+      'gr-bc':         'Gruppen und Schulen',
+      'gr-lead':       'Eine Klasse, ein Arbeitsteam oder ein Geburtstag? Aventicum Quest lässt sich auch in der Gruppe spielen. Sagt uns, wer ihr seid, und wir melden uns mit einem Angebot.',
+      'gr-price':      'Preis auf Anfrage',
+      'gr-cta':        'Angebot anfragen',
+      'gr-school-h':   'Schulen',
+      'gr-school-p':   'Das Spiel lässt die römische Geschichte von Avenches vor Ort entdecken. Die Schülerinnen und Schüler sind in kleinen Gruppen selbstständig unterwegs, unter der Verantwortung ihrer Begleitpersonen, und lösen die Rätsel, indem sie die Orte genau beobachten. Ideal für eine Schulreise, als Ergänzung zur römischen Geschichte aus dem Unterricht.',
+      'gr-company-h':  'Firmen und Gruppenausflüge',
+      'gr-company-p':  'Mehrere Teams spielen gleichzeitig auf derselben Strecke, jedes mit seinem eigenen Code. So entsteht ein freundschaftlicher Wettkampf zwischen den Teams, im Freien, für einen Firmenausflug, einen Verein oder eine Gruppe.',
+      'gr-bday-h':     'Geburtstage',
+      'gr-bday-p':     'Ein origineller Ausflug zum Geburtstag, für Kinder ab 5 Jahren. Die Jüngsten suchen die Hinweise vor Ort, die Erwachsenen helfen ihnen, die Ermittlung zusammenzusetzen.',
+      'gr-subj-school':  'Angebotsanfrage: Schulreise',
+      'gr-subj-company': 'Angebotsanfrage: Firma oder Gruppe',
+      'gr-subj-bday':    'Angebotsanfrage: Geburtstag',
+      'gr-body':       'Hallo\n\nWir möchten gerne eine Partie Aventicum Quest organisieren.\n\nGewünschtes Datum:\nAnzahl Teilnehmende:\nAlter der Teilnehmenden:\nSprache (Französisch, Englisch oder Deutsch):\n\nVielen Dank und freundliche Grüsse\n',
+      'gr-end-h2':     'Noch eine Frage?',
+      'gr-end-p':      'Schreibt uns an info@aventicumquest.ch oder entdeckt zuerst das Spiel und seine 8 Stationen.',
+      'gr-end-btn':    'Das Spiel entdecken',
       'av-overline':   'Avenches · Waadt · Schweiz',
       'av-h1':         'Was tun in Avenches: Römische Geschichte trifft auf Familienabenteuer',
       'av-home':       'Startseite',

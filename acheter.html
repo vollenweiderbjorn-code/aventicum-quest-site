@@ -455,6 +455,8 @@
       cursor: not-allowed;
     }
     [hidden] { display: none !important; }
+    /* Nav d'acheter.html : seulement 2 liens, ils tiennent dès 641px */
+    @media (min-width: 641px) { #nav .nav-link--wide { display: inline; } }
   </style>
 </head>
 <body>
@@ -464,7 +466,8 @@
       <span class="nav-logo-text">Aventicum Quest</span>
     </a>
     <div class="nav-right">
-      <a href="bon-cadeau.html" class="nav-link" data-i18n="nav-gift">Bons cadeaux</a>
+      <a href="groupes.html" class="nav-link nav-link--wide" data-i18n="nav-groups">Groupes et écoles</a>
+      <a href="bon-cadeau.html" class="nav-link nav-link--wide" data-i18n="nav-gift">Bons cadeaux</a>
     </div>
   </nav>
 
@@ -669,6 +672,7 @@
     const BUY_I18N = {
       fr: {
         back: "← Retour à l'accueil",
+        'nav-groups': "Groupes et écoles",
         'nav-gift': "Bons cadeaux",
         hook: "<strong>L'aigle sacrée a disparu.</strong> L'Empereur arrive dans 120 minutes. Le Sénat compte sur vous.",
         title: "Votre Partie",
@@ -710,6 +714,7 @@
       },
       en: {
         back: "← Back to home",
+        'nav-groups': "Groups and schools",
         'nav-gift': "Gift vouchers",
         hook: "<strong>The sacred eagle has vanished.</strong> The Emperor arrives in 120 minutes. The Senate is counting on you.",
         title: "Your Game",
@@ -751,6 +756,7 @@
       },
       de: {
         back: "← Zurück zur Startseite",
+        'nav-groups': "Gruppen und Schulen",
         'nav-gift': "Geschenkgutscheine",
         hook: "<strong>Der heilige Adler ist verschwunden.</strong> Der Kaiser kommt in 120 Minuten. Der Senat zählt auf Sie.",
         title: "Ihr Spiel",

@@ -164,6 +164,10 @@ body::before {
   transition: color .2s;
 }
 .nav-link:hover { color: var(--aurum); }
+/* Liens Bons cadeaux / Groupes : seulement quand la place suffit (sinon via le footer) */
+@media (max-width: 1099px) {
+  .nav-link--wide { display: none; }
+}
 .nav-langs {
   display: flex;
   gap: .25rem;
