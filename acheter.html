@@ -404,6 +404,57 @@
       background: var(--aurum);
       border-color: var(--aurum);
     }
+
+    /* ── Choix de formule (par joueur / forfait équipe) ── */
+    .buy-formula {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .5rem;
+      margin-bottom: 1.5rem;
+    }
+    .buy-formula-opt {
+      font-family: 'Space Mono', monospace;
+      font-size: .62rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--terre);
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: .8rem .6rem;
+      cursor: pointer;
+      transition: color .2s, border-color .2s, background .2s;
+    }
+    .buy-formula-opt:hover { color: var(--scriptum); border-color: var(--border-strong); }
+    .buy-formula-opt[aria-checked="true"] {
+      color: var(--obsidian);
+      background: var(--aurum);
+      border-color: var(--aurum);
+    }
+    .team-box {
+      border: 1px solid var(--border-strong);
+      border-radius: 3px;
+      padding: 1.4rem 1.1rem 1.2rem;
+      margin-bottom: 2rem;
+      background: rgba(201,164,78,.04);
+      text-align: center;
+    }
+    .team-box-price {
+      font-family: 'Cinzel', serif; font-size: 2rem; font-weight: 700; color: var(--aurum);
+      margin: .3rem 0 .5rem;
+    }
+    .team-box-desc { font-family: 'EB Garamond', serif; font-size: 1.05rem; color: var(--scriptum-dim); line-height: 1.5; }
+    .team-box-help { font-family: 'EB Garamond', serif; font-style: italic; font-size: .82rem; color: var(--terre); margin-top: .7rem; line-height: 1.4; }
+    .btn-buy.is-disabled,
+    .btn-buy.is-disabled:hover {
+      background: transparent;
+      color: var(--terre);
+      border: 1px solid var(--border);
+      box-shadow: none;
+      transform: none;
+      cursor: not-allowed;
+    }
+    [hidden] { display: none !important; }
   </style>
 </head>
 <body>
@@ -448,6 +499,13 @@
         <span class="badge" data-i18n="b-phone">📱 Smartphone</span>
       </div>
 
+      <p class="buy-sec-label" data-i18n="lbl-formula">Choisissez votre formule</p>
+      <div class="buy-formula" role="radiogroup" aria-label="Formule">
+        <button type="button" class="buy-formula-opt" role="radio" aria-checked="true" data-formula="player" data-i18n="f-player">Par joueur</button>
+        <button type="button" class="buy-formula-opt" role="radio" aria-checked="false" data-formula="team" data-i18n="f-team">Forfait Équipe</button>
+      </div>
+
+      <div class="js-mode-player">
       <p class="buy-sec-label" data-i18n="lbl-tarifs">Tarifs</p>
       <div class="tarif-rows">
         <div class="tarif-row">
@@ -508,6 +566,19 @@
           Obtenir mon code de jeu →
         </a>
       </div>
+      </div>
+
+      <div class="js-mode-team" hidden>
+        <div class="team-box">
+          <p class="buy-sec-label" data-i18n="f-team" style="margin-bottom:0">Forfait Équipe</p>
+          <p class="team-box-price">39 CHF</p>
+          <p class="team-box-desc" data-i18n="team-desc">Une équipe jusqu'à 5 personnes, tous âges confondus.</p>
+          <p class="team-box-help" data-i18n="team-help">À partir de 4 personnes, le forfait est souvent plus avantageux.</p>
+        </div>
+        <div class="btn-buy-group" style="margin-bottom:2.25rem">
+          <a class="btn-buy js-stripe-team-link is-disabled" aria-disabled="true">Bientôt disponible</a>
+        </div>
+      </div>
 
       <div class="qty-note">
         <p data-i18n-html="qty">
@@ -523,7 +594,7 @@
           <div class="buy-step-num">I</div>
           <div class="buy-step-txt">
             <b data-i18n="s1-t">Achetez votre code</b>
-            <span data-i18n="s1-d">Le prix est par joueur, paiement sécurisé en 1 minute.</span>
+            <span data-i18n="s1-d">Par joueur ou au forfait équipe, paiement sécurisé en 1 minute.</span>
           </div>
         </div>
         <div class="buy-step">
@@ -550,9 +621,10 @@
       </ul>
 
       <div class="btn-buy-group">
-        <a id="btn-buy-stripe" href="https://buy.stripe.com/aFa00j5Uz7Oa4LFa42c7u01" class="btn-buy js-stripe-link" data-i18n="cta" aria-label="Payer via Stripe">
+        <a id="btn-buy-stripe" href="https://buy.stripe.com/aFa00j5Uz7Oa4LFa42c7u01" class="btn-buy js-stripe-link js-mode-player" data-i18n="cta" aria-label="Payer via Stripe">
           Obtenir mon code de jeu →
         </a>
+        <a class="btn-buy js-stripe-team-link js-mode-team is-disabled" aria-disabled="true" hidden>Bientôt disponible</a>
         <p class="buy-secure" data-i18n="secure">🔒 Paiement sécurisé · Stripe · Reçu par e-mail</p>
         <div class="pay-methods" aria-label="Cartes acceptées">
           <span class="pay-chip" title="Visa">
@@ -582,6 +654,14 @@
       de: 'https://buy.stripe.com/5kQbJ1dn1d8uemfccac7u03'
     };
 
+    /* ── Lien de paiement Forfait Équipe (39 CHF, jusqu'à 5 personnes) ──
+       Tant qu'une URL commence par "TODO", le bouton reste désactivé ("Bientôt disponible"). */
+    const STRIPE_LINKS_TEAM = {
+      fr: 'TODO_STRIPE_TEAM_FR',
+      en: 'TODO_STRIPE_TEAM_EN',
+      de: 'TODO_STRIPE_TEAM_DE'
+    };
+
     /* ── Traductions de la page ── */
     const BUY_I18N = {
       fr: {
@@ -601,7 +681,7 @@
         example: "Exemple — une famille de 4 (2 adultes + 2 enfants) : <strong>40 CHF</strong>",
         qty: "<strong>Un seul code par commande.</strong><br>Il vous est envoyé par e-mail et sert à toute votre équipe.<br>Valable 12 mois à partir de l'achat.",
         'lbl-how': "Comment ça marche",
-        's1-t': "Achetez votre code", 's1-d': "Le prix est par joueur, paiement sécurisé en 1 minute.",
+        's1-t': "Achetez votre code", 's1-d': "Par joueur ou au forfait équipe, paiement sécurisé en 1 minute.",
         's2-t': "Recevez-le par e-mail", 's2-d': "Votre code arrive aussitôt dans votre boîte de réception, valable pour toute l'équipe.",
         's3-t': "Jouez à Avenches", 's3-d': "Sur place, lancez la partie quand vous voulez. 120 min environ.",
         a1: "Code valable 12 mois — partez le jour que vous choisissez.",
@@ -615,7 +695,14 @@
         'calc-adult': "Adultes", 'calc-adult-age': "Dès 18 ans · 12 CHF",
         'calc-child': "Enfants", 'calc-child-age': "5 à 17 ans · 8 CHF",
         'calc-total': "Total",
-        'calc-note': "Le total ci-dessus est le prix de votre commande. Vous recevrez un seul code par e-mail, valable pour toute votre équipe."
+        'calc-note': "Le total ci-dessus est le prix de votre commande. Vous recevrez un seul code par e-mail, valable pour toute votre équipe.",
+        'lbl-formula': "Choisissez votre formule",
+        'f-player': "Par joueur",
+        'f-team': "Forfait Équipe",
+        'team-desc': "Une équipe jusqu'à 5 personnes, tous âges confondus.",
+        'team-help': "À partir de 4 personnes, le forfait est souvent plus avantageux.",
+        'cta-team': "Obtenir mon forfait équipe →",
+        'soon': "Bientôt disponible"
       },
       en: {
         back: "← Back to home",
@@ -634,7 +721,7 @@
         example: "Example — a family of 4 (2 adults + 2 children): <strong>CHF 40</strong>",
         qty: "<strong>One code per order.</strong><br>It is sent to you by e-mail and works for your whole team.<br>Valid for 12 months from purchase.",
         'lbl-how': "How it works",
-        's1-t': "Buy your code", 's1-d': "The price is per player, secure payment in 1 minute.",
+        's1-t': "Buy your code", 's1-d': "Per player or with the Team Pass, secure payment in 1 minute.",
         's2-t': "Get it by e-mail", 's2-d': "Your code arrives in your inbox right away, valid for your whole team.",
         's3-t': "Play in Avenches", 's3-d': "On site, start whenever you like. About 120 min.",
         a1: "Code valid for 12 months — go on the day you choose.",
@@ -648,7 +735,14 @@
         'calc-adult': "Adults", 'calc-adult-age': "18 and over · CHF 12",
         'calc-child': "Children", 'calc-child-age': "ages 5 to 17 · CHF 8",
         'calc-total': "Total",
-        'calc-note': "The total above is the price of your order. You will receive a single code by e-mail, valid for your whole team."
+        'calc-note': "The total above is the price of your order. You will receive a single code by e-mail, valid for your whole team.",
+        'lbl-formula': "Choose your option",
+        'f-player': "Per player",
+        'f-team': "Team Pass",
+        'team-desc': "One team of up to 5 people, any age.",
+        'team-help': "From 4 people, the Team Pass is often the better deal.",
+        'cta-team': "Get my Team Pass →",
+        'soon': "Coming soon"
       },
       de: {
         back: "← Zurück zur Startseite",
@@ -667,7 +761,7 @@
         example: "Beispiel — eine Familie mit 4 Personen (2 Erwachsene + 2 Kinder): <strong>40 CHF</strong>",
         qty: "<strong>Ein Code pro Bestellung.</strong><br>Er wird Ihnen per E-Mail zugeschickt und gilt für Ihr ganzes Team.<br>12 Monate ab Kauf gültig.",
         'lbl-how': "So funktioniert's",
-        's1-t': "Code kaufen", 's1-d': "Der Preis gilt pro Spieler, sichere Zahlung in 1 Minute.",
+        's1-t': "Code kaufen", 's1-d': "Pro Spieler oder als Team-Pauschale, sichere Zahlung in 1 Minute.",
         's2-t': "Per E-Mail erhalten", 's2-d': "Ihr Code kommt sofort in Ihr Postfach, gültig für Ihr ganzes Team.",
         's3-t': "In Avenches spielen", 's3-d': "Vor Ort starten Sie, wann Sie möchten. Etwa 120 Min.",
         a1: "Code 12 Monate gültig — spielen Sie am Tag Ihrer Wahl.",
@@ -681,7 +775,14 @@
         'calc-adult': "Erwachsene", 'calc-adult-age': "Ab 18 Jahren · 12 CHF",
         'calc-child': "Kinder", 'calc-child-age': "5 bis 17 Jahre · 8 CHF",
         'calc-total': "Total",
-        'calc-note': "Die Summe oben ist der Preis Ihrer Bestellung. Sie erhalten einen einzigen Code per E-Mail, gültig für Ihr ganzes Team."
+        'calc-note': "Die Summe oben ist der Preis Ihrer Bestellung. Sie erhalten einen einzigen Code per E-Mail, gültig für Ihr ganzes Team.",
+        'lbl-formula': "Wählen Sie Ihre Variante",
+        'f-player': "Pro Spieler",
+        'f-team': "Team-Pauschale",
+        'team-desc': "Ein Team mit bis zu 5 Personen, jedes Alter.",
+        'team-help': "Ab 4 Personen lohnt sich die Pauschale oft mehr.",
+        'cta-team': "Meine Team-Pauschale erhalten →",
+        'soon': "Bald verfügbar"
       }
     };
 
@@ -701,12 +802,42 @@
       document.querySelectorAll('.buy-lang').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
+      const teamUrl = STRIPE_LINKS_TEAM[lang] || '';
+      const teamReady = teamUrl && teamUrl.indexOf('TODO') !== 0;
+      document.querySelectorAll('.js-stripe-team-link').forEach(function (a) {
+        if (teamReady) {
+          a.href = teamUrl;
+          a.removeAttribute('aria-disabled');
+          a.classList.remove('is-disabled');
+          a.textContent = dict['cta-team'];
+        } else {
+          a.removeAttribute('href');
+          a.setAttribute('aria-disabled', 'true');
+          a.classList.add('is-disabled');
+          a.textContent = dict.soon;
+        }
+      });
       localStorage.setItem('aq-lang', lang);
     }
 
     // Langue initiale : celle choisie précédemment (index.html ou cette page), sinon FR
     const initialLang = localStorage.getItem('aq-lang') || 'fr';
     setBuyLang(initialLang);
+
+    /* ── Choix de formule : par joueur / forfait équipe (?formule=equipe pour présélectionner) ── */
+    let buyFormula = 'player';
+    function setFormula(f) {
+      buyFormula = f === 'team' ? 'team' : 'player';
+      document.querySelectorAll('.buy-formula-opt').forEach(function (b) {
+        b.setAttribute('aria-checked', b.dataset.formula === buyFormula ? 'true' : 'false');
+      });
+      document.querySelectorAll('.js-mode-player').forEach(function (el) { el.hidden = buyFormula !== 'player'; });
+      document.querySelectorAll('.js-mode-team').forEach(function (el) { el.hidden = buyFormula !== 'team'; });
+      if (sticky) updateSticky();
+    }
+    document.querySelectorAll('.buy-formula-opt').forEach(function (b) {
+      b.addEventListener('click', function () { setFormula(b.dataset.formula); });
+    });
 
     /* ── Calculateur de prix ── */
     const PRICE = { adult: 12, child: 8 };
@@ -735,6 +866,7 @@
     const sticky = document.getElementById('buySticky');
     const mainCta = document.getElementById('btn-buy-stripe');
     function updateSticky() {
+      if (buyFormula === 'team') { sticky.classList.remove('show'); return; }
       const r = mainCta.getBoundingClientRect();
       const mainVisible = r.top < (window.innerHeight - 40) && r.bottom > 0;
       sticky.classList.toggle('show', !mainVisible);
@@ -742,6 +874,18 @@
     window.addEventListener('scroll', updateSticky, { passive: true });
     window.addEventListener('resize', updateSticky);
     updateSticky();
+
+    // Formule initiale (après la définition du CTA collant)
+    setFormula(new URLSearchParams(location.search).get('formule') === 'equipe' ? 'team' : 'player');
+
+    document.querySelectorAll('.js-stripe-team-link').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        if (!a.getAttribute('href')) { e.preventDefault(); return; }
+        try {
+          window.plausible('Checkout: clic Payer', { props: { langue: document.documentElement.lang || 'fr', formule: 'equipe' } });
+        } catch (err) {}
+      });
+    });
 
     /* ── Suivi de conversion : clic sur un bouton de paiement ── */
     document.querySelectorAll('.js-stripe-link').forEach(function (a) {

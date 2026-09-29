@@ -79,7 +79,7 @@
       {
         "@type": "Product",
         "name": "Aventicum Quest — Operatio Aquila",
-        "description": "Code de jeu pour l'enquête en plein air Aventicum Quest à Avenches. Un code par joueur, valable 12 mois.",
+        "description": "Code de jeu pour l'enquête en plein air Aventicum Quest à Avenches. Un seul code par commande, valable pour toute l'équipe, pendant 12 mois. Tarif par joueur ou Forfait Équipe.",
         "image": "https://aventicumquest.ch/images/og_image.jpg",
         "brand": { "@type": "Brand", "name": "Aventicum Quest" },
         "offers": {
@@ -167,6 +167,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Votre code est valable 12 mois à partir de l'achat. Pendant cette période, vous partez quand vous voulez."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quelle formule choisir ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le tarif par joueur coûte 12 CHF par adulte et 8 CHF par enfant de 5 à 17 ans, gratuit pour les moins de 5 ans. Le Forfait Équipe coûte 39 CHF pour une équipe jusqu'à 5 personnes, quel que soit leur âge. À partir de 4 personnes, le forfait est souvent plus avantageux. Dans les deux cas, vous recevez un seul code pour toute l'équipe."
             }
           }
         ]
@@ -557,6 +565,11 @@
             <div class="faq-a"><p data-i18n="faq-a6">Votre code est valable 12 mois à partir de l'achat. Pendant cette période, vous partez quand vous voulez.</p></div>
           </details>
 
+          <details class="faq-item">
+            <summary><span class="faq-q" data-i18n="faq-q7">Quelle formule choisir ?</span></summary>
+            <div class="faq-a"><p data-i18n="faq-a7">Le tarif par joueur coûte 12 CHF par adulte et 8 CHF par enfant de 5 à 17 ans, gratuit pour les moins de 5 ans. Le Forfait Équipe coûte 39 CHF pour une équipe jusqu'à 5 personnes, quel que soit leur âge. À partir de 4 personnes, le forfait est souvent plus avantageux. Dans les deux cas, vous recevez un seul code pour toute l'équipe.</p></div>
+          </details>
+
         </div>
       </div>
     </section>
@@ -569,10 +582,13 @@
             <div class="stele-rule"><span class="stele-diamond">◆</span></div>
             <h2 data-i18n="tarifs-h2">Tarifs</h2>
             <div class="stele-rule"><span class="stele-diamond">◆</span></div>
-            <p class="stele-sub" data-i18n="tarifs-sub">Prix par code · Équipe illimitée</p>
+            <p class="stele-sub" data-i18n="tarifs-sub">Deux formules au choix</p>
           </div>
 
-          <table class="tarif-table reveal" aria-label="Tarifs Aventicum Quest">
+          <div class="tarif-cards reveal">
+          <div class="tarif-card">
+          <h3 class="tarif-card-title" data-i18n="tarif-opt1-title">Par joueur</h3>
+          <table class="tarif-table" aria-label="Tarifs par joueur">
             <tbody>
               <tr>
                 <td class="tarif-cat">
@@ -594,6 +610,17 @@
               </tr>
             </tbody>
           </table>
+          </div>
+
+          <div class="tarif-card tarif-card--team">
+            <span class="tarif-card-badge" data-i18n="tarif-team-badge">Idéal en famille ou entre amis</span>
+            <h3 class="tarif-card-title" data-i18n="tarif-opt2-title">Forfait Équipe</h3>
+            <p class="tarif-card-price">39 CHF</p>
+            <p class="tarif-card-desc" data-i18n="tarif-team-desc">Une équipe jusqu'à 5 personnes, tous âges confondus.</p>
+          </div>
+          </div>
+
+          <p class="tarif-help reveal" data-i18n="tarif-help">À partir de 4 personnes, le forfait est souvent plus avantageux.</p>
 
           <p class="tarif-note reveal" data-i18n-html="tarif-note">
             Un seul code par commande, valable pour toute votre équipe.<br>
@@ -723,7 +750,12 @@
         'ps-cert-title':    'MISSION ACCOMPLIE',
         'ps-cert-badge':    '🦅 L\'AIGLE EST RETROUVÉE',
         'tarifs-h2':        'Tarifs',
-        'tarifs-sub':       'Prix par code · Équipe illimitée',
+        'tarifs-sub':       'Deux formules au choix',
+        'tarif-opt1-title': 'Par joueur',
+        'tarif-opt2-title': 'Forfait Équipe',
+        'tarif-team-badge': 'Idéal en famille ou entre amis',
+        'tarif-team-desc':  'Une équipe jusqu\'à 5 personnes, tous âges confondus.',
+        'tarif-help':       'À partir de 4 personnes, le forfait est souvent plus avantageux.',
         'tarif-adult':      'Adulte',
         'tarif-adult-age':  '(dès 18 ans)',
         'tarif-child':      'Enfant',
@@ -747,6 +779,8 @@
         'faq-a5':           'Oui. Chaque équipe achète son propre code et joue de son côté. C\'est idéal pour une sortie de groupe ou une petite compétition amicale entre équipes.',
         'faq-q6':           'Le code d\'accès a-t-il une date d\'expiration ?',
         'faq-a6':           'Votre code est valable 12 mois à partir de l\'achat. Pendant cette période, vous partez quand vous voulez.',
+        'faq-q7':           'Quelle formule choisir ?',
+        'faq-a7':           'Le tarif par joueur coûte 12 CHF par adulte et 8 CHF par enfant de 5 à 17 ans, gratuit pour les moins de 5 ans. Le Forfait Équipe coûte 39 CHF pour une équipe jusqu\'à 5 personnes, quel que soit leur âge. À partir de 4 personnes, le forfait est souvent plus avantageux. Dans les deux cas, vous recevez un seul code pour toute l\'équipe.',
         'nav-guide':        'Que faire à Avenches',
         'foot-guide':       'Que faire à Avenches',
         'foot-family':      'Jeu de piste en famille',
@@ -833,7 +867,12 @@
         'ps-cert-title':    'MISSION COMPLETE',
         'ps-cert-badge':    '🦅 THE EAGLE IS FOUND',
         'tarifs-h2':        'Prices',
-        'tarifs-sub':       'Price per code · Unlimited team',
+        'tarifs-sub':       'Two options to choose from',
+        'tarif-opt1-title': 'Per player',
+        'tarif-opt2-title': 'Team Pass',
+        'tarif-team-badge': 'Ideal for families or friends',
+        'tarif-team-desc':  'One team of up to 5 people, any age.',
+        'tarif-help':       'From 4 people, the Team Pass is often the better deal.',
         'tarif-adult':      'Adult',
         'tarif-adult-age':  '(18 years +)',
         'tarif-child':      'Child',
@@ -857,6 +896,8 @@
         'faq-a5':           'Yes. Each team buys its own code and plays separately. It is ideal for a group outing or a friendly contest between teams.',
         'faq-q6':           'Does the access code have an expiry date?',
         'faq-a6':           'Your code is valid for 12 months from purchase. Within that period, you set off whenever you want.',
+        'faq-q7':           'Which option should we choose?',
+        'faq-a7':           'The per-player price is CHF 12 per adult and CHF 8 per child aged 5 to 17, free for children under 5. The Team Pass costs CHF 39 for one team of up to 5 people, whatever their age. From 4 people, the Team Pass is often the better deal. Either way, you receive a single code for the whole team.',
         'nav-guide':        'What to do in Avenches',
         'foot-guide':       'What to do in Avenches',
         'foot-family':      'Family treasure hunt',
@@ -943,7 +984,12 @@
         'ps-cert-title':    'MISSION ERFÜLLT',
         'ps-cert-badge':    '🦅 DER ADLER IST GEFUNDEN',
         'tarifs-h2':        'Preise',
-        'tarifs-sub':       'Preis pro Code · Unbegrenzte Gruppe',
+        'tarifs-sub':       'Zwei Varianten zur Wahl',
+        'tarif-opt1-title': 'Pro Person',
+        'tarif-opt2-title': 'Team-Pauschale',
+        'tarif-team-badge': 'Ideal für Familien oder Freunde',
+        'tarif-team-desc':  'Ein Team mit bis zu 5 Personen, jedes Alter.',
+        'tarif-help':       'Ab 4 Personen lohnt sich die Pauschale oft mehr.',
         'tarif-adult':      'Erwachsener',
         'tarif-adult-age':  '(ab 18 Jahren)',
         'tarif-child':      'Kind',
@@ -967,6 +1013,8 @@
         'faq-a5':           'Ja. Jedes Team kauft seinen eigenen Code und spielt für sich. Ideal für einen Gruppenausflug oder einen kleinen freundschaftlichen Wettkampf zwischen Teams.',
         'faq-q6':           'Hat der Zugangscode ein Ablaufdatum?',
         'faq-a6':           'Euer Code ist 12 Monate ab Kauf gültig. In diesem Zeitraum brecht ihr auf, wann ihr wollt.',
+        'faq-q7':           'Welche Variante sollen wir wählen?',
+        'faq-a7':           'Pro Person kostet es 12 CHF für Erwachsene und 8 CHF für Kinder von 5 bis 17 Jahren, unter 5 Jahren gratis. Die Team-Pauschale kostet 39 CHF für ein Team mit bis zu 5 Personen, egal welchen Alters. Ab 4 Personen lohnt sich die Pauschale oft mehr. In beiden Fällen erhaltet ihr einen einzigen Code für das ganze Team.',
         'nav-guide':        'Was in Avenches unternehmen',
         'foot-guide':       'Was in Avenches unternehmen',
         'foot-family':      'Schnitzeljagd für Familien',

@@ -1155,7 +1155,7 @@ section { position: relative; }
 /* ── Tarifs ──────────────────────────────────────────────────── */
 #tarifs { background: var(--obsidian); }
 .tarifs-inner {
-  max-width: 640px;
+  max-width: 880px;
   margin: 0 auto;
   text-align: center;
 }
@@ -1185,6 +1185,72 @@ section { position: relative; }
   letter-spacing: .06em;
 }
 .tarif-free { color: var(--terre); }
+.tarif-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+  margin-bottom: 1.25rem;
+}
+.tarif-card {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1.6rem 1.25rem 1.25rem;
+  background: rgba(201,164,78,.03);
+  display: flex;
+  flex-direction: column;
+}
+.tarif-card .tarif-table { margin-bottom: 0; }
+.tarif-card--team {
+  border-color: var(--border-strong);
+  justify-content: center;
+  align-items: center;
+}
+.tarif-card-title {
+  font-family: 'Cinzel', serif;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--scriptum);
+  margin-bottom: .9rem;
+}
+.tarif-card-badge {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Space Mono', monospace;
+  font-size: .52rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--obsidian);
+  background: var(--aurum);
+  padding: .3rem .7rem;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.tarif-card-price {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--aurum);
+  letter-spacing: .04em;
+  margin-bottom: .5rem;
+}
+.tarif-card-desc {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem;
+  color: var(--scriptum-dim);
+  line-height: 1.5;
+}
+.tarif-help {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: .95rem;
+  color: var(--scriptum-dim);
+  margin-bottom: 1rem;
+}
 .tarif-note {
   font-family: 'Space Mono', monospace;
   font-size: .6rem;
@@ -1375,6 +1441,7 @@ footer {
   .phone:nth-child(2) { transform: none; opacity: 1; }
   #cookie-banner { flex-direction: column; gap: .75rem; }
   .tarif-table td { padding: .7rem .6rem; }
+  .tarif-cards   { grid-template-columns: 1fr; gap: 1.75rem; }
   #stations-map { height: 78vh; min-height: 460px; }
 }
 
