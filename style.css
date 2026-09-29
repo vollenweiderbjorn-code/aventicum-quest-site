@@ -1102,6 +1102,76 @@ section { position: relative; }
 
 /* ── FAQ ─────────────────────────────────────────────────────── */
 #faq { background: var(--obsidian); }
+
+/* ── Infos pratiques ─────────────────────────────────────────── */
+#infos {
+  background: var(--pierre);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.infos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.info-card {
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1.4rem 1.3rem;
+  background: rgba(9,9,10,.35);
+}
+.info-icon { width: 30px; height: 30px; color: var(--aurum); margin-bottom: .8rem; }
+.info-title {
+  font-family: 'Cinzel', serif;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--scriptum);
+  margin-bottom: .45rem;
+}
+.info-desc { font-size: 1rem; line-height: 1.6; color: var(--scriptum-dim); }
+.info-link {
+  display: inline-block;
+  margin-top: .7rem;
+  font-family: 'Space Mono', monospace;
+  font-size: .58rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--aurum);
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: .1rem;
+  transition: color .2s, border-color .2s;
+}
+.info-link:hover { color: var(--scriptum); border-color: var(--aurum); }
+
+/* ── Avis clients (section masquée tant qu'il n'y a pas d'avis) ─ */
+#avis { background: var(--obsidian); }
+#avis[hidden] { display: none; }
+.avis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.avis-card {
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1.4rem 1.3rem;
+  background: var(--pierre);
+}
+.avis-stars { color: var(--aurum); letter-spacing: .15em; margin-bottom: .6rem; }
+.avis-text { font-style: italic; color: var(--scriptum-dim); line-height: 1.65; margin-bottom: .8rem; }
+.avis-name {
+  font-family: 'Space Mono', monospace;
+  font-size: .58rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--terre);
+}
 .faq-list {
   max-width: 780px;
   margin: 3rem auto 0;
@@ -1472,6 +1542,7 @@ body.has-xmas-bar #nav { top: var(--xmas-h); }
   .mission-grid  { grid-template-columns: 1fr; }
   .mission-photo { aspect-ratio: 4/3; max-height: 360px; }
   .how-grid      { grid-template-columns: 1fr; gap: 1rem; }
+  .infos-grid    { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 640px) {
@@ -1496,6 +1567,10 @@ body.has-xmas-bar #nav { top: var(--xmas-h); }
   #cookie-banner { flex-direction: column; gap: .75rem; }
   .tarif-table td { padding: .7rem .6rem; }
   .tarif-cards   { grid-template-columns: 1fr; gap: 1.75rem; }
+  .infos-grid    { grid-template-columns: 1fr; }
+  .band-sep      { display: none; }
+  .band-inner    { gap: .4rem 0; }
+  .band-item     { padding: 0 .7rem; }
   #stations-map { height: 78vh; min-height: 460px; }
 }
 
