@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>Groupes, écoles et entreprises : Aventicum Quest à Avenches</title>
   <meta name="description" content="Course d'école, sortie d'entreprise ou anniversaire : jouez Aventicum Quest en groupe à Avenches. Plusieurs équipes en parallèle, tarif sur demande.">
   <meta name="robots" content="index, follow">
@@ -26,7 +24,10 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preload" href="fonts/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
 
   <!-- Données structurées (SEO / résultats enrichis) -->
   <script type="application/ld+json">
@@ -40,209 +41,70 @@
   }
   </script>
 
-  <!-- Privacy-friendly analytics by Plausible -->
-  <script async src="https://plausible.io/js/pa-ELx2kKywInJ5MKZ1ST8au.js"></script>
+  <!-- Mesure d'audience Plausible : chargée uniquement sur le vrai domaine (pas en prévisualisation) -->
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-    plausible.init()
+    plausible.init();
+    (function(){var h=location.hostname;if(h==='aventicumquest.ch'||h==='www.aventicumquest.ch'){var s=document.createElement('script');s.async=true;s.src='https://plausible.io/js/pa-ELx2kKywInJ5MKZ1ST8au.js';document.head.appendChild(s);}})();
   </script>
 
-  <style>
-    /* ── Bandeau d'en-tête ── */
-    .art-hero {
-      position: relative;
-      min-height: clamp(340px, 56vh, 520px);
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      border-bottom: 1px solid var(--border);
-    }
-    .art-hero-img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center 55%;
-      filter: saturate(.88) brightness(.82);
-      z-index: 0;
-    }
-    .art-hero::after {
-      content: "";
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to bottom, rgba(9,9,10,.55) 0%, rgba(9,9,10,.15) 30%, rgba(9,9,10,.35) 60%, rgba(9,9,10,.92) 100%);
-    }
-    .art-hero-inner {
-      position: relative; z-index: 2;
-      max-width: 1000px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 0 clamp(1.5rem, 5vw, 3rem) clamp(2.5rem, 5vw, 3.75rem);
-    }
-    .art-overline {
-      font-family: 'Space Mono', monospace;
-      font-size: .62rem;
-      letter-spacing: .28em;
-      text-transform: uppercase;
-      color: var(--aurum);
-      text-shadow: 0 2px 10px rgba(0,0,0,.8);
-      margin-bottom: 1rem;
-    }
-    .art-hero h1 {
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      font-size: clamp(1.7rem, 4.6vw, 3rem);
-      line-height: 1.18;
-      letter-spacing: .02em;
-      color: var(--scriptum);
-      max-width: 20ch;
-      text-shadow: 0 3px 18px rgba(0,0,0,.7);
-    }
-
-    /* ── Fil d'Ariane ── */
-    .breadcrumb {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 1.5rem clamp(1.5rem, 5vw, 2rem) 0;
-      font-family: 'Space Mono', monospace;
-      font-size: .58rem;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--terre);
-    }
-    .breadcrumb a { color: var(--terre); transition: color .2s; }
-    .breadcrumb a:hover { color: var(--aurum); }
-    .breadcrumb .sep { padding: 0 .5rem; color: var(--ombre); }
-
-    /* ── Corps ── */
-    .art-body {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 2rem) clamp(2rem, 5vw, 3rem);
-    }
-    .art-lead {
-      font-size: clamp(1.15rem, 2.6vw, 1.4rem);
-      line-height: 1.7;
-      color: var(--scriptum);
-      font-style: italic;
-      margin-bottom: 3rem;
-    }
-    .art-body h2 {
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      font-size: clamp(1.25rem, 3vw, 1.7rem);
-      color: var(--aurum);
-      letter-spacing: .02em;
-      line-height: 1.3;
-      margin: 3rem 0 1.4rem;
-    }
-    .art-body h2:first-of-type { margin-top: 0; }
-
-    /* ── Blocs ── */
-    .gr-blocks {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 clamp(1.5rem, 5vw, 2rem) clamp(2rem, 5vw, 3rem);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-    .gr-block {
-      display: flex;
-      flex-direction: column;
-      padding: clamp(1.5rem, 4vw, 2rem);
-      background: radial-gradient(120% 80% at 50% 0%, rgba(201,164,78,.06), transparent 65%), var(--pierre);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-    }
-    .gr-icon { width: 34px; height: 34px; color: var(--aurum); margin-bottom: 1rem; }
-    .gr-block h2 {
-      font-family: 'Cinzel', serif; font-weight: 700;
-      font-size: clamp(1.05rem, 2.4vw, 1.2rem);
-      letter-spacing: .04em; line-height: 1.3;
-      color: var(--aurum); margin-bottom: .9rem;
-    }
-    .gr-block p { font-size: 1.05rem; line-height: 1.75; color: var(--scriptum-dim); margin-bottom: 1.5rem; flex: 1; }
-    .gr-price {
-      font-family: 'Space Mono', monospace; font-size: .58rem; letter-spacing: .16em;
-      text-transform: uppercase; color: var(--terre); margin-bottom: .9rem;
-    }
-    .gr-btn {
-      display: block; text-align: center;
-      font-family: 'Cinzel', serif; font-size: .74rem; font-weight: 700;
-      letter-spacing: .16em; text-transform: uppercase;
-      color: var(--obsidian); background: var(--aurum);
-      padding: .95rem 1.2rem; border-radius: 2px;
-      transition: background .2s, transform .12s;
-    }
-    .gr-btn:hover { background: var(--scriptum); transform: translateY(-1px); }
-    .art-body--intro { padding-bottom: clamp(1.5rem, 4vw, 2.5rem); }
-    .art-body--intro .art-lead { margin-bottom: 0; }
-    @media (max-width: 900px) {
-      .gr-blocks { grid-template-columns: 1fr; max-width: 760px; }
-    }
-
-    /* ── CTA de fin ── */
-    .art-cta {
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto;
-      padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 5vw, 2rem) clamp(4rem, 8vw, 6rem);
-    }
-    .art-cta h2 {
-      font-family: 'Cinzel', serif; font-weight: 700;
-      font-size: clamp(1.35rem, 3.4vw, 2rem);
-      color: var(--scriptum); margin-bottom: 1rem;
-    }
-    .art-cta p {
-      font-size: 1.08rem; line-height: 1.8; color: var(--scriptum-dim);
-      margin: 0 auto 2rem; max-width: 52ch;
-    }
-    .art-cta .btn-ghost::after { content: '→'; }
-    .art-cta .btn-ghost:hover::after { transform: translateX(2px); }
-
-    main { padding-top: var(--nav-h); }
-  </style>
 </head>
 <body>
+  <a class="skip-link" href="#contenu" data-i18n="a11y.skip">Aller au contenu</a>
 
   <!-- ── Cookie banner (partagé : cookies.js) ───────────────── -->
   <script src="cookies.js"></script>
 
   <!-- ── Navigation ─────────────────────────────────────────── -->
-  <nav id="nav" class="scrolled" role="navigation" aria-label="Navigation principale">
-    <a href="index.html" class="nav-logo" aria-label="Aventicum Quest Accueil">
-      <img src="images/logo.svg" alt="" class="nav-logo-img" width="36" height="36" aria-hidden="true">
-      <span class="nav-logo-text">
-        Aventicum Quest
-        <span class="nav-logo-sub">Operatio Aquila</span>
-      </span>
+  <header class="site-header is-solid">
+    <a class="brand" href="index.html" aria-label="Aventicum Quest">
+      <img src="assets/logo.svg" alt="" width="44" height="44">
+      <span class="brand-name">Aventicum Quest</span>
     </a>
-    <div class="nav-right">
-      <a href="bon-cadeau.html" class="nav-link nav-link--wide" data-i18n="nav-gift">Bons cadeaux</a>
-      <a href="groupes.html" class="nav-link nav-link--wide" data-i18n="nav-groups" aria-current="page">Groupes et écoles</a>
-      <div class="lang-select" role="group" aria-label="Langue / Language / Sprache">
-        <button type="button" class="lang-toggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Choisir la langue">
-          <span class="lang-globe" aria-hidden="true">🌐</span>
-          <span class="lang-current">FR</span>
-          <span class="lang-caret" aria-hidden="true">▾</span>
+    <nav class="nav-main" aria-label="Navigation principale" data-i18n-aria="nav.aria">
+      <a href="index.html#mission" data-i18n="nav.mission">La mission</a>
+      <a href="index.html#stations" data-i18n="nav.stations">Les stations</a>
+      <a href="index.html#enigmes" data-i18n="nav.enigmes">Les énigmes</a>
+      <a href="index.html#tarifs" data-i18n="nav.tarifs">Tarifs</a>
+      <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang">
+        <button type="button" class="lang-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Langue" data-i18n-aria="nav.lang">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><ellipse cx="8" cy="8" rx="2.8" ry="6.5"/><line x1="1.5" y1="8" x2="14.5" y2="8"/></svg>
+          <span class="lang-code">FR</span>
         </button>
-        <ul class="lang-menu" role="listbox" aria-label="Langue">
-          <li><button type="button" class="lang-opt" role="option" data-lang="fr" aria-selected="true" onclick="setLang('fr')"><span>Français</span><span class="lang-opt-code">FR</span></button></li>
-          <li><button type="button" class="lang-opt" role="option" data-lang="de" aria-selected="false" onclick="setLang('de')"><span>Deutsch</span><span class="lang-opt-code">DE</span></button></li>
-          <li><button type="button" class="lang-opt" role="option" data-lang="en" aria-selected="false" onclick="setLang('en')"><span>English</span><span class="lang-opt-code">EN</span></button></li>
-        </ul>
+        <div class="lang-menu" role="menu" hidden>
+          <button type="button" class="lang-opt" role="menuitemradio" aria-checked="true" data-lang="fr"><span>Français</span><span class="lang-opt-code">FR</span></button>
+          <button type="button" class="lang-opt" role="menuitemradio" aria-checked="false" data-lang="de"><span>Deutsch</span><span class="lang-opt-code">DE</span></button>
+          <button type="button" class="lang-opt" role="menuitemradio" aria-checked="false" data-lang="en"><span>English</span><span class="lang-opt-code">EN</span></button>
+        </div>
       </div>
-      <a href="acheter.html" class="nav-cta" data-i18n="nav-cta">Acheter</a>
+      <a class="btn btn--outline btn--sm nav-buy" href="acheter.html" data-i18n="nav.buy">Acheter</a>
+      <button type="button" class="burger" aria-expanded="false" aria-controls="menu-panel" aria-label="Menu" data-i18n-aria="nav.menu"><span></span><span></span></button>
     </div>
-  </nav>
+  </header>
 
-  <main>
+  <div class="menu-panel" id="menu-panel" role="dialog" aria-modal="true" aria-label="Menu" data-i18n-aria="nav.menu" hidden>
+    <div class="menu-top">
+      <img src="assets/logo.svg" alt="" width="44" height="44">
+      <button type="button" class="menu-close" data-i18n="nav.close">Fermer</button>
+    </div>
+    <nav class="menu-nav" aria-label="Navigation principale" data-i18n-aria="nav.aria">
+      <a href="index.html#mission" data-i18n="nav.mission">La mission</a>
+      <a href="index.html#stations" data-i18n="nav.stations">Les stations</a>
+      <a href="index.html#enigmes" data-i18n="nav.enigmes">Les énigmes</a>
+      <a href="index.html#tarifs" data-i18n="nav.tarifs">Tarifs</a>
+      <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+    </nav>
+    <a class="btn btn--primary btn--block" href="acheter.html" data-i18n="nav.buy">Acheter</a>
+  </div>
+
+  <main id="contenu">
 
     <!-- ── Bandeau d'en-tête ──────────────────────────────────── -->
     <header class="art-hero">
-      <img class="art-hero-img"
-           src="images/s06b.jpg"
-           alt="Théâtre du Selley à Avenches, une des stations du jeu Aventicum Quest"
-           width="1200" height="778" loading="eager">
+      <img class="art-hero-img" src="assets/s04-1200.webp" srcset="assets/s04-800.webp 800w, assets/s04-1200.webp 1200w" sizes="100vw" alt="Les arènes romaines d'Avenches, une des stations du jeu Aventicum Quest" width="1200" height="794" fetchpriority="high" decoding="async">
       <div class="art-hero-inner">
         <p class="art-overline" data-i18n="gr-overline">Groupes · Écoles · Entreprises</p>
         <h1 data-i18n="gr-h1">Une enquête romaine pour votre groupe</h1>
@@ -297,25 +159,36 @@
   </main>
 
   <!-- ── Footer ─────────────────────────────────────────────── -->
-  <footer>
+  <footer class="site-footer">
     <div class="footer-inner">
-      <p class="footer-logo">Aventicum Quest</p>
-      <nav class="footer-links" aria-label="Liens légaux">
-        <a href="que-faire-a-avenches.html" data-i18n="foot-guide">Que faire à Avenches</a>
-        <span class="footer-sep" aria-hidden="true">·</span>
-        <a href="jeu-de-piste-famille-suisse-romande.html" data-i18n="foot-family">Jeu de piste en famille</a>
-        <span class="footer-sep" aria-hidden="true">·</span>
-        <a href="bon-cadeau.html" data-i18n="foot-gift">Bons cadeaux</a>
-        <span class="footer-sep" aria-hidden="true">·</span>
-        <a href="groupes.html" data-i18n="foot-groups">Groupes et écoles</a>
-        <span class="footer-sep" aria-hidden="true">·</span>
-        <a href="mentions-legales.html" data-i18n="foot-ml">Mentions légales</a>
-        <span class="footer-sep" aria-hidden="true">·</span>
-        <a href="cgv.html" data-i18n="foot-cgv">Conditions générales</a>
-        <span class="footer-sep" aria-hidden="true">·</span>
-        <a href="confidentialite.html" data-i18n="foot-conf">Confidentialité</a>
-      </nav>
-      <p class="footer-copy" data-i18n="foot-copy">© 2026 Aventicum Quest · Avenches, Suisse</p>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/logo.svg" alt="" width="72" height="72">
+          <p class="footer-name">Aventicum Quest</p>
+          <p class="footer-tag" data-i18n="footer.tagline">Jeu de piste à Avenches, Suisse</p>
+        </div>
+        <div class="footer-cols">
+          <nav class="footer-col" aria-labelledby="foot-explore">
+            <h2 id="foot-explore" data-i18n="footer.explore">EXPLORER</h2>
+            <a href="index.html#mission" data-i18n="footer.mission">La mission</a>
+            <a href="bon-cadeau.html" data-i18n="footer.gift">Bons cadeaux</a>
+            <a href="groupes.html" data-i18n="footer.groups">Groupes et écoles</a>
+            <a href="que-faire-a-avenches.html" data-i18n="footer.guide">Que faire à Avenches</a>
+            <a href="jeu-de-piste-famille-suisse-romande.html" data-i18n="footer.family">Jeu de piste en famille</a>
+          </nav>
+          <nav class="footer-col" aria-labelledby="foot-info">
+            <h2 id="foot-info" data-i18n="footer.info">INFORMATIONS</h2>
+            <a href="mentions-legales.html" data-i18n="footer.legal">Mentions légales</a>
+            <a href="confidentialite.html" data-i18n="footer.privacy">Confidentialité</a>
+            <a href="cgv.html" data-i18n="footer.terms">Conditions générales</a>
+            <a href="mailto:info@aventicumquest.ch" data-i18n="footer.contact">Contact</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copy">© 2026 Aventicum Quest</span>
+        <span data-i18n="footer.place">Avenches · Suisse</span>
+      </div>
     </div>
   </footer>
 
@@ -339,6 +212,9 @@
   <!-- ── Système de langue partagé (globe FR/EN/DE, localStorage['aq-lang']) ── -->
   <script>window.AQ_PAGE = 'groups';</script>
   <script src="legal-i18n.js"></script>
+  <script>window.AQ_PAGE_SETLANG = window.setLang;</script>
 
+  <script src="i18n.js" defer></script>
+  <script src="main.js" defer></script>
 </body>
 </html>

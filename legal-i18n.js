@@ -13,19 +13,19 @@
   /* ── Titres de page (document.title) ─────────────────────── */
   const PAGE_TITLES = {
     ml: {
-      fr: 'Mentions légales — Aventicum Quest',
-      en: 'Legal notice — Aventicum Quest',
-      de: 'Impressum — Aventicum Quest'
+      fr: 'Mentions légales : Aventicum Quest',
+      en: 'Legal notice: Aventicum Quest',
+      de: 'Impressum: Aventicum Quest'
     },
     cgv: {
-      fr: 'Conditions générales de vente — Aventicum Quest',
-      en: 'Terms and Conditions of Sale — Aventicum Quest',
-      de: 'Allgemeine Geschäftsbedingungen — Aventicum Quest'
+      fr: 'Conditions générales de vente : Aventicum Quest',
+      en: 'Terms and Conditions of Sale: Aventicum Quest',
+      de: 'Allgemeine Geschäftsbedingungen: Aventicum Quest'
     },
     conf: {
-      fr: 'Politique de confidentialité — Aventicum Quest',
-      en: 'Privacy Policy — Aventicum Quest',
-      de: 'Datenschutzerklärung — Aventicum Quest'
+      fr: 'Politique de confidentialité : Aventicum Quest',
+      en: 'Privacy Policy: Aventicum Quest',
+      de: 'Datenschutzerklärung: Aventicum Quest'
     },
     avenches: {
       fr: 'Que faire à Avenches ? Activités romaines et en famille',
@@ -49,7 +49,7 @@
     avenches: {
       fr: 'Avenches, capitale romaine de la Suisse : arènes, musée romain et une chasse au trésor grandeur nature pour toute la famille. Découvrez le programme.',
       en: 'Avenches, the Roman capital of Switzerland: an amphitheatre, a Roman museum, and a life-size treasure hunt for the whole family. Discover the program.',
-      de: 'Avenches, die römische Hauptstadt der Schweiz: Amphitheater, Römermuseum und eine Schatzsuche in Originalgrösse für die ganze Familie. Entdecken Sie das Programm.'
+      de: 'Avenches, die römische Hauptstadt der Schweiz: Amphitheater, Römermuseum und eine Schatzsuche in Originalgrösse für die ganze Familie. Entdeckt das Programm.'
     },
     gift: {
       fr: 'Offrez Aventicum Quest : un bon cadeau pour une équipe jusqu\'à 5 personnes, 39 CHF, valable 12 mois. Une chasse au trésor à Avenches.',
@@ -154,12 +154,12 @@
       'av-s1-p2':      'Se balader dans Avenches, c\'est croiser ces vestiges presque par hasard, au détour d\'une ruelle ou d\'un jardin.',
       'av-h2-2':       'Aventicum Quest : la chasse au trésor romaine d\'Avenches',
       'av-f-p1':       'Pour découvrir cette histoire autrement qu\'en lisant des panneaux, <strong>Aventicum Quest</strong> propose un jeu de piste outdoor en pleine ville. Le principe : suivre huit stations réparties dans Avenches, résoudre des énigmes inspirées de l\'histoire romaine de la cité, et progresser jusqu\'au dénouement final.',
-      'av-f-p2':       'Le jeu se fait en autonomie, avec son téléphone, à son propre rythme, sur un parcours pensé pour les familles comme pour les adultes qui veulent tester leur sens de l\'observation. Comptez environ deux heures pour boucler les huit énigmes, entre les arènes, le centre historique et les autres sites emblématiques de la ville. Le <a class="inline-link" href="index.html#stations">parcours des huit stations est visible sur la carte interactive</a> de la page d\'accueil.',
+      'av-f-p2':       'Le jeu se fait en autonomie, avec son téléphone, à son propre rythme, sur un parcours pensé pour les familles comme pour les adultes qui veulent tester leur sens de l\'observation. Comptez environ 1h30 à 2h pour boucler les huit énigmes, entre les arènes, le centre historique et les autres sites emblématiques de la ville. Le <a class="inline-link" href="index.html#stations">parcours des huit stations est visible sur la carte interactive</a> de la page d\'accueil.',
       'av-f-p3':       'C\'est une manière concrète de transformer une balade en aventure, sans avoir besoin de réserver un guide ou de suivre un horaire fixe.',
-      'av-b-lieu':     '📍 Avenches · Suisse',
-      'av-b-stations': '🗺 8 stations',
-      'av-b-time':     '⏱ ~120 min',
-      'av-b-fam':      '👥 En famille',
+      'av-b-lieu':     'Avenches · Suisse',
+      'av-b-stations': '8 stations',
+      'av-b-time':     'Environ 1h30 à 2h',
+      'av-b-fam':      'En famille',
       'av-h2-3':       'Une sortie idéale en famille',
       'av-s3-p1':      'Avenches se prête particulièrement bien à une sortie avec des enfants. La ville est petite, largement piétonne dans son centre historique, et les distances entre les sites romains se parcourent facilement à pied. Aventicum Quest a été conçu justement pour ce public : les énigmes mélangent observation, logique et un peu de culture générale, sans jamais devenir trop difficiles pour les plus jeunes.',
       'av-s3-p2':      'C\'est aussi une bonne option pour un anniversaire, une sortie d\'école, ou simplement une après-midi différente pendant les vacances.',
@@ -342,12 +342,12 @@
       'av-s1-p2':      'Walking through Avenches means stumbling upon these remains almost by chance, around a corner or in a garden.',
       'av-h2-2':       'Aventicum Quest: The Roman Treasure Hunt of Avenches',
       'av-f-p1':       'To discover this history in a more hands-on way than reading plaques, <strong>Aventicum Quest</strong> offers an outdoor treasure hunt right through town. The idea: follow eight stations spread across Avenches, solve puzzles inspired by the city\'s Roman past, and progress toward the final reveal.',
-      'av-f-p2':       'The game is self-guided, played on your own phone, at your own pace, along a route designed for families as much as for adults who enjoy testing their observation skills. Expect around two hours to complete all eight puzzles, moving between the arena, the historic center, and the other landmark sites of the city. The <a class="inline-link" href="index.html#stations">route of the eight stations is shown on the interactive map</a> on the homepage.',
+      'av-f-p2':       'The game is self-guided, played on your own phone, at your own pace, along a route designed for families as much as for adults who enjoy testing their observation skills. Expect about 1.5 to 2 hours to complete all eight puzzles, moving between the arena, the historic center, and the other landmark sites of the city. The <a class="inline-link" href="index.html#stations">route of the eight stations is shown on the interactive map</a> on the homepage.',
       'av-f-p3':       'It\'s a concrete way to turn a simple walk into an adventure, with no guide to book and no fixed schedule to follow.',
-      'av-b-lieu':     '📍 Avenches · Switzerland',
-      'av-b-stations': '🗺 8 stations',
-      'av-b-time':     '⏱ ~120 min',
-      'av-b-fam':      '👥 As a family',
+      'av-b-lieu':     'Avenches · Switzerland',
+      'av-b-stations': '8 stations',
+      'av-b-time':     'About 1.5 to 2 hours',
+      'av-b-fam':      'As a family',
       'av-h2-3':       'A Great Family Outing',
       'av-s3-p1':      'Avenches lends itself particularly well to a day out with children. The town is small, largely pedestrian in its historic center, and the distances between the Roman sites are easy to cover on foot. Aventicum Quest was designed with exactly this audience in mind: the puzzles mix observation, logic, and a bit of general knowledge, without ever becoming too difficult for younger players.',
       'av-s3-p2':      'It also makes a great choice for a birthday, a school outing, or simply a different kind of afternoon during the holidays.',
@@ -527,12 +527,12 @@
       'av-s1-p2':      'Ein Spaziergang durch Avenches bedeutet, fast zufällig auf diese Überreste zu stossen, um eine Ecke oder in einem Garten.',
       'av-h2-2':       'Aventicum Quest: Die römische Schatzsuche von Avenches',
       'av-f-p1':       'Um diese Geschichte anders zu entdecken als nur durch das Lesen von Schildern, bietet <strong>Aventicum Quest</strong> eine Outdoor-Schatzsuche mitten in der Stadt. Das Prinzip: acht über Avenches verteilte Stationen ablaufen, Rätsel lösen, die von der römischen Geschichte der Stadt inspiriert sind, und bis zur finalen Auflösung vordringen.',
-      'av-f-p2':       'Das Spiel wird eigenständig gespielt, mit dem eigenen Handy, im eigenen Tempo, auf einer Strecke, die sowohl für Familien als auch für Erwachsene gedacht ist, die ihren Beobachtungssinn testen möchten. Rechnen Sie mit rund zwei Stunden, um alle acht Rätsel zu lösen, zwischen der Arena, der Altstadt und den weiteren markanten Orten der Stadt. Die <a class="inline-link" href="index.html#stations">Strecke der acht Stationen ist auf der interaktiven Karte</a> der Startseite zu sehen.',
+      'av-f-p2':       'Das Spiel wird eigenständig gespielt, mit dem eigenen Handy, im eigenen Tempo, auf einer Strecke, die sowohl für Familien als auch für Erwachsene gedacht ist, die ihren Beobachtungssinn testen möchten. Rechnet mit rund 1,5 bis 2 Stunden, um alle acht Rätsel zu lösen, zwischen der Arena, der Altstadt und den weiteren markanten Orten der Stadt. Die <a class="inline-link" href="index.html#stations">Strecke der acht Stationen ist auf der interaktiven Karte</a> der Startseite zu sehen.',
       'av-f-p3':       'Es ist eine konkrete Art, aus einem Spaziergang ein Abenteuer zu machen, ganz ohne Führung oder festen Zeitplan.',
-      'av-b-lieu':     '📍 Avenches · Schweiz',
-      'av-b-stations': '🗺 8 Stationen',
-      'av-b-time':     '⏱ ~120 Min',
-      'av-b-fam':      '👥 Als Familie',
+      'av-b-lieu':     'Avenches · Schweiz',
+      'av-b-stations': '8 Stationen',
+      'av-b-time':     'Rund 1,5 bis 2 Std.',
+      'av-b-fam':      'Als Familie',
       'av-h2-3':       'Ein ideales Familienausflugsziel',
       'av-s3-p1':      'Avenches eignet sich besonders gut für einen Ausflug mit Kindern. Die Stadt ist klein, im historischen Zentrum weitgehend autofrei, und die Entfernungen zwischen den römischen Stätten lassen sich leicht zu Fuss zurücklegen. Aventicum Quest wurde genau für dieses Publikum entwickelt: Die Rätsel kombinieren Beobachtung, Logik und etwas Allgemeinwissen, ohne für jüngere Teilnehmer je zu schwierig zu werden.',
       'av-s3-p2':      'Es eignet sich auch gut für einen Geburtstag, einen Schulausflug oder einfach einen anderen Nachmittag in den Ferien.',
@@ -692,7 +692,8 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLangMenus(); });
 
     // Apply saved language
-    const savedLang = localStorage.getItem('aq-lang') || 'fr';
+    // Langue initiale : même détection que la page d'accueil quand main.js est présent
+    const savedLang = (window.AQ && window.AQ.detectLang && window.AQ.detectLang()) || localStorage.getItem('aq-lang') || 'fr';
     setLang(savedLang);
   });
 })();

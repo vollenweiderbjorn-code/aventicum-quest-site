@@ -6,101 +6,59 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <title>Merci — Aventicum Quest</title>
+  <title>Merci : Aventicum Quest</title>
   <meta name="robots" content="noindex">
-  <link rel="stylesheet" href="style.css">
-  <!-- Privacy-friendly analytics by Plausible — page atteinte après paiement = objectif de conversion -->
-  <script async src="https://plausible.io/js/pa-ELx2kKywInJ5MKZ1ST8au.js"></script>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preload" href="fonts/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Mesure d'audience Plausible : page atteinte après paiement = objectif de conversion -->
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-    plausible.init()
+    plausible.init();
+    (function(){var h=location.hostname;if(h==='aventicumquest.ch'||h==='www.aventicumquest.ch'){var s=document.createElement('script');s.async=true;s.src='https://plausible.io/js/pa-ELx2kKywInJ5MKZ1ST8au.js';document.head.appendChild(s);}})();
   </script>
-  <style>
-    body { background: var(--obsidian); }
-    .merci-section {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      text-align: center;
-    }
-    .merci-card {
-      max-width: 560px;
-      background: var(--pierre);
-      border: 1px solid var(--border);
-      padding: 4rem 3rem;
-      position: relative;
-    }
-    .merci-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--terre), var(--aurum), var(--scriptum));
-    }
-    .merci-icon {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-      display: block;
-    }
-    .merci-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      color: var(--aurum);
-      margin-bottom: 1rem;
-      letter-spacing: 0.08em;
-    }
-    .merci-text {
-      color: var(--scriptum-dim);
-      font-family: 'EB Garamond', serif;
-      font-size: 1.1rem;
-      line-height: 1.7;
-      font-style: italic;
-      margin-bottom: 2rem;
-    }
-    .merci-note {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: .06em;
-      color: var(--terre);
-      line-height: 1.7;
-      padding: 1rem 1.25rem;
-      background: var(--aurum-faint);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      margin-bottom: 2.5rem;
-    }
-    .merci-note strong { color: var(--scriptum); }
-    .btn-retour {
-      display: inline-block;
-      font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.85rem 2rem;
-      border: 1px solid var(--border-strong);
-      border-radius: 2px;
-      color: var(--aurum);
-      text-decoration: none;
-      transition: background 0.3s, color 0.3s;
-    }
-    .btn-retour:hover {
-      background: var(--aurum);
-      color: var(--obsidian);
-    }
-  </style>
 </head>
 <body>
+  <a class="skip-link" href="#contenu" data-i18n="a11y.skip">Aller au contenu</a>
+  <header class="site-header is-solid">
+    <a class="brand" href="index.html" aria-label="Aventicum Quest">
+      <img src="assets/logo.svg" alt="" width="44" height="44">
+      <span class="brand-name">Aventicum Quest</span>
+    </a>
+    <nav class="nav-main" aria-label="Navigation principale" data-i18n-aria="nav.aria">
+      <a href="index.html#mission" data-i18n="nav.mission">La mission</a>
+      <a href="index.html#stations" data-i18n="nav.stations">Les stations</a>
+      <a href="index.html#enigmes" data-i18n="nav.enigmes">Les énigmes</a>
+      <a href="index.html#tarifs" data-i18n="nav.tarifs">Tarifs</a>
+      <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="burger" aria-expanded="false" aria-controls="menu-panel" aria-label="Menu" data-i18n-aria="nav.menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="menu-panel" id="menu-panel" role="dialog" aria-modal="true" aria-label="Menu" data-i18n-aria="nav.menu" hidden>
+    <div class="menu-top">
+      <img src="assets/logo.svg" alt="" width="44" height="44">
+      <button type="button" class="menu-close" data-i18n="nav.close">Fermer</button>
+    </div>
+    <nav class="menu-nav" aria-label="Navigation principale" data-i18n-aria="nav.aria">
+      <a href="index.html#mission" data-i18n="nav.mission">La mission</a>
+      <a href="index.html#stations" data-i18n="nav.stations">Les stations</a>
+      <a href="index.html#enigmes" data-i18n="nav.enigmes">Les énigmes</a>
+      <a href="index.html#tarifs" data-i18n="nav.tarifs">Tarifs</a>
+      <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+    </nav>
+  </div>
   <!-- TODO BJORN: traduire merci.html en EN/DE (page vue après paiement, aujourd'hui en FR seul). -->
+  <main id="contenu">
   <section class="merci-section">
     <div class="merci-card">
-      <span class="merci-icon">🦅</span>
+      <img class="merci-icon" src="assets/logo.svg" alt="" width="72" height="72">
       <h1 class="merci-title">Paiement confirmé</h1>
       <p class="merci-text">
-        Votre mission commence. Votre code de jeu vous a été envoyé par e-mail — vérifiez votre boîte de réception dans les prochaines minutes.
+        Votre mission commence. Votre code de jeu vous a été envoyé par e-mail : vérifiez votre boîte de réception dans les prochaines minutes.
       </p>
       <div class="merci-note">
         <strong>Pas de code reçu ?</strong><br>
@@ -109,5 +67,43 @@
       <a href="index.html" class="btn-retour">← Retour à l'accueil</a>
     </div>
   </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/logo.svg" alt="" width="72" height="72">
+          <p class="footer-name">Aventicum Quest</p>
+          <p class="footer-tag" data-i18n="footer.tagline">Jeu de piste à Avenches, Suisse</p>
+        </div>
+        <div class="footer-cols">
+          <nav class="footer-col" aria-labelledby="foot-explore">
+            <h2 id="foot-explore" data-i18n="footer.explore">EXPLORER</h2>
+            <a href="index.html#mission" data-i18n="footer.mission">La mission</a>
+            <a href="bon-cadeau.html" data-i18n="footer.gift">Bons cadeaux</a>
+            <a href="groupes.html" data-i18n="footer.groups">Groupes et écoles</a>
+            <a href="que-faire-a-avenches.html" data-i18n="footer.guide">Que faire à Avenches</a>
+            <a href="jeu-de-piste-famille-suisse-romande.html" data-i18n="footer.family">Jeu de piste en famille</a>
+          </nav>
+          <nav class="footer-col" aria-labelledby="foot-info">
+            <h2 id="foot-info" data-i18n="footer.info">INFORMATIONS</h2>
+            <a href="mentions-legales.html" data-i18n="footer.legal">Mentions légales</a>
+            <a href="confidentialite.html" data-i18n="footer.privacy">Confidentialité</a>
+            <a href="cgv.html" data-i18n="footer.terms">Conditions générales</a>
+            <a href="mailto:info@aventicumquest.ch" data-i18n="footer.contact">Contact</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copy">© 2026 Aventicum Quest</span>
+        <span data-i18n="footer.place">Avenches · Suisse</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>window.AQ_FR_ONLY = true;</script>
+  <script src="i18n.js" defer></script>
+  <script src="main.js" defer></script>
 </body>
 </html>

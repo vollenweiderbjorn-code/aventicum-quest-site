@@ -1,0 +1,109 @@
+[
+ {
+  "id": 1,
+  "lat": 46.8801256658893,
+  "lng": 7.040355538641818,
+  "img": "s01",
+  "type": "qcm",
+  "name": {
+   "fr": "Hôtel de Ville",
+   "en": "Town Hall",
+   "de": "Rathaus"
+  },
+  "w800": 800
+ },
+ {
+  "id": 2,
+  "lat": 46.879440022601,
+  "lng": 7.041183920408338,
+  "img": "s02",
+  "type": "obs",
+  "name": {
+   "fr": "Tour de Benneville",
+   "en": "Benneville Tower",
+   "de": "Benneville-Turm"
+  },
+  "w800": 640
+ },
+ {
+  "id": 3,
+  "lat": 46.879617343492015,
+  "lng": 7.041082067642674,
+  "img": "s03",
+  "type": "qcm",
+  "name": {
+   "fr": "Rue des Alpes",
+   "en": "Rue des Alpes",
+   "de": "Rue des Alpes"
+  },
+  "end": [
+   46.88046546548676,
+   7.04187960049447
+  ],
+  "w800": 800
+ },
+ {
+  "id": 4,
+  "lat": 46.88077630335232,
+  "lng": 7.042174179893886,
+  "img": "s04",
+  "type": "obs",
+  "name": {
+   "fr": "Les Arènes",
+   "en": "The Arena",
+   "de": "Die Arena"
+  },
+  "w800": 800
+ },
+ {
+  "id": 5,
+  "lat": 46.88194249431444,
+  "lng": 7.046134306035888,
+  "img": "s05",
+  "type": "obs",
+  "name": {
+   "fr": "Sanctuaire du Cigognier",
+   "en": "Cigognier Sanctuary",
+   "de": "Cigognier-Heiligtum"
+  },
+  "w800": 800
+ },
+ {
+  "id": 6,
+  "lat": 46.88060234404935,
+  "lng": 7.048768086838962,
+  "img": null,
+  "type": "obs",
+  "name": {
+   "fr": "Théâtre du Selley",
+   "en": "Selley Theatre",
+   "de": "Selley-Theater"
+  }
+ },
+ {
+  "id": 7,
+  "lat": 46.885936959657236,
+  "lng": 7.050095976385902,
+  "img": "s07",
+  "type": "steps",
+  "name": {
+   "fr": "Thermes du Forum",
+   "en": "Forum Baths",
+   "de": "Forum-Thermen"
+  },
+  "w800": 800
+ },
+ {
+  "id": 8,
+  "lat": 46.88784395949962,
+  "lng": 7.0581600997750025,
+  "img": "s08",
+  "type": "steps",
+  "name": {
+   "fr": "Porte de l'Est",
+   "en": "East Gate",
+   "de": "Osttor"
+  },
+  "w800": 800
+ }
+]

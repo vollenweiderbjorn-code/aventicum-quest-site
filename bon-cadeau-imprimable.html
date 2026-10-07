@@ -8,9 +8,10 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preload" href="fonts/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
   <!--
     Bon cadeau imprimable, généré à partir des paramètres d'URL :
       bon-cadeau-imprimable.html?code=AQUILA-XXXXXXXX&pour=Prénom&de=Prénom&msg=Message&lang=fr
@@ -18,180 +19,16 @@
     pour, de, msg : facultatifs (affichés via textContent, jamais innerHTML)
     lang : fr | en | de (sinon langue mémorisée du site, sinon fr)
   -->
-  <style>
-    @page { size: A5 landscape; margin: 0; }
-
-    body::before { display: none; } /* pas de grain sur cette page */
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 2rem 1rem;
-    }
-
-    /* ── Le bon (A5 paysage : 210 × 148 mm) ── */
-    .voucher {
-      container-type: inline-size;
-      width: min(100%, 840px);
-      aspect-ratio: 210 / 148;
-      position: relative;
-      background:
-        radial-gradient(110% 90% at 50% 0%, rgba(201,164,78,.10), transparent 60%),
-        var(--obsidian);
-      border: 1px solid var(--border-strong);
-      box-shadow: 0 24px 64px rgba(0,0,0,.55);
-      color: var(--scriptum);
-      overflow: hidden;
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-    }
-    .voucher-frame {
-      position: absolute;
-      inset: 3.2cqw;
-      border: 1px solid var(--aurum-dim);
-      outline: 1px solid var(--border);
-      outline-offset: -1.1cqw;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      text-align: center;
-      padding: 3.4cqw 5cqw 3cqw;
-    }
-    .v-head { display: flex; flex-direction: column; align-items: center; gap: .5cqw; }
-    .v-logo { width: 6.4cqw; height: 6.4cqw; }
-    .v-brand {
-      font-family: 'Cinzel', serif; font-weight: 700;
-      font-size: 2.9cqw; letter-spacing: .32em; text-transform: uppercase;
-      color: var(--aurum);
-    }
-    .v-sub {
-      font-family: 'Space Mono', monospace;
-      font-size: 1.25cqw; letter-spacing: .3em; text-transform: uppercase;
-      color: var(--terre);
-    }
-    .v-rule {
-      display: flex; align-items: center; gap: 1.2cqw;
-      color: var(--aurum); font-size: 1cqw; width: 36cqw; margin: .8cqw auto 0;
-    }
-    .v-rule::before, .v-rule::after { content: ''; flex: 1; height: 1px; background: var(--aurum-dim); }
-
-    .v-body { display: flex; flex-direction: column; align-items: center; gap: .9cqw; }
-    .v-kicker {
-      font-family: 'Space Mono', monospace;
-      font-size: 1.3cqw; letter-spacing: .28em; text-transform: uppercase;
-      color: var(--terre);
-    }
-    .v-for {
-      font-family: 'Cinzel', serif; font-weight: 700;
-      font-size: 4.2cqw; line-height: 1.15; color: var(--scriptum);
-      max-width: 80cqw; overflow-wrap: anywhere;
-    }
-    .v-msg {
-      font-family: 'EB Garamond', serif; font-style: italic;
-      font-size: 2.1cqw; line-height: 1.4; color: var(--scriptum-dim);
-      max-width: 70cqw; overflow-wrap: anywhere;
-    }
-    .v-from {
-      font-family: 'EB Garamond', serif;
-      font-size: 1.8cqw; color: var(--aurum-dim);
-      overflow-wrap: anywhere;
-    }
-
-    .v-code-box { display: flex; flex-direction: column; align-items: center; gap: .6cqw; }
-    .v-code-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 1.15cqw; letter-spacing: .28em; text-transform: uppercase;
-      color: var(--terre);
-    }
-    .v-code {
-      font-family: 'Space Mono', monospace; font-weight: 700;
-      font-size: 4.4cqw; letter-spacing: .14em;
-      color: var(--aurum);
-      border: 1px solid var(--aurum-dim);
-      padding: .9cqw 2.6cqw;
-      border-radius: 2px;
-      background: rgba(201,164,78,.05);
-    }
-
-    .v-foot { display: flex; flex-direction: column; align-items: center; gap: .4cqw; }
-    .v-valid {
-      font-family: 'Space Mono', monospace;
-      font-size: 1.15cqw; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--terre);
-    }
-    .v-where {
-      font-family: 'EB Garamond', serif;
-      font-size: 1.75cqw; color: var(--scriptum-dim);
-    }
-    .v-where strong { color: var(--scriptum); font-weight: 500; }
-
-    /* ── Actions / erreurs (écran seulement) ── */
-    .v-actions { display: flex; flex-direction: column; align-items: center; gap: .6rem; }
-    .btn-print {
-      font-family: 'Cinzel', serif; font-size: .78rem; font-weight: 700;
-      letter-spacing: .18em; text-transform: uppercase;
-      color: var(--obsidian); background: var(--aurum);
-      border: none; border-radius: 2px;
-      padding: 1rem 2rem; cursor: pointer;
-      transition: background .2s;
-    }
-    .btn-print:hover { background: var(--scriptum); }
-    .v-hint {
-      font-family: 'Space Mono', monospace; font-size: .56rem;
-      letter-spacing: .12em; text-transform: uppercase; color: var(--terre);
-      text-align: center; max-width: 46ch;
-    }
-    .v-error {
-      max-width: 480px;
-      text-align: center;
-      border: 1px solid var(--border-strong);
-      background: var(--pierre);
-      border-radius: 4px;
-      padding: 2rem 1.5rem;
-    }
-    .v-error h1 {
-      font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: .08em;
-      color: var(--aurum); margin-bottom: .8rem;
-    }
-    .v-error p { color: var(--scriptum-dim); margin-bottom: 1.2rem; }
-    .v-error a { color: var(--aurum); text-decoration: underline; text-underline-offset: 3px; }
-    [hidden] { display: none !important; }
-
-    /* ── Impression ── */
-    @media print {
-      html, body {
-        width: 210mm; height: 148mm;
-        margin: 0; padding: 0;
-        background: var(--obsidian);
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-      body { display: block; min-height: 0; }
-      .v-actions, .v-error { display: none !important; }
-      .voucher {
-        width: 210mm; height: 148mm;
-        aspect-ratio: auto;
-        border: none;
-        box-shadow: none;
-        page-break-inside: avoid;
-        break-inside: avoid;
-      }
-    }
-  </style>
 </head>
-<body>
+<body class="voucher-page">
 
   <div class="voucher" id="voucher" hidden>
     <div class="voucher-frame">
       <div class="v-head">
-        <img src="images/logo.svg" alt="" class="v-logo" aria-hidden="true">
+        <img src="assets/logo.svg" alt="" class="v-logo" width="64" height="64" aria-hidden="true">
         <p class="v-brand">Aventicum Quest</p>
         <p class="v-sub">Operatio Aquila</p>
-        <div class="v-rule" aria-hidden="true">◆</div>
+        <div class="v-rule" aria-hidden="true"><i></i></div>
       </div>
 
       <div class="v-body">
