@@ -245,10 +245,38 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
-  /* ── Hero : halo qui suit le pointeur + compteur ───────────── */
+  /* ── Hero : titre mot par mot, halo qui suit le pointeur, compteur ── */
+  // Chaque ligne du titre est découpée en mots (.w) qui apparaissent l'un après l'autre (styles.css).
+  // Le texte lu par les lecteurs d'écran reste identique : les mots sont séparés par de vrais espaces.
+  function splitTitle() {
+    var n = 0;
+    $$('.hero-title .hero-line').forEach(function (line) {
+      var done = line.querySelectorAll('.w').length;
+      if (!done) {
+        var words = line.textContent.split(/\s+/).filter(Boolean);
+        line.textContent = '';
+        words.forEach(function (word, k) {
+          var w = doc.createElement('span');
+          w.className = 'w';
+          w.style.setProperty('--i', n + k);
+          w.textContent = word;
+          line.appendChild(w);
+          if (k < words.length - 1) line.appendChild(doc.createTextNode(' '));
+        });
+        done = words.length;
+      }
+      n += done;
+      line.classList.add('is-split');
+    });
+  }
+
   function initHero() {
     var hero = $('.hero');
-    if (!hero || reduceMotion) return;
+    if (!hero || reduceMotion) return;   // mouvement réduit : titre d'un bloc, ni zoom, ni halo, ni compteur animé
+
+    splitTitle();
+    // applyLang remplace le texte du titre à chaque changement de langue : on redécoupe juste après
+    doc.addEventListener('aq:langchange', splitTitle);
 
     var halo = $('.hero-halo', hero);
     if (halo && window.matchMedia('(pointer: fine)').matches) {
@@ -264,7 +292,7 @@
     }
 
     var timer = $('.hero-timer-value', hero);
-    if (timer && window.matchMedia('(min-width: 1120px)').matches) {
+    if (timer) {
       var left = 7200;
       var pad = function (n) { return n < 10 ? '0' + n : String(n); };
       var render = function () {

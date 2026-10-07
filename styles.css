@@ -360,18 +360,20 @@ section[id] { scroll-margin-top: var(--header-h); }
   flex-direction: column;
   background: var(--nuit);
 }
+/* Photo lumineuse et chaude : le noir n'est posé que derrière le texte (.hero-shade) */
 .hero-img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: 62% 60%;
-  transform-origin: 60% 50%;
+  object-position: 58% 62%;
+  transform-origin: 62% 58%;
+  filter: brightness(1.08) contrast(1.06) saturate(1.1) sepia(.18);
 }
 .hero-tint {
   position: absolute; inset: 0;
-  background: #8A4A14;
-  mix-blend-mode: multiply;
-  opacity: .35;
+  background: #F0A94C;
+  mix-blend-mode: soft-light;
+  opacity: .5;
 }
 .hero-halo {
   position: absolute;
@@ -384,19 +386,22 @@ section[id] { scroll-margin-top: var(--header-h); }
   transition: transform .6s var(--ease);
 }
 .hero-shade {
+  /* bandeau sous l'en-tête (le menu doit rester lisible sur le ciel) */
+  --band: linear-gradient(180deg, rgba(20, 18, 15, .86) 0, rgba(20, 18, 15, .82) 56px, rgba(20, 18, 15, .36) 112px, rgba(20, 18, 15, 0) 190px);
   position: absolute; inset: 0;
   background:
-    linear-gradient(90deg, rgba(20, 18, 15, .88) 0%, rgba(20, 18, 15, .45) 50%, rgba(20, 18, 15, 0) 85%),
-    linear-gradient(0deg, rgba(20, 18, 15, .95) 0%, rgba(20, 18, 15, .2) 45%, rgba(20, 18, 15, .4) 100%);
+    var(--band),
+    linear-gradient(90deg, rgba(20, 18, 15, .88) 0%, rgba(20, 18, 15, .78) 32%, rgba(20, 18, 15, .35) 50%, rgba(20, 18, 15, 0) 66%),
+    linear-gradient(0deg, rgba(20, 18, 15, .82) 0, rgba(20, 18, 15, 0) 24%);
 }
 .hero-body {
   position: relative;
   flex: 1;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 32px;
-  padding: 96px var(--pad-x) clamp(28px, 5vh, 56px);
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 96px var(--pad-x) clamp(32px, 6vh, 64px);
 }
 .hero-text {
   display: flex;
@@ -407,9 +412,10 @@ section[id] { scroll-margin-top: var(--header-h); }
 .hero-title {
   font-family: var(--serif);
   font-weight: 500;
-  font-size: clamp(60px, 10vw, 132px);
+  font-size: clamp(54px, 7.6vw, 104px);
   line-height: .88;
   letter-spacing: -.015em;
+  text-shadow: 0 2px 28px rgba(20, 18, 15, .45);
 }
 .hero-title span, .hero-title i { display: block; }
 .hero-title i { font-style: italic; color: #F3E6CF; }
@@ -419,24 +425,28 @@ section[id] { scroll-margin-top: var(--header-h); }
   line-height: 1.55;
   color: var(--parchemin);
   text-wrap: pretty;
+  text-shadow: 0 1px 14px rgba(20, 18, 15, .6);
 }
+/* Compteur (mise en scène) sous le bouton, avec de l'air autour */
 .hero-timer {
-  display: none;
+  display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 4px;
+  min-width: min(100%, 300px);
+  margin-top: clamp(24px, 4.5vh, 48px);
+  padding-top: 20px;
+  border-top: 1px solid rgba(239, 231, 218, .22);
   font-family: var(--mono);
+  text-shadow: 0 1px 12px rgba(20, 18, 15, .7);
 }
-.hero-timer-label { font-size: 12px; letter-spacing: .14em; color: var(--texte-3); }
+.hero-timer-label { font-size: 12px; letter-spacing: .14em; color: var(--parchemin); }
 .hero-timer-value {
-  font-size: clamp(34px, 3.6vw, 52px);
+  font-size: clamp(30px, 3vw, 44px);
   font-weight: 500;
   letter-spacing: .04em;
   font-variant-numeric: tabular-nums;
   color: var(--parchemin);
-}
-@media (min-width: 1120px) {
-  .hero-timer { display: flex; }
 }
 
 /* Bandeau d'infos clés */
@@ -471,16 +481,44 @@ section[id] { scroll-margin-top: var(--header-h); }
 }
 
 /* Mouvement du hero : seulement si JS actif (sans JS, tout est visible) */
-@keyframes hero-zoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+@keyframes hero-push { from { transform: scale(1); } to { transform: scale(1.1); } }
 @keyframes hero-in {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: none; }
 }
-.js .hero-img { animation: hero-zoom 18s cubic-bezier(.2, .6, .2, 1) both; }
+@keyframes hero-word {
+  from { opacity: 0; transform: translateY(.32em); filter: blur(6px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+@keyframes hero-show { to { opacity: 1; } }
+.js .hero-img { animation: hero-push 20s cubic-bezier(.25, .1, .25, 1) both; }
 .js .hero-in {
   opacity: 0;
   animation: hero-in .9s var(--ease) forwards;
   animation-delay: var(--d, 0ms);
+}
+/* Titre mot par mot : main.js découpe chaque ligne en mots (.w). En attendant, la ligne est masquée ;
+   au bout de 2,5 s elle s'affiche quoi qu'il arrive (filet de sécurité si le script échoue). */
+@media (prefers-reduced-motion: no-preference) {
+  .js .hero-line:not(.is-split) { opacity: 0; animation: hero-show .01s 2.5s forwards; }
+}
+.hero-line .w { display: inline-block; }
+.js .hero-line .w { opacity: 0; animation: hero-word .85s var(--ease) forwards; animation-delay: calc(350ms + var(--i, 0) * 150ms); }
+
+/* Tablette et mobile : la photo occupe le haut et se fond dans le fond sombre, le texte est posé dessous
+   (lisible quelle que soit la photo). Le hero n'est plus collé à l'écran. */
+@media (max-width: 1023px) {
+  .hero { position: relative; height: auto; min-height: 100svh; --ph: max(62svh, 460px); }
+  .hero-img { bottom: auto; height: var(--ph); }
+  /* teinte et dégradé dépassent la photo : le zoom ne laisse aucun liseré clair sous elle */
+  .hero-tint, .hero-shade { bottom: auto; height: calc(var(--ph) * 1.15); }
+  .hero-shade {
+    background:
+      var(--band),
+      linear-gradient(180deg, rgba(20, 18, 15, 0) calc(var(--ph) * .36), rgba(20, 18, 15, .72) calc(var(--ph) * .62), #14120F calc(var(--ph) * .86));
+  }
+  .hero-body { padding-top: calc(var(--ph) * .66); }
+  .has-xmas .hero-body { padding-top: calc(var(--ph) * .66 + var(--xmas-h)); }
 }
 
 /* ── 7. Apparitions au scroll ────────────────────────────────── */
@@ -996,7 +1034,7 @@ section[id] { scroll-margin-top: var(--header-h); }
 }
 .xmas-close:focus-visible { outline-color: var(--nuit); }
 .has-xmas .site-header { top: 44px; }
-.has-xmas .hero-body { padding-top: 140px; }
+@media (min-width: 1024px) { .has-xmas .hero-body { padding-top: 140px; } }
 
 /* ── 11. Pages secondaires : en-tête plein, lien d'évitement ──── */
 .site-header.is-solid {
@@ -1529,6 +1567,7 @@ html:not(.js) .nav-main { display: flex; flex-wrap: wrap; gap: 4px 20px; justify
   html { scroll-behavior: auto; }
   .js .hero-img { animation: none; }
   .js .hero-in { opacity: 1; animation: none; }
+  .js .hero-line .w { opacity: 1; animation: none; filter: none; transform: none; }
   .hero-halo { display: none; }
   .reveal-pending { opacity: 1; transform: none; }
   .btn, .site-header, .lang-toggle { transition: none; }
