@@ -449,7 +449,7 @@
       'foot-conf':     'Datenschutz',
       'foot-copy':     '© 2026 Aventicum Quest · Avenches, Schweiz',
       /* ── Seite "Was tun in Avenches" ── */
-      'foot-guide':    'Was in Avenches unternehmen',
+      'foot-guide':    'Was tun in Avenches',
       'foot-family':   'Schnitzeljagd für Familien',
 
       /* Links Geschenkgutscheine (Nav / Footer) */
@@ -519,7 +519,7 @@
       'av-overline':   'Avenches · Waadt · Schweiz',
       'av-h1':         'Was tun in Avenches: Römische Geschichte trifft auf Familienabenteuer',
       'av-home':       'Startseite',
-      'av-bc':         'Was in Avenches unternehmen',
+      'av-bc':         'Was tun in Avenches',
       'av-lead':       'Am Ufer des Murtensees gelegen, ist Avenches keine gewöhnliche Waadtländer Stadt. Vor zweitausend Jahren hiess sie Aventicum und war die Hauptstadt des römischen Helvetiens, mit fast zwanzigtausend Einwohnern.',
       'av-p1':         'Die Spuren dieser Epoche prägen noch heute fast jede Strassenecke: ein Amphitheater, ein Tempel, Thermen, ein Turm, der die Stadt überragt. Avenches zu besuchen ist wie das Durchblättern eines Geschichtsbuchs, nur dass man hier tatsächlich hineingehen kann.',
       'av-h2-1':       'Das römische Avenches, unter freiem Himmel',

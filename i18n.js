@@ -495,7 +495,7 @@ window.AQ_I18N = {
       kicker: "DAS DOSSIER",
       t1: "Drei Schritte,",
       t2: "eine Spur.",
-      p1: "<em>117 n. Chr. Aventicum ist auf dem Höhepunkt seines Ruhms: 20 000 Einwohner, ein Jupiter geweihtes Heiligtum, Thermen würdig Roms.</em> Doch in dieser Nacht ist der heilige Aquila der Legio XXI Rapax verschwunden. Kaiser Hadrian ist auf dem Weg in die Stadt.",
+      p1: "<em>117 n. Chr. Aventicum ist auf dem Höhepunkt seines Ruhms: 20 000 Einwohner, ein Jupiter geweihtes Heiligtum, Roms würdige Thermen.</em> Doch in dieser Nacht ist die heilige Aquila der Legio XXI Rapax verschwunden. Kaiser Hadrian ist auf dem Weg in die Stadt.",
       p2: "Der Senat beauftragt euch mit der Untersuchung. Zu Fuss, mit dem Smartphone bewaffnet, erkundet ihr 8 Wahrzeichen von Avenches und löst die Rätsel, die sie verbergen.",
       s1: {
         t: "Bildet euer Team",
@@ -661,7 +661,7 @@ window.AQ_I18N = {
       mission: "Die Mission",
       gift: "Geschenkgutscheine",
       groups: "Gruppen und Schulen",
-      guide: "Was in Avenches unternehmen",
+      guide: "Was tun in Avenches",
       family: "Schnitzeljagd für Familien",
       info: "INFORMATIONEN",
       legal: "Impressum",
