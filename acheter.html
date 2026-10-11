@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- Ouverture des ventes (Forfait Équipe / bon cadeau) : passer à true le jour du lancement. -->
+  <!-- Ouverture des ventes (Forfait Famille / bon cadeau) : passer à true le jour du lancement. -->
   <script>const SALES_OPEN = false;</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -108,7 +108,7 @@
       <p class="buy-sec-label" data-i18n="lbl-formula">Choisissez votre formule</p>
       <div class="buy-formula" role="radiogroup" aria-label="Formule">
         <button type="button" class="buy-formula-opt" role="radio" aria-checked="true" data-formula="player" data-i18n="f-player">Par joueur</button>
-        <button type="button" class="buy-formula-opt" role="radio" aria-checked="false" data-formula="team" data-i18n="f-team">Forfait Équipe</button>
+        <button type="button" class="buy-formula-opt" role="radio" aria-checked="false" data-formula="team" data-i18n="f-team">Forfait Famille</button>
       </div>
 
       <div class="js-mode-player">
@@ -174,13 +174,13 @@
 
       <div class="js-mode-team" hidden>
         <div class="team-box">
-          <p class="buy-sec-label" data-i18n="f-team">Forfait Équipe</p>
-          <p class="team-box-price">39 CHF</p>
-          <p class="team-box-desc" data-i18n="team-desc">Une équipe jusqu'à 5 personnes, tous âges confondus.</p>
-          <p class="team-box-help" data-i18n="team-help">À partir de 4 personnes, le forfait est souvent plus avantageux.</p>
+          <p class="buy-sec-label" data-i18n="f-team">Forfait Famille</p>
+          <p class="team-box-price">35 CHF</p>
+          <p class="team-box-desc" data-i18n="team-desc">Une famille ou une équipe jusqu'à 5 personnes, tous âges confondus.</p>
+          <p class="team-box-help" data-i18n="team-help">2 adultes et 2 enfants : 40 CHF au tarif par joueur, 35 CHF avec le Forfait Famille.</p>
         </div>
         <div class="btn-buy-group" style="margin-bottom:36px">
-          <a class="btn-buy js-stripe-team-link is-disabled" aria-disabled="true">Bientôt disponible</a>
+          <a class="btn-buy js-stripe-team-link is-disabled" aria-disabled="true">Ouverture prochaine</a>
         </div>
       </div>
 
@@ -198,7 +198,7 @@
           <div class="buy-step-num">I</div>
           <div class="buy-step-txt">
             <b data-i18n="s1-t">Achetez votre code</b>
-            <span data-i18n="s1-d">Par joueur ou au forfait équipe, paiement sécurisé en 1 minute.</span>
+            <span data-i18n="s1-d">Par joueur ou au Forfait Famille, paiement sécurisé en 1 minute.</span>
           </div>
         </div>
         <div class="buy-step">
@@ -226,7 +226,7 @@
 
       <div class="btn-buy-group">
         <a id="btn-buy-stripe" class="btn-buy js-stripe-link js-mode-player is-disabled" aria-disabled="true" data-cta="cta">Ouverture prochaine</a>
-        <a class="btn-buy js-stripe-team-link js-mode-team is-disabled" aria-disabled="true" hidden>Bientôt disponible</a>
+        <a class="btn-buy js-stripe-team-link js-mode-team is-disabled" aria-disabled="true" hidden>Ouverture prochaine</a>
         <p class="buy-secure" data-i18n="secure">Paiement sécurisé · Stripe · Reçu par e-mail</p>
         <div class="pay-methods" aria-label="Cartes acceptées">
           <span class="pay-chip" title="Visa">
@@ -286,12 +286,12 @@
       de: 'https://buy.stripe.com/5kQbJ1dn1d8uemfccac7u03'
     };
 
-    /* ── Lien de paiement Forfait Équipe (39 CHF, jusqu'à 5 personnes) ──
+    /* ── Lien de paiement Forfait Famille (35 CHF, jusqu'à 5 personnes) ──
        Tant que SALES_OPEN vaut false (ou qu'une URL commence par "TODO"), le bouton reste désactivé ("Bientôt disponible"). */
     const STRIPE_LINKS_TEAM = {
-      fr: 'https://buy.stripe.com/eVqfZh2IngkGdib8ZYc7u04',
-      en: 'https://buy.stripe.com/9B65kD82H8Se6TN0tsc7u05',
-      de: 'https://buy.stripe.com/dRmeVd0AffgC5PJ2BAc7u06'
+      fr: 'https://buy.stripe.com/7sY7sL3Mrd8u5PJ2BAc7u0a',
+      en: 'https://buy.stripe.com/5kQcN582Hd8u4LF5NMc7u0b',
+      de: 'https://buy.stripe.com/bJe28rbeT9Wiba33FEc7u0c'
     };
 
     /* ── Traductions de la page ── */
@@ -315,7 +315,7 @@
         example: "Exemple : une famille de 4 (2 adultes + 2 enfants) : <strong>40 CHF</strong>",
         qty: "<strong>Un seul code par commande.</strong><br>Il vous est envoyé par e-mail et sert à toute votre équipe.<br>Valable 12 mois à partir de l'achat.",
         'lbl-how': "Comment ça marche",
-        's1-t': "Achetez votre code", 's1-d': "Par joueur ou au forfait équipe, paiement sécurisé en 1 minute.",
+        's1-t': "Achetez votre code", 's1-d': "Par joueur ou au Forfait Famille, paiement sécurisé en 1 minute.",
         's2-t': "Recevez-le par e-mail", 's2-d': "Votre code arrive aussitôt dans votre boîte de réception, valable pour toute l'équipe.",
         's3-t': "Jouez à Avenches", 's3-d': "Sur place, lancez la partie quand vous voulez. Environ 1h30 à 2h.",
         a1: "Code valable 12 mois : partez le jour que vous choisissez.",
@@ -332,10 +332,10 @@
         'calc-note': "Le total ci-dessus est le prix de votre commande. Vous recevrez un seul code par e-mail, valable pour toute votre équipe.",
         'lbl-formula': "Choisissez votre formule",
         'f-player': "Par joueur",
-        'f-team': "Forfait Équipe",
-        'team-desc': "Une équipe jusqu'à 5 personnes, tous âges confondus.",
-        'team-help': "À partir de 4 personnes, le forfait est souvent plus avantageux.",
-        'cta-team': "Obtenir mon forfait équipe →",
+        'f-team': "Forfait Famille",
+        'team-desc': "Une famille ou une équipe jusqu'à 5 personnes, tous âges confondus.",
+        'team-help': "2 adultes et 2 enfants : 40 CHF au tarif par joueur, 35 CHF avec le Forfait Famille.",
+        'cta-team': "Obtenir mon Forfait Famille →",
         'soon': "Bientôt disponible",
         'cta-soon': "Ouverture prochaine"
       },
@@ -358,7 +358,7 @@
         example: "Example: a family of 4 (2 adults + 2 children): <strong>CHF 40</strong>",
         qty: "<strong>One code per order.</strong><br>It is sent to you by e-mail and works for your whole team.<br>Valid for 12 months from purchase.",
         'lbl-how': "How it works",
-        's1-t': "Buy your code", 's1-d': "Per player or with the Team Pass, secure payment in 1 minute.",
+        's1-t': "Buy your code", 's1-d': "Per player or with the Family Pass, secure payment in 1 minute.",
         's2-t': "Get it by e-mail", 's2-d': "Your code arrives in your inbox right away, valid for your whole team.",
         's3-t': "Play in Avenches", 's3-d': "On site, start whenever you like. About 1.5 to 2 hours.",
         a1: "Code valid for 12 months: go on the day you choose.",
@@ -375,10 +375,10 @@
         'calc-note': "The total above is the price of your order. You will receive a single code by e-mail, valid for your whole team.",
         'lbl-formula': "Choose your option",
         'f-player': "Per player",
-        'f-team': "Team Pass",
-        'team-desc': "One team of up to 5 people, any age.",
-        'team-help': "From 4 people, the Team Pass is often the better deal.",
-        'cta-team': "Get my Team Pass →",
+        'f-team': "Family Pass",
+        'team-desc': "One family or team of up to 5 people, any age.",
+        'team-help': "2 adults and 2 children: CHF 40 at the per-player price, CHF 35 with the Family Pass.",
+        'cta-team': "Get my Family Pass →",
         'soon': "Coming soon",
         'cta-soon': "Opening soon"
       },
@@ -401,7 +401,7 @@
         example: "Beispiel: eine Familie mit 4 Personen (2 Erwachsene + 2 Kinder): <strong>40 CHF</strong>",
         qty: "<strong>Ein Code pro Bestellung.</strong><br>Er wird euch per E-Mail zugeschickt und gilt für euer ganzes Team.<br>12 Monate ab Kauf gültig.",
         'lbl-how': "So funktioniert's",
-        's1-t': "Code kaufen", 's1-d': "Pro Spieler oder als Team-Pauschale, sichere Zahlung in 1 Minute.",
+        's1-t': "Code kaufen", 's1-d': "Pro Spieler oder als Familienpauschale, sichere Zahlung in 1 Minute.",
         's2-t': "Per E-Mail erhalten", 's2-d': "Euer Code kommt sofort in euer Postfach, gültig für euer ganzes Team.",
         's3-t': "In Avenches spielen", 's3-d': "Vor Ort startet ihr, wann ihr möchtet. Rund 1,5 bis 2 Stunden.",
         a1: "Code 12 Monate gültig: Spielt an dem Tag eurer Wahl.",
@@ -418,10 +418,10 @@
         'calc-note': "Die Summe oben ist der Preis eurer Bestellung. Ihr erhaltet einen einzigen Code per E-Mail, gültig für euer ganzes Team.",
         'lbl-formula': "Wählt eure Variante",
         'f-player': "Pro Spieler",
-        'f-team': "Team-Pauschale",
-        'team-desc': "Ein Team mit bis zu 5 Personen, jedes Alter.",
-        'team-help': "Ab 4 Personen lohnt sich die Pauschale oft mehr.",
-        'cta-team': "Meine Team-Pauschale erhalten →",
+        'f-team': "Familienpauschale",
+        'team-desc': "Eine Familie oder ein Team mit bis zu 5 Personen, jedes Alter.",
+        'team-help': "2 Erwachsene und 2 Kinder: 40 CHF pro Spieler, 35 CHF mit der Familienpauschale.",
+        'cta-team': "Meine Familienpauschale erhalten →",
         'soon': "Bald verfügbar",
         'cta-soon': "Bald verfügbar"
       }
@@ -472,7 +472,7 @@
           a.removeAttribute('href');
           a.setAttribute('aria-disabled', 'true');
           a.classList.add('is-disabled');
-          a.textContent = dict.soon;
+          a.textContent = dict['cta-soon'];
         }
       });
       localStorage.setItem('aq-lang', lang);
@@ -486,7 +486,7 @@
     const initialLang = localStorage.getItem('aq-lang') || (BUY_I18N[navLang] ? navLang : 'fr');
     setBuyLang(initialLang);
 
-    /* ── Choix de formule : par joueur / forfait équipe (?formule=equipe pour présélectionner) ── */
+    /* ── Choix de formule : par joueur / Forfait Famille (?formule=famille pour présélectionner ; ?formule=equipe reste accepté comme alias) ── */
     let buyFormula = 'player';
     function setFormula(f) {
       buyFormula = f === 'team' ? 'team' : 'player';
@@ -538,13 +538,14 @@
     updateSticky();
 
     // Formule initiale (après la définition du CTA collant)
-    setFormula(new URLSearchParams(location.search).get('formule') === 'equipe' ? 'team' : 'player');
+    const formuleParam = new URLSearchParams(location.search).get('formule');
+    setFormula(formuleParam === 'famille' || formuleParam === 'equipe' ? 'team' : 'player');
 
     document.querySelectorAll('.js-stripe-team-link').forEach(function (a) {
       a.addEventListener('click', function (e) {
         if (!a.getAttribute('href')) { e.preventDefault(); return; }
         try {
-          window.plausible('Checkout: clic Payer', { props: { langue: document.documentElement.lang || 'fr', formule: 'equipe' } });
+          window.plausible('Checkout: clic Payer', { props: { langue: document.documentElement.lang || 'fr', formule: 'famille' } });
         } catch (err) {}
       });
     });

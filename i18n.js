@@ -152,10 +152,10 @@ window.AQ_I18N = {
       child: "Enfant",
       childNote: "Par personne, de 5 à 17 ans",
       free: "Gratuit pour les moins de 5 ans",
-      team: "Forfait équipe",
+      team: "Forfait famille",
       teamNote: "Jusqu'à 5 personnes, tous âges, un seul prix",
       teamTag: "LE PLUS SIMPLE",
-      help: "À partir de 4 personnes, le forfait est souvent plus avantageux.",
+      help: "2 adultes et 2 enfants : 40 CHF au tarif par joueur, 35 CHF avec le Forfait Famille.",
       note: "Un seul code par commande, valable pour toute votre équipe. Valable 12 mois à partir de l'achat.",
       cta: "Acheter mes billets",
       groups: "Écoles et grands groupes : nous contacter",
@@ -208,7 +208,7 @@ window.AQ_I18N = {
       },
       i10: {
         q: "Quelle formule choisir ?",
-        a: "Le tarif par joueur coûte 12 CHF par adulte et 8 CHF par enfant de 5 à 17 ans, gratuit pour les moins de 5 ans. Le Forfait Équipe coûte 39 CHF pour une équipe jusqu'à 5 personnes, quel que soit leur âge. À partir de 4 personnes, le forfait est souvent plus avantageux. Dans les deux cas, vous recevez un seul code pour toute l'équipe."
+        a: "Le tarif par joueur coûte 12 CHF par adulte et 8 CHF par enfant de 5 à 17 ans, gratuit pour les moins de 5 ans. Le Forfait Famille coûte 35 CHF pour une famille ou une équipe jusqu'à 5 personnes, quel que soit leur âge. Exemple : 2 adultes et 2 enfants paient 40 CHF au tarif par joueur, 35 CHF avec le Forfait Famille. Dans les deux cas, vous recevez un seul code pour toute l'équipe."
       }
     },
     trust: { kicker: "ILS EN PARLENT", t: "Avis et partenaires" },
@@ -373,10 +373,10 @@ window.AQ_I18N = {
       child: "Child",
       childNote: "Per person, 5 to 17",
       free: "Free for children under 5",
-      team: "Team pass",
+      team: "Family pass",
       teamNote: "Up to 5 people, any age, one price",
       teamTag: "SIMPLEST",
-      help: "From 4 people, the Team Pass is often the better deal.",
+      help: "2 adults and 2 children: CHF 40 at the per-player price, CHF 35 with the Family Pass.",
       note: "One code per order, valid for your whole team. Valid 12 months from purchase.",
       cta: "Buy my tickets",
       groups: "Schools and large groups: contact us",
@@ -429,7 +429,7 @@ window.AQ_I18N = {
       },
       i10: {
         q: "Which option should we choose?",
-        a: "The per-player price is CHF 12 per adult and CHF 8 per child aged 5 to 17, free for children under 5. The Team Pass costs CHF 39 for one team of up to 5 people, whatever their age. From 4 people, the Team Pass is often the better deal. Either way, you receive a single code for the whole team."
+        a: "The per-player price is CHF 12 per adult and CHF 8 per child aged 5 to 17, free for children under 5. The Family Pass costs CHF 35 for one family or team of up to 5 people, whatever their age. For example, 2 adults and 2 children pay CHF 40 at the per-player price, or CHF 35 with the Family Pass. Either way, you receive a single code for the whole team."
       }
     },
     trust: { kicker: "WHAT PLAYERS SAY", t: "Reviews and partners" },
@@ -594,10 +594,10 @@ window.AQ_I18N = {
       child: "Kinder",
       childNote: "Pro Person, 5 bis 17 Jahre",
       free: "Gratis für Kinder unter 5 Jahren",
-      team: "Team-Pauschale",
+      team: "Familienpauschale",
       teamNote: "Bis 5 Personen, jedes Alter, ein Preis",
       teamTag: "AM EINFACHSTEN",
-      help: "Ab 4 Personen lohnt sich die Pauschale oft mehr.",
+      help: "2 Erwachsene und 2 Kinder: 40 CHF pro Spieler, 35 CHF mit der Familienpauschale.",
       note: "Ein Code pro Bestellung, gültig für euer ganzes Team. 12 Monate ab Kauf gültig.",
       cta: "Tickets kaufen",
       groups: "Schulen und grosse Gruppen: Kontakt",
@@ -650,7 +650,7 @@ window.AQ_I18N = {
       },
       i10: {
         q: "Welche Variante sollen wir wählen?",
-        a: "Pro Person kostet es 12 CHF für Erwachsene und 8 CHF für Kinder von 5 bis 17 Jahren, unter 5 Jahren gratis. Die Team-Pauschale kostet 39 CHF für ein Team mit bis zu 5 Personen, egal welchen Alters. Ab 4 Personen lohnt sich die Pauschale oft mehr. In beiden Fällen erhaltet ihr einen einzigen Code für das ganze Team."
+        a: "Pro Person kostet es 12 CHF für Erwachsene und 8 CHF für Kinder von 5 bis 17 Jahren, unter 5 Jahren gratis. Die Familienpauschale kostet 35 CHF für eine Familie oder ein Team mit bis zu 5 Personen, egal welchen Alters. Zum Beispiel zahlen 2 Erwachsene und 2 Kinder 40 CHF pro Person oder 35 CHF mit der Familienpauschale. In beiden Fällen erhaltet ihr einen einzigen Code für das ganze Team."
       }
     },
     trust: { kicker: "STIMMEN", t: "Bewertungen und Partner" },
