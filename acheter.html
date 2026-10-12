@@ -337,7 +337,8 @@
         'team-help': "2 adultes et 2 enfants : 40 CHF au tarif par joueur, 35 CHF avec le Forfait Famille.",
         'cta-team': "Obtenir mon Forfait Famille →",
         'soon': "Bientôt disponible",
-        'cta-soon': "Ouverture prochaine"
+        'cta-soon': "Ouverture prochaine",
+        'page-title': "Acheter : Aventicum Quest"
       },
       en: {
         back: "← Back to home",
@@ -380,7 +381,8 @@
         'team-help': "2 adults and 2 children: CHF 40 at the per-player price, CHF 35 with the Family Pass.",
         'cta-team': "Get my Family Pass →",
         'soon': "Coming soon",
-        'cta-soon': "Opening soon"
+        'cta-soon': "Opening soon",
+        'page-title': "Buy: Aventicum Quest"
       },
       de: {
         back: "← Zurück zur Startseite",
@@ -423,7 +425,8 @@
         'team-help': "2 Erwachsene und 2 Kinder: 40 CHF pro Spieler, 35 CHF mit der Familienpauschale.",
         'cta-team': "Meine Familienpauschale erhalten →",
         'soon': "Bald verfügbar",
-        'cta-soon': "Bald verfügbar"
+        'cta-soon': "Bald verfügbar",
+        'page-title': "Kaufen: Aventicum Quest"
       }
     };
 
@@ -439,6 +442,7 @@
         if (v != null) el.innerHTML = v;
       });
       document.documentElement.lang = lang;
+      if (dict['page-title']) document.title = dict['page-title'];
       document.querySelectorAll('.buy-lang').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
