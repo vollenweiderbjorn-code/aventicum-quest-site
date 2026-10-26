@@ -53,7 +53,7 @@ window.AQ_I18N = {
       kicker: "LE DOSSIER",
       t1: "Trois temps,",
       t2: "une piste.",
-      p1: "<em>117 après J.-C. Aventicum est au sommet de sa gloire : 20 000 habitants, un sanctuaire dédié à Jupiter, des thermes dignes de Rome.</em> Mais cette nuit, l'aquila sacrée de la Legio XI Claudia a disparu. L'Empereur Hadrien fait route vers la ville.",
+      p1: "<em>121 après J.-C. Aventicum est au sommet de sa gloire : 20 000 habitants, un sanctuaire dédié à Jupiter, des thermes dignes de Rome.</em> Mais cette nuit, l'aquila sacrée de la Legio XI Claudia a disparu. L'Empereur Hadrien fait route vers la ville.",
       p2: "Le Sénat vous mandate pour mener l'enquête. À pied, armés de votre smartphone, vous parcourez 8 lieux emblématiques d'Avenches et répondez aux énigmes qu'ils recèlent.",
       s1: {
         t: "Formez votre équipe",
@@ -274,7 +274,7 @@ window.AQ_I18N = {
       kicker: "THE FILE",
       t1: "Three steps,",
       t2: "one trail.",
-      p1: "<em>117 AD. Aventicum is at the height of its glory: 20,000 inhabitants, a sanctuary dedicated to Jupiter, baths worthy of Rome itself.</em> But tonight, the sacred aquila of Legio XI Claudia has vanished. Emperor Hadrian is on his way.",
+      p1: "<em>121 AD. Aventicum is at the height of its glory: 20,000 inhabitants, a sanctuary dedicated to Jupiter, baths worthy of Rome itself.</em> But tonight, the sacred aquila of Legio XI Claudia has vanished. Emperor Hadrian is on his way.",
       p2: "The Senate tasks you with the investigation. On foot, armed with your smartphone, you explore 8 landmarks of Avenches and solve the riddles they conceal.",
       s1: {
         t: "Form your team",
@@ -495,7 +495,7 @@ window.AQ_I18N = {
       kicker: "DAS DOSSIER",
       t1: "Drei Schritte,",
       t2: "eine Spur.",
-      p1: "<em>117 n. Chr. Aventicum ist auf dem Höhepunkt seines Ruhms: 20 000 Einwohner, ein Jupiter geweihtes Heiligtum, Roms würdige Thermen.</em> Doch in dieser Nacht ist die heilige Aquila der Legio XI Claudia verschwunden. Kaiser Hadrian ist auf dem Weg in die Stadt.",
+      p1: "<em>121 n. Chr. Aventicum ist auf dem Höhepunkt seines Ruhms: 20 000 Einwohner, ein Jupiter geweihtes Heiligtum, Roms würdige Thermen.</em> Doch in dieser Nacht ist die heilige Aquila der Legio XI Claudia verschwunden. Kaiser Hadrian ist auf dem Weg in die Stadt.",
       p2: "Der Senat beauftragt euch mit der Untersuchung. Zu Fuss, mit dem Smartphone bewaffnet, erkundet ihr 8 Wahrzeichen von Avenches und löst die Rätsel, die sie verbergen.",
       s1: {
         t: "Bildet euer Team",
