@@ -1303,6 +1303,8 @@ section[id] { scroll-margin-top: var(--header-h); }
   transform: none;
   cursor: not-allowed;
 }
+.buy-notify { text-align: center; font-size: 15px; line-height: 1.5; color: var(--texte-2); margin: 0; }
+.buy-notify a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .buy-secure { text-align: center; font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--texte-3); }
 .pay-methods { display: flex; justify-content: center; align-items: center; gap: 8px; }
 .pay-chip { display: inline-flex; align-items: center; justify-content: center; height: 26px; padding: 0 8px; background: #F4F4F6; border-radius: 4px; }

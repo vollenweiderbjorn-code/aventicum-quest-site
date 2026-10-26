@@ -227,6 +227,7 @@
       <div class="btn-buy-group">
         <a id="btn-buy-stripe" class="btn-buy js-stripe-link js-mode-player is-disabled" aria-disabled="true" data-cta="cta">Ouverture prochaine</a>
         <a class="btn-buy js-stripe-team-link js-mode-team is-disabled" aria-disabled="true" hidden>Ouverture prochaine</a>
+        <p class="buy-notify" id="buyNotify" data-i18n-html="notify"></p>
         <p class="buy-secure" data-i18n="secure">Paiement sécurisé · Stripe · Reçu par e-mail</p>
         <div class="pay-methods" aria-label="Cartes acceptées">
           <span class="pay-chip" title="Visa">
@@ -338,6 +339,7 @@
         'cta-team': "Obtenir mon Forfait Famille →",
         'soon': "Bientôt disponible",
         'cta-soon': "Ouverture prochaine",
+        notify: "La vente n'est pas encore ouverte. <a href=\"mailto:info@aventicumquest.ch?subject=Pr%C3%A9venez-moi%20%C3%A0%20l%27ouverture&body=Bonjour%2C%20merci%20de%20me%20pr%C3%A9venir%20d%C3%A8s%20que%20Aventicum%20Quest%20ouvre.\">Me prévenir par e-mail à l'ouverture</a>",
         'page-title': "Acheter : Aventicum Quest"
       },
       en: {
@@ -382,6 +384,7 @@
         'cta-team': "Get my Family Pass →",
         'soon': "Coming soon",
         'cta-soon': "Opening soon",
+        notify: "Sales are not open yet. <a href=\"mailto:info@aventicumquest.ch?subject=Notify%20me%20at%20launch&body=Hello%2C%20please%20let%20me%20know%20as%20soon%20as%20Aventicum%20Quest%20opens.\">Email me when it opens</a>",
         'page-title': "Buy: Aventicum Quest"
       },
       de: {
@@ -426,6 +429,7 @@
         'cta-team': "Meine Familienpauschale erhalten →",
         'soon': "Bald verfügbar",
         'cta-soon': "Bald verfügbar",
+        notify: "Der Verkauf hat noch nicht begonnen. <a href=\"mailto:info@aventicumquest.ch?subject=Bitte%20bei%20Er%C3%B6ffnung%20benachrichtigen&body=Guten%20Tag%2C%20bitte%20informiert%20mich%2C%20sobald%20Aventicum%20Quest%20startet.\">Per E-Mail bei Eröffnung benachrichtigen</a>",
         'page-title': "Kaufen: Aventicum Quest"
       }
     };
@@ -479,6 +483,8 @@
           a.textContent = dict['cta-soon'];
         }
       });
+      const notifyEl = document.getElementById('buyNotify');
+      if (notifyEl) notifyEl.hidden = !!SALES_OPEN;
       localStorage.setItem('aq-lang', lang);
     }
 
