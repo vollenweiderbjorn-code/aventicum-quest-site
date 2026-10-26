@@ -18,7 +18,7 @@ window.AQ_I18N = {
     meta: {
       title: "Aventicum Quest : jeu de piste outdoor à Avenches",
       desc: "Chasse au trésor grandeur nature dans les vestiges romains d'Avenches : 8 énigmes, environ 1h30 à 2h en famille. Prêt à percer le secret d'Aventicum ?",
-      og: "L'aigle de la Legio XXI a été volée. Résolvez 8 énigmes à travers les lieux emblématiques d'Avenches en environ 1h30 à 2h."
+      og: "L'aigle de la Legio XI Claudia a été volée. Résolvez 8 énigmes à travers les lieux emblématiques d'Avenches en environ 1h30 à 2h."
     },
     a11y: { skip: "Aller au contenu" },
     nav: {
@@ -53,7 +53,7 @@ window.AQ_I18N = {
       kicker: "LE DOSSIER",
       t1: "Trois temps,",
       t2: "une piste.",
-      p1: "<em>117 après J.-C. Aventicum est au sommet de sa gloire : 20 000 habitants, un sanctuaire dédié à Jupiter, des thermes dignes de Rome.</em> Mais cette nuit, l'aquila sacrée de la Legio XXI Rapax a disparu. L'Empereur Hadrien fait route vers la ville.",
+      p1: "<em>117 après J.-C. Aventicum est au sommet de sa gloire : 20 000 habitants, un sanctuaire dédié à Jupiter, des thermes dignes de Rome.</em> Mais cette nuit, l'aquila sacrée de la Legio XI Claudia a disparu. L'Empereur Hadrien fait route vers la ville.",
       p2: "Le Sénat vous mandate pour mener l'enquête. À pied, armés de votre smartphone, vous parcourez 8 lieux emblématiques d'Avenches et répondez aux énigmes qu'ils recèlent.",
       s1: {
         t: "Formez votre équipe",
@@ -239,7 +239,7 @@ window.AQ_I18N = {
     meta: {
       title: "Aventicum Quest: outdoor treasure hunt in Avenches",
       desc: "A life-size treasure hunt through the Roman ruins of Avenches: 8 puzzles, about 1.5 to 2 hours with family or friends. Uncover Aventicum's secret.",
-      og: "The eagle of Legio XXI has been stolen. Solve 8 puzzles across the landmarks of Avenches in about 1.5 to 2 hours."
+      og: "The eagle of Legio XI Claudia has been stolen. Solve 8 puzzles across the landmarks of Avenches in about 1.5 to 2 hours."
     },
     a11y: { skip: "Skip to content" },
     nav: {
@@ -274,7 +274,7 @@ window.AQ_I18N = {
       kicker: "THE FILE",
       t1: "Three steps,",
       t2: "one trail.",
-      p1: "<em>117 AD. Aventicum is at the height of its glory: 20,000 inhabitants, a sanctuary dedicated to Jupiter, baths worthy of Rome itself.</em> But tonight, the sacred aquila of Legio XXI Rapax has vanished. Emperor Hadrian is on his way.",
+      p1: "<em>117 AD. Aventicum is at the height of its glory: 20,000 inhabitants, a sanctuary dedicated to Jupiter, baths worthy of Rome itself.</em> But tonight, the sacred aquila of Legio XI Claudia has vanished. Emperor Hadrian is on his way.",
       p2: "The Senate tasks you with the investigation. On foot, armed with your smartphone, you explore 8 landmarks of Avenches and solve the riddles they conceal.",
       s1: {
         t: "Form your team",
@@ -460,7 +460,7 @@ window.AQ_I18N = {
     meta: {
       title: "Aventicum Quest: Outdoor-Schnitzeljagd in Avenches",
       desc: "Schatzsuche in Originalgrösse in den römischen Ruinen von Avenches: 8 Rätsel, rund 1,5 bis 2 Stunden. Lüftet das Geheimnis von Aventicum.",
-      og: "Der Adler der Legio XXI wurde gestohlen. Löst 8 Rätsel an den Wahrzeichen von Avenches in rund 1,5 bis 2 Stunden."
+      og: "Der Adler der Legio XI Claudia wurde gestohlen. Löst 8 Rätsel an den Wahrzeichen von Avenches in rund 1,5 bis 2 Stunden."
     },
     a11y: { skip: "Zum Inhalt springen" },
     nav: {
@@ -495,7 +495,7 @@ window.AQ_I18N = {
       kicker: "DAS DOSSIER",
       t1: "Drei Schritte,",
       t2: "eine Spur.",
-      p1: "<em>117 n. Chr. Aventicum ist auf dem Höhepunkt seines Ruhms: 20 000 Einwohner, ein Jupiter geweihtes Heiligtum, Roms würdige Thermen.</em> Doch in dieser Nacht ist die heilige Aquila der Legio XXI Rapax verschwunden. Kaiser Hadrian ist auf dem Weg in die Stadt.",
+      p1: "<em>117 n. Chr. Aventicum ist auf dem Höhepunkt seines Ruhms: 20 000 Einwohner, ein Jupiter geweihtes Heiligtum, Roms würdige Thermen.</em> Doch in dieser Nacht ist die heilige Aquila der Legio XI Claudia verschwunden. Kaiser Hadrian ist auf dem Weg in die Stadt.",
       p2: "Der Senat beauftragt euch mit der Untersuchung. Zu Fuss, mit dem Smartphone bewaffnet, erkundet ihr 8 Wahrzeichen von Avenches und löst die Rätsel, die sie verbergen.",
       s1: {
         t: "Bildet euer Team",
